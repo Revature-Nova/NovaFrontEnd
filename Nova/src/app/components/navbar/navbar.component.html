@@ -3,7 +3,12 @@
 
     <form action="" class="form-inline my-2 mylg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0">Search</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0">
+            <!-- This shows the search icon next to the input; The icon needs to be imported
+            into the typescript file -->
+            <fa-icon [icon]="faSearch">
+            </fa-icon>
+        </button>
     </form>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
