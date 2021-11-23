@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+    <label for="filter">Filter</label>
+    <select name="filter" id="" [(ngModel)]="filter">
+        <option value="genre">Genre</option>
+        <option value="platform">Platform</option>
+        <option value="rating">Rating</option>
+    </select>
+
+    <select *ngIf="filter == 'genre'" name="value" id="" [(ngModel)]="value">
+        <option value="all">All</option>
+        <option value="adventure">Adventure</option>
+        <option value="First-Person Shooter">FPS</option>
+        <option value="sandbox">Sandbox</option>
+        <option value="platformer">Platformer</option>
+    </select>
+
+    <select *ngIf="filter == 'platform'" name="value" id="" [(ngModel)]="value">
+        <option value="all">All</option>
+        <option value="xbox">XBOX</option>
+        <option value="playstation">PlayStation</option>
+        <option value="Nintendo Switch">Nintendo Switch</option>
+        <option value="PC">PC</option>
+    </select>
+    
+    <select *ngIf="filter == 'rating'" name="value" id="" [(ngModel)]="value">
+        <option value="all">All</option>
+        <option value="E">E</option>
+        <option value="E10+">E10+</option>
+        <option value="T">T</option>
+        <option value="M">M</option>
+    </select>
+</div>
+<br><br>
+<div class="d-flex justify-content-center">
+    <div *ngIf="filter == 'genre'">
+        This is the genre section
+    </div>
+    <div *ngIf="filter == 'platform'">
+        This is the platform section
+    </div>
+    <div *ngIf="filter == 'rating'">
+        This is the rating section
+    </div>    
+</div>
