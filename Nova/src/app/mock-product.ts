@@ -1,6 +1,4 @@
-import { Cart } from "./cart";
-
-export interface Product {
+export interface MockProduct {
     productId: number;
     title: string;
     genre: string;
@@ -9,5 +7,4 @@ export interface Product {
     endpoint: string;
     platform: string;
     imageUrl: string;
-    cart: Cart;
 }

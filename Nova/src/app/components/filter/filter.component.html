@@ -1,6 +1,6 @@
-<div class="d-flex justify-content-center">
-    <label for="filter">Filter</label>
-    <select name="filter" id="" [(ngModel)]="filter">
+<div class="d-flex justify-content-center py-5">
+    <label class="font-weight-bold font" for="filter">Filter:</label>
+    <select name="filter" class="mx-3" id="" [(ngModel)]="filter">
         <option value="genre">Genre</option>
         <option value="platform">Platform</option>
         <option value="rating">Rating</option>
@@ -21,7 +21,7 @@
         <option value="Nintendo Switch">Nintendo Switch</option>
         <option value="PC">PC</option>
     </select>
-    
+
     <select *ngIf="filter == 'rating'" name="value" id="" [(ngModel)]="value">
         <option value="all">All</option>
         <option value="E">E</option>
@@ -29,16 +29,56 @@
         <option value="T">T</option>
         <option value="M">M</option>
     </select>
+
+    <button class="btn btn-primary mx-3" (click)="filterProducts()">Apply Filter</button>
 </div>
 <br><br>
-<div class="d-flex justify-content-center">
-    <div *ngIf="filter == 'genre'">
-        This is the genre section
+<!-- <div class="container" *ngFor="let product of products; let o = odd; let e = even">
+    <div class="d-flex row row-cols-1">
+        <div class="col mb-4">
+            <div class="card pc-bg-dark pc-text-light" style="width: 20rem;">
+                <img src="{{product.imageUrl}}" class="card-img-top " alt="" height=400>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}} ({{product.genre}})</h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div *ngIf="filter == 'platform'">
-        This is the platform section
+</div> -->
+
+<div class="container">
+    <div class="row" *ngFor="let product of products;">
+        <div class="justify-content-center col py-2 card-outline-primary">
+            <div class="card border border-primary" (click)="onClick()">
+                <div class="row">
+                    <div class="col md-auto">
+                        <div class="card-body">
+                            <p class="card-text"><img src="{{product.imageUrl}}" alt="" height="200" width="200"></p>
+                        </div>
+                    </div>
+                    <div class="col md-auto my-5">
+                        <div class="card-body">
+                            <h5>{{product.title}}</h5>
+                            <p>{{product.genre}}</p>
+                        </div>
+                    </div>
+                    <div class="col md-auto ml-4 my-5">
+                        <div class="card-body">
+                            <h4>Price</h4>
+                            <p>{{product.price}}</p>
+                        </div>
+                    </div>
+                    <div class="col md-auto my-5">
+                        <div class="card-body">
+                            <button class="btn btn-outline-primary" (click)="btnClick()">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div *ngIf="filter == 'rating'">
-        This is the rating section
-    </div>    
 </div>
+
