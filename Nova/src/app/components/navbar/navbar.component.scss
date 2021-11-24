@@ -1,0 +1,21 @@
+.searchDropdown {
+    top: 3.55em;
+    position:absolute;
+    z-index: 1;
+    width: 13em;
+    height: 200px;
+    background: #f6f6f6;;
+    overflow-y: auto;
+}
+
+.searchObj {
+    padding: 10px;
+    font-family: sans-serif;
+    color:rgb(0, 0, 0);
+
+}
+
+.searchObj:hover {
+    background: #c2c2c2;
+}
+
