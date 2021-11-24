@@ -1,38 +1,21 @@
-.pc-text-light {
-  color: #fff;
-}
-.pc-text-dark {
-  color: #474c55;
-}
-.pc-text-orange {
-  color: #f26925;
-}
-.pc-bg-light {
-  background-color: #fff;
-}
-.pc-bg-dark {
-  background-color: #474c55;
-}
-.pc-bg-orange {
-  background-color: #f26925;
+.searchDropdown {
+    top: 3.55em;
+    position:absolute;
+    z-index: 1;
+    width: 13em;
+    height: 200px;
+    background: #f6f6f6;;
+    overflow-y: auto;
 }
 
-.sc-text-yellow {
-  color: #fcb414;
-}
-.sc-text-blue {
-  color: #72a4c2;
-}
-.sc-text-light-gray {
-  color: #b9b9ba;
+.searchObj {
+    padding: 10px;
+    font-family: sans-serif;
+    color:rgb(0, 0, 0);
+
 }
 
-.sc-bg-yellow {
-  background-color: #fcb414;
+.searchObj:hover {
+    background: #c2c2c2;
 }
-.sc-bg-blue {
-  background-color: #72a4c2;
-}
-.sc-bg-light-gray {
-  background-color: #b9b9ba;
-}
+

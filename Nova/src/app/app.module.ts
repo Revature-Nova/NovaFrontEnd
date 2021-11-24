@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,13 +14,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchFilterPipe } from './components/navbar/filter-pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FilterComponent,
-    SplitComponent
+    SplitComponent,
+    SearchFilterPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FontAwesomeModule,
     NoopAnimationsModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
