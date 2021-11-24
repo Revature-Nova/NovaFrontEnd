@@ -1,17 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light pc-bg-light">
     <a href="" class="navbar-brand">NOVA</a>
-
-    <form action="" class="form-inline my-2 mylg-0">
+    
+    <form action="" class="form-inline mx-5 my-2 mylg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0">
+        <button class="btn btn-outline-primary my-2 my-sm-0" > 
             <!-- This shows the search icon next to the input; The icon needs to be imported
             into the typescript file -->
-            <fa-icon [icon]="faSearch">
+            <fa-icon [icon]="faSearch" > 
             </fa-icon>
         </button>
     </form>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <!-- <button class="mx-5">
+        <fa-icon [icon]="cart"></fa-icon>
+    </button> -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +11,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent implements OnInit {
   faSearch = faSearch;
+  cart = faShoppingCart;
+
 
   constructor() { }
 

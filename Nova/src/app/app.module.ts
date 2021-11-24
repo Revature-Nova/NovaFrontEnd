@@ -1,24 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { SplitComponent } from './components/split/split.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FilterComponent
+    FilterComponent,
+    SplitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NoopAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
