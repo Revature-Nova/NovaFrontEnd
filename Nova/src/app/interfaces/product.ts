@@ -2,7 +2,7 @@ import { Cart } from "./cart";
 
 export interface Product {
     productId: number;
-    name: string;
+    title: string;
     genre: string;
     price: number;
     rating: string;

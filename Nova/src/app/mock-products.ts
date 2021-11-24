@@ -2,7 +2,7 @@ import { MockProduct } from "./mock-product"
 export const Products: MockProduct[] = [
     {
         productId: 1,
-        name: "The Elder Scrolls V: Skyrim",
+        title: "The Elder Scrolls V: Skyrim",
         genre: "RPG",
         price: 39.99,
         rating: "Mature",
@@ -12,7 +12,7 @@ export const Products: MockProduct[] = [
     },
     {
         productId: 2,
-        name: "Terraria",
+        title: "Terraria",
         genre: "Platformer",
         price: 9.99,
         rating: "Teen",
@@ -22,7 +22,7 @@ export const Products: MockProduct[] = [
     },
     {
         productId: 3,
-        name: "Diablo II",
+        title: "Diablo II",
         genre: "RPG",
         price: 39.99,
         rating: "Mature",
@@ -32,7 +32,7 @@ export const Products: MockProduct[] = [
     },
     {
         productId: 4,
-        name: "Borderlands 2",
+        title: "Borderlands 2",
         genre: "Shooter",
         price: 19.99,
         rating: "Mature",
@@ -42,7 +42,7 @@ export const Products: MockProduct[] = [
     },
     {
         productId: 5,
-        name: "The Legend of Zelda: Breath of the Wild",
+        title: "The Legend of Zelda: Breath of the Wild",
         genre: "RPG",
         price: 59.99,
         rating: "E10+",

@@ -29,6 +29,8 @@
         <option value="T">T</option>
         <option value="M">M</option>
     </select>
+
+    <button class="btn btn-primary mx-3" (click)="filterProducts()">Apply Filter</button>
 </div>
 <br><br>
 <!-- <div class="container" *ngFor="let product of products; let o = odd; let e = even">
@@ -48,16 +50,16 @@
 <div class="container">
     <div class="row" *ngFor="let product of products;">
         <div class="justify-content-center col py-2 card-outline-primary">
-            <div class="card border border-primary">
+            <div class="card border border-primary" (click)="onClick()">
                 <div class="row">
                     <div class="col md-auto">
                         <div class="card-body">
-                            <p class="card-text"><img src="{{product.imageUrl}}" alt="" height="200"></p>
+                            <p class="card-text"><img src="{{product.imageUrl}}" alt="" height="200" width="200"></p>
                         </div>
                     </div>
                     <div class="col md-auto my-5">
                         <div class="card-body">
-                            <h5>{{product.name}}</h5>
+                            <h5>{{product.title}}</h5>
                             <p>{{product.genre}}</p>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                     </div>
                     <div class="col md-auto my-5">
                         <div class="card-body">
-                            <button class="btn btn-outline-primary ">
+                            <button class="btn btn-outline-primary" (click)="btnClick()">
                                 Add To Cart
                             </button>
                         </div>

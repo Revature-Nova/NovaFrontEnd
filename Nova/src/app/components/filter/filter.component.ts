@@ -13,10 +13,27 @@ export class FilterComponent implements OnInit {
   filter:string = "genre";
   value:string = "all";
   products: MockProduct[] = Products;
+  btnBool: boolean = false;
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    if (!this.btnBool){
+      console.log("To Product Page");
+    }
+    this.btnBool = false;
+  }
+
+  btnClick(){
+    this.btnBool = true;
+    console.log("Add To Cart");
+  }
+
+  filterProducts(){
+    
   }
 
 }

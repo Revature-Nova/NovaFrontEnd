@@ -1,6 +1,6 @@
 export interface MockProduct {
     productId: number;
-    name: string;
+    title: string;
     genre: string;
     price: number;
     rating: string;

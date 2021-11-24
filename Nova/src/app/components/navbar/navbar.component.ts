@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
+import { MockProduct } from 'src/app/mock-product';
+import { Products } from 'src/app/mock-products';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit {
   faSearch = faSearch;
   cart = faShoppingCart;
+  products: MockProduct[] = Products;
+  productNames: string[] = this.products.map(p => p.title);
 
 
   searchForm!: FormGroup;
