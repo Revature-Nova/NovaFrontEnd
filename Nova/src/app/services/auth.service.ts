@@ -26,18 +26,23 @@ export class AuthService {
   }
 
   logout() {
-    return this.http
-      .post<any>(`${config.apiUrl}/logout`, {
-        refreshToken: this.getRefreshToken(),
-      })
-      .pipe(
-        tap(() => this.doLogoutUser()),
-        mapTo(true),
-        catchError((error) => {
-          alert(error.error);
-          return of(false);
+    return (
+      this.http
+        .post<any>(`${config.apiUrl}/logout`, {
+          //sends a refresh token to remove
+          refreshToken: this.getRefreshToken(),
         })
-      );
+        //executed the log out method
+        .pipe(
+          tap(() => this.doLogoutUser()),
+          //to know that the operator succeeded
+          mapTo(true),
+          catchError((error) => {
+            alert(error.error);
+            return of(false);
+          })
+        )
+    );
   }
 
   isLoggedIn() {
@@ -45,12 +50,16 @@ export class AuthService {
   }
 
   refreshToken() {
+    /*reaches the api end point 'refresh' with a refresh token
+      in the request body
+    */
     return this.http
       .post<any>(`${config.apiUrl}/refresh`, {
         refreshToken: this.getRefreshToken(),
       })
       .pipe(
         tap((tokens: Tokens) => {
+          //satores JwToken in the local storage
           this.storeJwtToken(tokens.jwt);
         })
       );
@@ -79,6 +88,7 @@ export class AuthService {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
+  //
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
