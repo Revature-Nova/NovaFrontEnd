@@ -45,7 +45,7 @@ export const Products: MockProduct[] = [
         title: "The Legend of Zelda: Breath of the Wild",
         genre: "RPG",
         price: 59.99,
-        rating: "E10+",
+        rating: "Everyone 10+",
         endpoint: "https://rawg.io/api/games/the-legend-of-zelda-breath-of-the-wild?key=87ad23cdc737468884eb0216a7ba8df9",
         platform: "Nintendo Switch",
         imageUrl: "https://www.nintendo.com//content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-breath-of-the-wild-switch/the-legend-of-zelda-breath-of-the-wild-switch-hero.jpg",
