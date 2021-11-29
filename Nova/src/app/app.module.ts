@@ -1,3 +1,4 @@
+import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,9 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +16,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +23,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     FilterComponent,
     SplitComponent,
     SearchFilterPipe,
-    ProductPageComponent
-    
+    ProductPageComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +35,9 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

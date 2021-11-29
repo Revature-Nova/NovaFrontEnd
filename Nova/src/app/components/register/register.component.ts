@@ -8,14 +8,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
+      firstName: '',
+      lastName: '',
       username: '',
-      // email: '',
+      email: '',
       password: '',
     });
   }
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
   submit(): void {
     console.log(this.form.getRawValue());
     this.http
-      .post('http://localhost:8080/authenticate', this.form.getRawValue())
+      .post('http://localhost:8080/register', this.form.getRawValue())
       .subscribe((res) => {
         console.log(res);
       });
