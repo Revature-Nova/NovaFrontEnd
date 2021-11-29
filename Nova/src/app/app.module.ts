@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -36,7 +37,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     NoopAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

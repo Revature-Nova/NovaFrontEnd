@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Test } from 'src/app/interfaces/test';
 import { MockProduct } from 'src/app/mock-product';
 import { Products } from 'src/app/mock-products';
+import { Product } from 'src/app/interfaces/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-filter',
@@ -12,18 +14,27 @@ import { Products } from 'src/app/mock-products';
 export class FilterComponent implements OnInit {
   filter:string = "genre";
   value:string = "all";
-  products: MockProduct[] = Products;
+  products: Product[] = [];
   //Created Sets for Filter Types to Ensure Distinct Values
   genres = new Set(this.products.map(p => p.genre).sort());
   platforms = new Set(this.products.map(p => p.platform).sort());
   ratings = new Set(this.products.map(p => p.rating).sort());
   btnBool: boolean = false;
-  filtered!: MockProduct[];
+  filtered!: Product[];
   btnFilter: boolean = false;
+  productsService: ProductsService;
   
-  constructor() { }
+  constructor(_productsService: ProductsService) {
+    this.productsService = _productsService;
+  }
 
   ngOnInit(): void {
+    this.productsService.getProducts().subscribe(data => {
+      for(const item of data) {
+        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
+        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+      }
+    })
   }
 
   onClick(){
