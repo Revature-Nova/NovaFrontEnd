@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
+  // Primary Colors:
+  // Orange: PMS 021 C //ORANGE
+  // PMS 021 U
+  // CMYK: 0, 73, 97, 0
+  // RGB: 242, 105, 38
+  // Hex: #F26925
+  // White:             //WHITE
+  // CMYK: 0, 0, 0, 0
+  // RGB: 0, 0, 0
+  // Hex: #FFFFF
+  // Dark Gray        //DARK GRAY
+  // PMS Cool Gray 10 C
+  // PMS Cool Gray 10 U
+  // CMYK: 71, 62, 50, 33
+  // RGB: 72, 76, 86
+  // Hex: #474C55
+  // Secondary Colors
+  // Blue             //BLUE
+  // PMS 542 C
+  // PMS 543 U
+  // CMYK: 56, 24, 14, 0
+  // RGB: 115, 165, 194
+  // Hex: #72A4C2
+  // Yellow           //YELLOW
+  // PMS 130 C
+  // PMS 7549 U
+  // CMYK: 0, 32, 100, 0
+  // RGB: 253, 181, 21
+  // Hex: #FCB414
+  // Light Gray           //LIGHT GRAY
+  // PMS Cool Gray 4 C
+  // PMS Cool Gray 4 U
+  // CMYK: 28, 22, 22, 0
+  // RGB: 185, 185, 186
+  // Hex: #B9B9BA
+
+.pc-text-light {
+  color: #fff;
+}
+.pc-text-dark {
+  color: #474c55;
+}
+.pc-text-orange {
+  color: #f26925;
+}
+.pc-bg-light {
+  background-color: #fff;
+}
+.pc-bg-dark {
+  background-color: #474c55;
+}
+.pc-bg-orange {
+  background-color: #f26925;
+}
+
+.sc-text-yellow {
+  color: #fcb414;
+}
+.sc-text-blue {
+  color:#72a4c2;
+}
+.sc-text-light-gray {
+  color: #b9b9ba;
+}
+
+.sc-bg-yellow {
+  background-color: #fcb414;
+}
+.sc-bg-blue {
+  background-color:#72a4c2;
+}
+.sc-bg-light-gray {
+  background-color: #b9b9ba;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
