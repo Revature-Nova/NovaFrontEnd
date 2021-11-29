@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,6 +16,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { SearchFilterPipe } from './components/navbar/filter-pipe';
     NavbarComponent,
     FilterComponent,
     SplitComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ProductPageComponent
     
   ],
   imports: [
@@ -34,7 +37,8 @@ import { SearchFilterPipe } from './components/navbar/filter-pipe';
     NoopAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
