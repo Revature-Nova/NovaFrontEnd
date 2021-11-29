@@ -1,0 +1,9 @@
+// Working on some indicators to show customers which product their cursor is on
+.card {
+  &:hover {
+    // transition-timing-function: ease-in-out;
+    // transition: 0.25s;
+    // margin: 25px;
+    background-color: lightgray;
+  }
+}

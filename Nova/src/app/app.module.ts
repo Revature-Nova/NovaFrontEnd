@@ -15,6 +15,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SearchFilterPipe } from './components/navbar/filter-pipe';
     NavbarComponent,
     FilterComponent,
     SplitComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ProductPageComponent
     
   ],
   imports: [
