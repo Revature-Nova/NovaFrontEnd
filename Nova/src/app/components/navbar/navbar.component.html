@@ -27,9 +27,21 @@
         <fa-icon [icon]="cart"></fa-icon>
     </button> -->
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"
+    [ngClass]="{ 'show': navbarOpen }"
+    >
+    <div class = "navbar-nav" routerLinkActive="active current">
+    <a class = "nav-link" routerLink ="/">Login</a>
+    <a class = "nav-link" routerLink="/">Register</a>
+    <a class = "nav-link" routerLink="./userProfile">User Profile</a>
+    <a class = "nav-link" routerLink="/">Sign Out</a>
+    <!-- <button  type="button" class="btn delete">Sign Out</button> -->
+</div>
+</div>
+   
 </nav>
 

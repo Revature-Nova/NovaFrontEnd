@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/filter/filter.component';
@@ -17,6 +18,8 @@ import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileService } from './services/user-profile.service';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     FilterComponent,
     SplitComponent,
     SearchFilterPipe,
-    ProductPageComponent
+    ProductPageComponent,
+    UserProfileComponent
     
   ],
   imports: [
@@ -40,7 +44,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
