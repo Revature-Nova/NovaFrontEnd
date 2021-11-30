@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { MockProduct } from 'src/app/mock-product';
-import { Products } from 'src/app/mock-products';
+import { ProductsService } from 'src/app/services/products.service';
+import { Product } from 'src/app/interfaces/product';
 
 
 @Component({
@@ -14,14 +14,25 @@ import { Products } from 'src/app/mock-products';
 export class NavbarComponent implements OnInit {
   faSearch = faSearch;
   cart = faShoppingCart;
-  products: MockProduct[] = Products;
-  productNames: string[] = this.products.map(p => p.title);
-
-  navbarOpen = false;
-
+  products: Product[] = [];
+  productNames: String[] = [];
+  productsService: ProductsService;
   searchForm!: FormGroup;
+  search: String = '';
 
   ngOnInit(): void {
+    this.productsService.getProducts().subscribe(data => {
+      let setGames: Set<String> = new Set;
+      for(const item of data) {
+        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
+        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        setGames = new Set(this.products.map(p => p.title));
+      }
+      for (const title of setGames) {
+        this.productNames.push(title);
+      }
+
+    })
   }
 
   showDropDown = false;
@@ -30,12 +41,19 @@ export class NavbarComponent implements OnInit {
     this.showDropDown = false;
   }
 
+  //Check If the value of the form group exists or not
   toggleSearchOn() {
-    this.showDropDown = true;
+    console.log(this.searchForm.value.search);
+    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
+      this.showDropDown = false;
+    } else {
+      this.showDropDown = true;
+    }
   }
 
-  constructor( private fb: FormBuilder) {
+  constructor( private fb: FormBuilder, _productsService: ProductsService) {
     this.initForm()
+    this.productsService = _productsService;
   }
 
   initForm(): FormGroup {
@@ -45,11 +63,14 @@ export class NavbarComponent implements OnInit {
   }
 
   getSearchValue() {
+    this.showDropDown = true;
     return this.searchForm.value.search;
+    
   }
 
   searchFor(value: any) {
-    console.log("hi");
+    let a = this.searchForm.value;
+    console.log(a);
   }
 
   selectValue(value: any) {
@@ -78,3 +99,6 @@ export class NavbarComponent implements OnInit {
   //  'West Virginia', 'Wisconsin', 'Wyoming'];
 
 }
+
+
+

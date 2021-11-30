@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,8 +38,7 @@ import { LoginComponent } from "./components/login/login.component";
     FormsModule,
     FontAwesomeModule,
     NoopAnimationsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
+    
     ReactiveFormsModule,
     HttpClientModule,
   ],
