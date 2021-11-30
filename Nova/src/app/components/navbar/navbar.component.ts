@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { MockProduct } from 'src/app/mock-product';
-import { Products } from 'src/app/mock-products';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 
@@ -43,8 +41,14 @@ export class NavbarComponent implements OnInit {
     this.showDropDown = false;
   }
 
+  //Check If the value of the form group exists or not
   toggleSearchOn() {
-    this.showDropDown = true;
+    console.log(this.searchForm.value.search);
+    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
+      this.showDropDown = false;
+    } else {
+      this.showDropDown = true;
+    }
   }
 
   constructor( private fb: FormBuilder, _productsService: ProductsService) {
@@ -59,7 +63,9 @@ export class NavbarComponent implements OnInit {
   }
 
   getSearchValue() {
+    this.showDropDown = true;
     return this.searchForm.value.search;
+    
   }
 
   searchFor(value: any) {
@@ -82,3 +88,6 @@ export class NavbarComponent implements OnInit {
   //  'West Virginia', 'Wisconsin', 'Wyoming'];
 
 }
+
+
+

@@ -7,6 +7,7 @@ export class SearchFilterPipe implements PipeTransform {
          let solution = value.filter((v: string) => {
             if ( !v ) {return;}
            return  v.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+           
         })
         return solution;
     }

@@ -33,6 +33,9 @@ export class FilterComponent implements OnInit {
       for(const item of data) {
         let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
         this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        this.genres = new Set(this.products.map(p => p.genre).sort());
+        this.platforms = new Set(this.products.map(p => p.platform).sort());
+        this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
     })
   }
