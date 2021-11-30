@@ -34,7 +34,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     FormsModule,
     FontAwesomeModule,
     NoopAnimationsModule,
-    BehaviorSubject,
+    
     ReactiveFormsModule,
     HttpClientModule
   ],
