@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   productsService: ProductsService;
   searchForm!: FormGroup;
   search: String = '';
+  navbarOpen = false;
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
@@ -65,7 +66,7 @@ export class NavbarComponent implements OnInit {
   getSearchValue() {
     this.showDropDown = true;
     return this.searchForm.value.search;
-    
+
   }
 
   searchFor(value: any) {
@@ -81,7 +82,7 @@ export class NavbarComponent implements OnInit {
   /**
    * @author Erika Johnson
    * Toggle for menu to display with various screen sizes(Hamburger Menu)
-   * 
+   *
    */
 
   toggleNavbar() {
