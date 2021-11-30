@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   products: MockProduct[] = Products;
   productNames: string[] = this.products.map(p => p.title);
 
+  navbarOpen = false;
 
   searchForm!: FormGroup;
 
@@ -54,6 +55,17 @@ export class NavbarComponent implements OnInit {
   selectValue(value: any) {
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
+  }
+
+  /**
+   * @author Erika Johnson
+   * Toggle for menu to display with various screen sizes(Hamburger Menu)
+   * 
+   */
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen
+    console.log("clicked")
   }
 
   // states = ['Alabama', 'Alaska',  'Arizona', 'Arkansas', 'California', 'Colorado',
