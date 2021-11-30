@@ -29,7 +29,7 @@ import { LoginComponent } from "./components/login/login.component";
     SplitComponent,
     SearchFilterPipe,
     ProductPageComponent,
-    UserProfileComponent
+    UserProfileComponent,
     RegisterComponent,
     LoginComponent
   ],
