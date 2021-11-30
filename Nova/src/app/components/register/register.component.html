@@ -1,24 +1,34 @@
 <!--suppress XmlDuplicatedId -->
-<form [formGroup]="registerForm" (submit)="submit()">
-  <h1 class="h3 mb-3 fw-normal">Please Register</h1>
-  <input type = "text" formControlName = "firstName" class="form-control" id="floatingPassword"
-         placeholder="First Name" required>
-
-  <input formControlName = "lastName" class="form-control" id="floatingPassword"
-         placeholder="Last Name" required>
-
-  <input formControlName = "username" class="form-control" id="floatingInput"
-         placeholder="Username" required>
-
-  <input type="email" formControlName = "email" class="form-control" id="floatingInput"
-         placeholder="Email" required>
-
-  <input formControlName = "password" class="form-control" id="floatingPassword"
-         placeholder="Password" required>
-
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-</form>
-
 <div class="mat-dialog-container">
+  <form [formGroup]="registerForm" (submit)="submit()">
+    <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+    <input [type] = "'text'" [formControlName] = "'firstName'" [class]="'form-control'"
+           [placeholder]="'First Name'" [required]>
 
+    <input [type]="'text'" [formControlName] = "'lastName'" [class]="'form-control'"
+           [placeholder]="'Last Name'" [required]>
+
+    <input [type]="'text'" [formControlName] = "'username'" [class]="'form-control'"
+           [placeholder]="'Username'" [required]>
+
+    <input [type]="'password'" [formControlName] = "'password'" class="form-control" id="floatingPassword"
+           [placeholder]="'Password'" [required]>
+
+    <input [type]="'email'" [formControlName]="'email'" [class]="'form-control'" id="floatingInput"
+           [placeholder]="'Email'" [required]>
+    <div *ngIf="email!.invalid && (email!.dirty || email!.touched)"
+         [class]= "'alert'" >
+
+      <div *ngIf="email!.errors?.['required']">
+        Name is required.
+      </div>
+
+      <div *ngIf="email!.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+  </form>
 </div>
