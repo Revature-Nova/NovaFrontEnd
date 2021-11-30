@@ -3,17 +3,17 @@
 
 
     <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0">
-        
+
         <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()'>
         <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchFor('a')">
             <!-- This shows the search icon next to the input; The icon needs to be imported
             into the typescript file -->
-            <fa-icon [icon]="faSearch" > 
+            <fa-icon [icon]="faSearch" >
             </fa-icon>
         </button>
-        
+
         <button class="btn btn-warning" *ngIf='showDropDown'(click)='toggleSearchOff()'>X</button>
-        
+
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
                 <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
@@ -42,6 +42,8 @@
     <!-- <button  type="button" class="btn delete">Sign Out</button> -->
 </div>
 </div>
-   
+
+    <a routerLink = "register" class="nav-link active med-btn" >Register</a>
+    <a routerLink = "login" class="nav-link active med-btn" >Log In</a>
 </nav>
 

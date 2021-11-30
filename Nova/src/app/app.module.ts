@@ -1,3 +1,4 @@
+import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,9 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router'
@@ -20,6 +18,7 @@ import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserProfileService } from './services/user-profile.service';
+import { LoginComponent } from "./components/login/login.component";
 
 
 @NgModule({
@@ -31,7 +30,8 @@ import { UserProfileService } from './services/user-profile.service';
     SearchFilterPipe,
     ProductPageComponent,
     UserProfileComponent
-    
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +42,9 @@ import { UserProfileService } from './services/user-profile.service';
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [UserProfileService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
