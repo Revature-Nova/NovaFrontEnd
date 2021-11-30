@@ -40,7 +40,7 @@ export class ProductsService {
     } else {
         //Get server-side error
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    } 
+    }
     console.log(message);
     return throwError(() => new Error(message));
   }

@@ -78,6 +78,17 @@ export class NavbarComponent implements OnInit {
     this.showDropDown = false;
   }
 
+  /**
+   * @author Erika Johnson
+   * Toggle for menu to display with various screen sizes(Hamburger Menu)
+   * 
+   */
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen
+    console.log("clicked")
+  }
+
   // states = ['Alabama', 'Alaska',  'Arizona', 'Arkansas', 'California', 'Colorado',
   // 'Connecticut', 'Delaware', 'District of Columbia', 'Florida'
   // , 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky'
