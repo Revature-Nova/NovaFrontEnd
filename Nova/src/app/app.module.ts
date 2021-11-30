@@ -15,6 +15,7 @@ import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { LoginComponent } from "./components/login/login.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     SearchFilterPipe,
     ProductPageComponent,
     RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
