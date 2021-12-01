@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private http: HttpClient) {}
+  constructor(private formBuilder: FormBuilder, private auth:AuthService) {}
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
+    this.registerForm = this.formBuilder.group({
+      firstName: new FormControl('', [
+        Validators.required]),
+
+      lastName: new FormControl('', [
+        Validators.required]),
 
       username: new FormControl('',[
         Validators.required,
-        Validators.pattern("^[a-zA-Z0-9]*$")]),
+        Validators.pattern("^[a-zA-Z0-9]*$"),
+        Validators.minLength(8),
+        Validators.maxLength(20)]),
 
       email: new FormControl('',[
         Validators.required,
@@ -27,10 +32,12 @@ export class RegisterComponent implements OnInit {
 
       password: new FormControl('',[
         Validators.required,
-        Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,25}$")]),
+        Validators.pattern("(?!.* )(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,25}$")]),
     });
   }
 
+  get firstName() { return this.registerForm.get('firstName') }
+  get lastName() { return this.registerForm.get('lastName') }
   get username(){ return this.registerForm.get('username') }
   get email(){ return this.registerForm.get('email') }
   get password(){ return this.registerForm.get('password') }
@@ -42,11 +49,19 @@ export class RegisterComponent implements OnInit {
    * @author Nova User Service
    */
   submit(): void {
-    console.log(this.registerForm.getRawValue());
-    this.http
-      .post('http://localhost:8089/Nova/register', this.registerForm.getRawValue())
-      .subscribe((res) => {
-        console.log(res);
-      });
+    const registerValues = this.registerForm.getRawValue();
+
+    if (this.registerForm.valid) {
+      this.auth.registerUser(registerValues)
+        .subscribe(res => {
+          if (res.status === "Successfully Registered!") {
+            alert(res.status)
+          } else {
+            alert("Register Failed!")
+          }
+        });
+    }
+
+    this.registerForm.reset();
   }
 }
