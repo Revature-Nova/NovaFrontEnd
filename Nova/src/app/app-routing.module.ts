@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent,
       children: [
         { path: 'userProfile', component: UserProfileComponent }
-      ] }
+      ] },
+  { path: 'products', component: FilterComponent },
 ];
 
 @NgModule({

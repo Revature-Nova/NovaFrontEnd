@@ -10,6 +10,7 @@ import { Product } from 'src/app/interfaces/product';
 export class ProductComponent implements OnInit {
   rawg: RawgService;
   description!: string;
+  product!: Product;
 
 
   constructor(_rawg:RawgService) {
@@ -19,10 +20,10 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  productDetails(product: Product){
-    this.rawg.getDetails(product).subscribe(data => {
-      let details = data.stringify;
-      console.log(details);
-    })
-  }
+  // productDetails(product: Product){
+  //   this.rawg.getDetails(product).subscribe(data => {
+  //     let details = data.stringify;
+  //     console.log(details);
+  //   })
+  // }
 }

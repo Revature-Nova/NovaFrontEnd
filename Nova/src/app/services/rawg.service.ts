@@ -10,13 +10,18 @@ export class RawgService {
 
   constructor(private client: HttpClient) { }
 
-  httpOptions = {
+  baseUrl = "http://localhost:8090/Nova";
 
-  }
+  httpOptions = {
+    headers: new HttpHeaders({
+      
+    }),
+    responseType: 'text' as 'json'
+  };
 
   //Get Product Details
-  getDetails(product:Product): Observable<JSON> {
-    return this.client.get<JSON>(`${product.endpoint}`).pipe(
+  getDetails(product:Product): Observable<String> {
+    return this.client.get<String>(this.baseUrl+`/${product.productId}`, this.httpOptions).pipe(
       catchError(this.errorHandler)
     );
   }
