@@ -3,14 +3,15 @@ import { RawgService } from 'src/app/services/rawg.service';
 import { Product } from 'src/app/interfaces/product';
 
 @Component({
-  selector: 'app-product-page',
-  templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductComponent implements OnInit {
   rawg: RawgService;
   description!: string;
-  
+
+
   constructor(_rawg:RawgService) {
     this.rawg = _rawg;
    }

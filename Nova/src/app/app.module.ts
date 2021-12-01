@@ -5,9 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +15,7 @@ import { SplitComponent } from './components/split/split.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -26,7 +25,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     FilterComponent,
     SplitComponent,
     SearchFilterPipe,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductComponent,
     
   ],
   imports: [
@@ -38,7 +38,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     MatAutocompleteModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

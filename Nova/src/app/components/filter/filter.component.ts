@@ -5,6 +5,9 @@ import { MockProduct } from 'src/app/mock-product';
 import { Products } from 'src/app/mock-products';
 import { Product } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -16,16 +19,19 @@ export class FilterComponent implements OnInit {
   value:string = "all";
   products: Product[] = [];
   //Created Sets for Filter Types to Ensure Distinct Values
-  genres = new Set(this.products.map(p => p.genre).sort());
-  platforms = new Set(this.products.map(p => p.platform).sort());
-  ratings = new Set(this.products.map(p => p.rating).sort());
+  genres: Set<string> = new Set();
+  platforms: Set<string> = new Set();
+  ratings: Set<string> = new Set();
   btnBool: boolean = false;
   filtered!: Product[];
   btnFilter: boolean = false;
   productsService: ProductsService;
+  route:Router;
+  @Output() showDetails: EventEmitter<Product> = new EventEmitter();
   
-  constructor(_productsService: ProductsService) {
+  constructor(_productsService: ProductsService, _route:Router) {
     this.productsService = _productsService;
+    this.route = _route;
   }
 
   ngOnInit(): void {
@@ -33,13 +39,17 @@ export class FilterComponent implements OnInit {
       for(const item of data) {
         let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
         this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        this.genres = new Set(this.products.map(p => p.genre).sort());
+        this.platforms = new Set(this.products.map(p => p.platform).sort());
+        this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
     })
   }
 
-  onClick(){
+  onClick(product: Product){
     if (!this.btnBool){
-      console.log("To Product Page");
+      this.route.navigate(['/product-page']);
+      this.showDetails.emit(product);
     }
     this.btnBool = false;
   }
