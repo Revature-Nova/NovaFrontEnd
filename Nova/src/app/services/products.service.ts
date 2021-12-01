@@ -25,6 +25,12 @@ export class ProductsService {
     )
   }
 
+  //Search Specific Product based on Title
+  searchProduct(title: String): Observable<Product[]> {
+    return this.client.get<Product[]>(this.baseUrl + "/title/" + title).pipe(
+      catchError(this.errorHandler)
+    )
+  }
   //Method for handling errors/exceptions
   errorHandler(error: any) {
     let message = "";
@@ -34,7 +40,7 @@ export class ProductsService {
     } else {
         //Get server-side error
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    } 
+    }
     console.log(message);
     return throwError(() => new Error(message));
   }
