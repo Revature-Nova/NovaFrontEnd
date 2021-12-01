@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productsService: ProductsService;
   searchForm!: FormGroup;
   message!: String;
+  sent!: String;
   subscription!: Subscription;
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
@@ -34,6 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.productNames.push(title);
       }
       this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+      this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     })
   }
 
@@ -42,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   async toggleSearchOff() {
     setTimeout(() => {
       this.showDropDown = false;
-    }, 50)
+    }, 75)
     //console.log('...timeout passed.');
     
   }
@@ -76,8 +78,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   searchFor(value: any) {
     this.showDropDown = false;
     let a = this.searchForm.value.search;
-    this.data.changeMessage(a)
-    
+    this.data.changeMessage(a);
+    this.data.changeSent('true');
     
   }
 

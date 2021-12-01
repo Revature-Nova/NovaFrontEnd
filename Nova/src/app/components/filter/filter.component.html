@@ -1,6 +1,4 @@
-<div *ngIf='message' (change)='test()'>
-    {{message}}
-</div>
+<div *ngIf='test(message +"")'></div>
 <div class="d-flex justify-content-center py-5">
     <label class="font-weight-bold font" for="filter">Filter:</label>
     <select name="filter" class="mx-3" id="" [(ngModel)]="filter">

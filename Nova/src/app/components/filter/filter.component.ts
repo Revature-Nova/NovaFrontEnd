@@ -27,6 +27,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   productsService: ProductsService;
   message!: String;
   subscription!: Subscription;
+  sent!: String;
   
   constructor(_productsService: ProductsService, private data: DataService) {
     this.productsService = _productsService;
@@ -42,8 +43,10 @@ export class FilterComponent implements OnInit, OnDestroy {
         this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
     })
+    this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
     console.log(this.message);
+    console.log(this.sent);
   }
 
   onClick(){
@@ -53,9 +56,24 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.btnBool = false;
   }
 
-  test() :string {
-    console.log('Works');
-    return 'works';
+  test(value: string) :string {
+    if (this.sent == 'true') {
+      this.products = [];
+        this.productsService.searchProduct(value).subscribe(data => {
+        for(const item of data) {
+          let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
+          this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+          this.genres = new Set(this.products.map(p => p.genre).sort());
+          this.platforms = new Set(this.products.map(p => p.platform).sort());
+          this.ratings = new Set(this.products.map(p => p.rating).sort());
+      }
+    });
+    console.log(value);
+    console.log(this.products);
+  }
+  
+  this.data.changeSent('false');
+  return 'works';
   }
   btnClick(){
     this.btnBool = true;
