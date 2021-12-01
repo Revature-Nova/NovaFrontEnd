@@ -2,7 +2,7 @@
     <a href="" class="navbar-brand">NOVA</a>
 
 
-    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0">
+    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
         
         <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
         <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchFor('a')">
@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+    
     </form>
 
     <!-- <button class="mx-5">

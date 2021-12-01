@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Test } from 'src/app/interfaces/test';
 import { MockProduct } from 'src/app/mock-product';
 import { Products } from 'src/app/mock-products';
 import { Product } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/services/products.service';
+import { Subscription } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnDestroy {
   filter:string = "genre";
   value:string = "all";
   products: Product[] = [];
@@ -23,8 +25,10 @@ export class FilterComponent implements OnInit {
   filtered!: Product[];
   btnFilter: boolean = false;
   productsService: ProductsService;
+  message!: String;
+  subscription!: Subscription;
   
-  constructor(_productsService: ProductsService) {
+  constructor(_productsService: ProductsService, private data: DataService) {
     this.productsService = _productsService;
   }
 
@@ -38,6 +42,8 @@ export class FilterComponent implements OnInit {
         this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
     })
+    this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+    console.log(this.message);
   }
 
   onClick(){
@@ -47,6 +53,10 @@ export class FilterComponent implements OnInit {
     this.btnBool = false;
   }
 
+  test() :string {
+    console.log('Works');
+    return 'works';
+  }
   btnClick(){
     this.btnBool = true;
     console.log("Add To Cart");
@@ -85,5 +95,10 @@ export class FilterComponent implements OnInit {
     this.filter = "genre";
     this.value = "";
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 
 }
