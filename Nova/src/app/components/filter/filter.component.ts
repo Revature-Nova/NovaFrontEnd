@@ -19,8 +19,8 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit, OnDestroy {
-  filter:string = "genre";
-  value:string = "all";
+  filter: string = 'genre';
+  value: string = 'all';
   products: Product[] = [];
   //Created Sets for Filter Types to Ensure Distinct Values
   genres: Set<string> = new Set();
@@ -40,82 +40,126 @@ export class FilterComponent implements OnInit, OnDestroy {
   sent!: String;
   constructor(_productsService: ProductsService, private data: DataService, private _rawg: RawgService, private _router:Router) {
     this.productsService = _productsService;
-    this.rawg = _rawg;
-    this.router = _router;
+    // this.rawg = _rawg;
+    // this.router = _router;
   }
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe(data => {
-      for(const item of data) {
-        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
-        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
-        this.genres = new Set(this.products.map(p => p.genre).sort());
-        this.platforms = new Set(this.products.map(p => p.platform).sort());
-        this.ratings = new Set(this.products.map(p => p.rating).sort());
+    this.productsService.getProducts().subscribe((data) => {
+      for (const item of data) {
+        let {
+          productId,
+          title,
+          genre,
+          price,
+          rating,
+          endpoint,
+          platform,
+          imageUrl,
+          cart,
+        } = item;
+        this.products.push({
+          productId,
+          title,
+          genre,
+          price,
+          rating,
+          endpoint,
+          platform,
+          imageUrl,
+          cart,
+        });
+        this.genres = new Set(this.products.map((p) => p.genre).sort());
+        this.platforms = new Set(this.products.map((p) => p.platform).sort());
+        this.ratings = new Set(this.products.map((p) => p.rating).sort());
       }
-    })
-    this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
-    this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+    });
+    this.subscription = this.data.sentStatus.subscribe(
+      (sent) => (this.sent = sent)
+    );
+    this.subscription = this.data.currentMessage.subscribe(
+      (message) => (this.message = message)
+    );
     console.log(this.message);
     console.log(this.sent);
   }
 
-  onClick(product: Product){
-    if (!this.btnBool){
-      this.rawg.getDetails(product).subscribe(data => {
+  onClick(product: Product) {
+    if (!this.btnBool) {
+      this.rawg.getDetails(product).subscribe((data) => {
         ProductComponent.prototype.description = data;
         console.log(data);
-      })
+      });
       ProductComponent.prototype.product = product;
-      this.router.navigate(["/product"]);
+      this.router.navigate(['/product']);
     }
     this.btnBool = false;
   }
 
-  test(value: string) :string {
+  test(value: string): string {
     if (this.sent == 'true') {
       this.products = [];
-        this.productsService.searchProduct(value).subscribe(data => {
-        for(const item of data) {
-          let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
-          this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
-          this.genres = new Set(this.products.map(p => p.genre).sort());
-          this.platforms = new Set(this.products.map(p => p.platform).sort());
-          this.ratings = new Set(this.products.map(p => p.rating).sort());
-      }
-    });
-    console.log(value);
-    console.log(this.products);
+      this.productsService.searchProduct(value).subscribe((data) => {
+        for (const item of data) {
+          let {
+            productId,
+            title,
+            genre,
+            price,
+            rating,
+            endpoint,
+            platform,
+            imageUrl,
+            cart,
+          } = item;
+          this.products.push({
+            productId,
+            title,
+            genre,
+            price,
+            rating,
+            endpoint,
+            platform,
+            imageUrl,
+            cart,
+          });
+          this.genres = new Set(this.products.map((p) => p.genre).sort());
+          this.platforms = new Set(this.products.map((p) => p.platform).sort());
+          this.ratings = new Set(this.products.map((p) => p.rating).sort());
+        }
+      });
+      console.log(value);
+      console.log(this.products);
+    }
+
+    this.data.changeSent('false');
+    return 'works';
   }
-  
-  this.data.changeSent('false');
-  return 'works';
-  }
-  btnClick(){
+  btnClick() {
     this.btnBool = true;
-    console.log("Add To Cart");
+    console.log('Add To Cart');
   }
 
-/* Function for filtering movies on the Front End
+  /* Function for filtering movies on the Front End
     Will Likely Change When Connection to Back End is Made */
-  filterProducts(value:string, filter:string){
+  filterProducts(value: string, filter: string) {
     this.filtered = [];
     this.btnFilter = true;
-    for (let product of this.products){
-      if (filter == "genre"){
-        if (product.genre == value){
+    for (let product of this.products) {
+      if (filter == 'genre') {
+        if (product.genre == value) {
           this.filtered.push(product);
           console.log(product);
         }
       }
-      if (filter == "platform"){
-        if (product.platform == value){
+      if (filter == 'platform') {
+        if (product.platform == value) {
           this.filtered.push(product);
           console.log(product);
         }
       }
-      if (filter == "rating"){
-        if (product.rating == value){
+      if (filter == 'rating') {
+        if (product.rating == value) {
           this.filtered.push(product);
           console.log(product);
         }
@@ -124,15 +168,13 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   /* Function for Filter Reset Button; Resets to Entire List of Products */
-  resetFilter(){
+  resetFilter() {
     this.btnFilter = false;
-    this.filter = "genre";
-    this.value = "";
+    this.filter = 'genre';
+    this.value = '';
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
 }

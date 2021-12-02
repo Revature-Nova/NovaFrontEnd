@@ -6,6 +6,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -62,7 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService) {
+  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService, private router: Router) {
     this.initForm()
     this.productsService = _productsService;
   }
@@ -109,6 +110,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.navbarOpen = !this.navbarOpen
     console.log("clicked")
   }  
+
+  logout(){
+    sessionStorage.clear();
+    // alert("You are now logged out")
+    console.log("logged out")
+    // this.router.navigate(['/'])
+  }
 }
 
 
