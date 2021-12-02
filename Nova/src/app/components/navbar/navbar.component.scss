@@ -3,7 +3,7 @@
     position:absolute;
     z-index: 1;
     width: 13em;
-    height: 200px;
+    height: 8em;
     background: #f6f6f6;;
     overflow-y: auto;
 }
@@ -19,3 +19,7 @@
     background: #c2c2c2;
 }
 
+button.btn.delete {
+    background-color: #FCB414;
+    color:#FFFFFF;
+}
