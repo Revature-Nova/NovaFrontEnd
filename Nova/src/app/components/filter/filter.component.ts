@@ -5,6 +5,11 @@ import { MockProduct } from 'src/app/mock-product';
 import { Products } from 'src/app/mock-products';
 import { Product } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { Output, Input } from '@angular/core';
+import { RawgService } from 'src/app/services/rawg.service';
+import { ProductComponent } from '../product/product.component';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -18,19 +23,25 @@ export class FilterComponent implements OnInit, OnDestroy {
   value:string = "all";
   products: Product[] = [];
   //Created Sets for Filter Types to Ensure Distinct Values
-  genres = new Set(this.products.map(p => p.genre).sort());
-  platforms = new Set(this.products.map(p => p.platform).sort());
-  ratings = new Set(this.products.map(p => p.rating).sort());
+  genres: Set<string> = new Set();
+  platforms: Set<string> = new Set();
+  ratings: Set<string> = new Set();
   btnBool: boolean = false;
   filtered!: Product[];
   btnFilter: boolean = false;
   productsService: ProductsService;
+
+  rawg!: RawgService;
+  router!: Router;
+  selectedProduct!: Product;
+  hidden: boolean = false;
   message!: String;
   subscription!: Subscription;
   sent!: String;
-  
   constructor(_productsService: ProductsService, private data: DataService) {
     this.productsService = _productsService;
+    this.rawg = _rawg;
+    this.router = _router;
   }
 
   ngOnInit(): void {
@@ -49,9 +60,14 @@ export class FilterComponent implements OnInit, OnDestroy {
     console.log(this.sent);
   }
 
-  onClick(){
+  onClick(product: Product){
     if (!this.btnBool){
-      console.log("To Product Page");
+      this.rawg.getDetails(product).subscribe(data => {
+        ProductComponent.prototype.description = data;
+        console.log(data);
+      })
+      ProductComponent.prototype.product = product;
+      this.router.navigate(["/product"]);
     }
     this.btnBool = false;
   }

@@ -18,6 +18,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from "./components/login/login.component";
+import {CommonModule} from "@angular/common";
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { LoginComponent } from "./components/login/login.component";
     ProductPageComponent,
     UserProfileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { LoginComponent } from "./components/login/login.component";
     FormsModule,
     FontAwesomeModule,
     NoopAnimationsModule,
-    
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
