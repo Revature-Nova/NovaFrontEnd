@@ -5,7 +5,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
-import { ConnectableObservable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   async toggleSearchOff() {
     setTimeout(() => {
       this.showDropDown = false;
-    }, 75)
+    }, 100)
     //console.log('...timeout passed.');
     
   }
@@ -87,6 +87,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
+    this.searchFor({'search': value})
   }
 
   ngOnDestroy() {
