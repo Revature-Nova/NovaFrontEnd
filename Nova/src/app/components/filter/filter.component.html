@@ -58,11 +58,15 @@
         </div>
     </div>
 
+    <!-- Displays All Products Saved Within Our Database -->
+
+
     <!-- <div *ngIf='products.length == 0'>No available Products with that name (searches are case sensitive)</div> 
     Above Code is basic logic for showing something if there no products to display. If used, be sure to format -->
+
     <div class="container" *ngIf="!btnFilter">
         <div class="col py-2 px-3 justify-content-center card-outline-primary" *ngFor="let product of products;">
-            <div class="card border border-primary" (click)="onClick()">
+            <div class="card border border-primary" (click)="onClick(product)">
                 <div class="row">
                     <div class="col">
                         <div class="card-body">
@@ -71,7 +75,7 @@
                     </div>
                     <div class="col-3 my-5">
                         <div class="card-body">
-                            <a routerLink="/product-page" routerLinkActive="active"><h5>{{product.title}}</h5></a>
+                            <a routerLink="/products/details" routerLinkActive="active"><h5>{{product.title}}</h5></a>
                             <p>{{product.genre}}</p>
                         </div>
                     </div>
@@ -98,10 +102,10 @@
             </div>
         </div>
     </div>
-    <div class="col"></div>
+    <!-- Displays All Products which match the applied filter -->
     <div class="container" *ngIf="btnFilter">
         <div class="justify-content-center col py-2 card-outline-primary" *ngFor="let product of filtered;">
-            <div class="card border border-primary" (click)="onClick()">
+            <div class="card border border-primary" (click)="onClick(product)">
                 <div class="row">
                     <div class="col md-auto">
                         <div class="card-body">
@@ -110,14 +114,20 @@
                     </div>
                     <div class="col md-auto my-5">
                         <div class="card-body">
-                            <h5>{{product.title}}</h5>
+                            <a routerLink="/product-page" routerLinkActive="active"><h5>{{product.title}}</h5></a>
                             <p>{{product.genre}}</p>
                         </div>
                     </div>
                     <div class="col md-auto ml-4 my-5">
                         <div class="card-body">
                             <h4>Price</h4>
-                            <p>{{product.price}}</p>
+                            <p>$ {{product.price}}</p>
+                        </div>
+                    </div>
+                    <div class="col-2 my-5">
+                        <div class="card-body">
+                            <h4>Platform</h4>
+                            <p>{{product.platform}}</p>
                         </div>
                     </div>
                     <div class="col md-auto my-5">
@@ -131,7 +141,9 @@
             </div>
         </div>
     </div>
+    <div class="col-2"></div>
 </div>
+
 
 
 <!--------------------------------------- DO NOT DELETE CODE UNDER THIS LINE ------------------------------>
