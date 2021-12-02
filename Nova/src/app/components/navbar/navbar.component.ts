@@ -115,7 +115,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     sessionStorage.clear();
     // alert("You are now logged out")
     console.log("logged out")
-    this.router.navigate(['/'])
+    // this.router.navigate(['/'])
   }
 }
 
