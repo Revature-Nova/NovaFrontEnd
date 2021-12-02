@@ -45,8 +45,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     _rawg: RawgService
   ) {
     this.productsService = _productsService;
-    this.rawg = _rawg;
-    this.router = _router;
+    // this.rawg = _rawg;
+    // this.router = _router;
   }
 
   ngOnInit(): void {
