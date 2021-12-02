@@ -20,9 +20,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
+
   message!: String;
   sent!: String;
   subscription!: Subscription;
+//   search: String = '';
+  navbarOpen = false;
+
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
@@ -72,7 +76,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   getSearchValue() {
     this.showDropDown = true;
     return this.searchForm.value.search;
-    
+
   }
 
   searchFor(value: any) {
@@ -90,11 +94,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.searchFor({'search': value})
   }
 
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  
+  /**
+   * @author Erika Johnson
+   * Toggle for menu to display with various screen sizes(Hamburger Menu)
+   *
+   */
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen
+    console.log("clicked")
+  }  
 }
 
 
