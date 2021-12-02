@@ -38,12 +38,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   message!: String;
   subscription!: Subscription;
   sent!: String;
-  constructor(
-    _productsService: ProductsService,
-    private data: DataService,
-    private _router: Router,
-    _rawg: RawgService
-  ) {
+  constructor(_productsService: ProductsService, private data: DataService, private _rawg: RawgService, private _router:Router) {
     this.productsService = _productsService;
     this.rawg = _rawg;
     this.router = _router;
