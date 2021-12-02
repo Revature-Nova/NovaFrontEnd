@@ -1,25 +1,68 @@
 .searchDropdown {
-    top: 3.55em;
-    position:absolute;
-    z-index: 1;
-    width: 13em;
-    height: 8em;
-    background: #f6f6f6;;
-    overflow-y: auto;
+  top: 3.55em;
+  position: absolute;
+  z-index: 1;
+  width: 13em;
+  height: 8em;
+  background: #f6f6f6;
+  overflow-y: auto;
 }
 
 .searchObj {
-    padding: 10px;
-    font-family: sans-serif;
-    color:rgb(0, 0, 0);
-
+  padding: 10px;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
 }
 
 .searchObj:hover {
-    background: #c2c2c2;
+  background: #c2c2c2;
 }
 
 button.btn.delete {
-    background-color: #FCB414;
-    color:#FFFFFF;
+  background-color: #fcb414;
+  color: #ffffff;
+}
+
+nav {
+  background-color: #c5c6c7;
+}
+
+// h4,
+// a {
+//   text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+//     0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+//     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+//     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+//     0 20px 20px rgba(0, 0, 0, 0.15);
+// }
+
+h4 {
+  font: 100px "PublicGothicCircular";
+  color: #66fcf1;
+  text-shadow: #45a29e 1px 1px 0, #45a29e 2px 2px 0, #45a29e 3px 3px 0,
+    #45a29e 4px 4px 0, #45a29e 5px 5px 0, #45a29e 6px 6px 0, #45a29e 7px 7px 0,
+    #45a29e 8px 8px 0, #45a29e 9px 9px 0, #45a29e 10px 10px 0,
+    #45a29e 11px 11px 0, #45a29e 12px 12px 0, #45a29e 13px 13px 0,
+    #45a29e 14px 14px 0, #45a29e 15px 15px 0, #45a29e 16px 16px 0,
+    #45a29e 17px 17px 0, #45a29e 18px 18px 0, #45a29e 19px 19px 0,
+    #45a29e 20px 20px 0, #45a29e 21px 21px 0, #45a29e 22px 22px 0,
+    #45a29e 23px 23px 0, #45a29e 24px 24px 0, #45a29e 25px 25px 0,
+    #45a29e 26px 26px 0, #45a29e 27px 27px 0, #45a29e 28px 28px 0,
+    #45a29e 29px 29px 0, #45a29e 30px 30px 0, #45a29e 31px 31px 0,
+    #45a29e 32px 32px 0, #45a29e 33px 33px 0, #45a29e 34px 34px 0,
+    #45a29e 35px 35px 0, #45a29e 36px 36px 0, #45a29e 37px 37px 0,
+    #45a29e 38px 38px 0, #45a29e 39px 39px 0, #45a29e 40px 40px 0,
+    #45a29e 41px 41px 0, #45a29e 42px 42px 0, #45a29e 43px 43px 0,
+    #45a29e 44px 44px 0, #45a29e 45px 45px 0, #45a29e 46px 46px 0,
+    #45a29e 47px 47px 0, #45a29e 48px 48px 0, #45a29e 49px 49px 0,
+    #45a29e 50px 50px 0, #45a29e 51px 51px 0, #45a29e 52px 52px 0,
+    #45a29e 53px 53px 0, #45a29e 54px 54px 0;
+}
+
+h4:after {
+  color: rgb(103, 184, 227);
+  left: 100px;
+  top: 100px;
+  text-shadow: none;
+  position: absolute;
 }

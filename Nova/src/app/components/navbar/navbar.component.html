@@ -15,8 +15,8 @@
 
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of products | searchFilter: getSearchValue()'>
-                {{s.title}}
+                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
+                    {{s}}
                 </div>
             </div>
         </div>
