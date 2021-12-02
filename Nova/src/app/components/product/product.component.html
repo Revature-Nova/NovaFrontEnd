@@ -1,0 +1,26 @@
+<ng-template #noProduct>
+    <h2>No Product to Display</h2>
+</ng-template>
+
+<div class="container" *ngIf="product;else noProduct">
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-5">
+                <img src="{{product.imageUrl}}" class="justify-content-center" width="400" height="400" alt="">
+            </div>
+            <div class="col-sm-5">
+                <p>
+                    <br><h3>{{product.title}}</h3>
+                </p>
+                
+                <p>
+                    <br><h5>Rating:</h5>
+                </p>
+                {{product.rating}}
+                <p>
+                    <br><h5>Platform</h5>
+                </p>
+                {{product.platform}}
+        </div>
+    </div>
+</div>

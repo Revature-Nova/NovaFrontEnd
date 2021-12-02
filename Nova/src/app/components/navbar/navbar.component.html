@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light pc-bg-light">
-    <a href="" class="navbar-brand">NOVA</a>
+    <a routerLink="/products" routerLinkActive="active" class="navbar-brand"><h4>NOVA</h4></a>
 
 
     <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
@@ -15,8 +15,8 @@
 
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
-                {{s}}
+                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of products | searchFilter: getSearchValue()'>
+                {{s.title}}
                 </div>
             </div>
         </div>
