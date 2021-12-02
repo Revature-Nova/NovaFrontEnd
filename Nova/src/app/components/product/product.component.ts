@@ -17,7 +17,8 @@ export class ProductComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.product);
-    console.log(this.description);
+    if (this.product == undefined){
+      this.router.navigate(['/products']);
+    }
   }
 }
