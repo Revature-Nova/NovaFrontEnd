@@ -8,7 +8,7 @@ import { profile } from '../interfaces/profile';
 })
 export class UserProfileService {
 
-  private apiUrl = "http://localhost:8089/Nova/"
+  private apiUrl = "http://localhost:8082/user-service/Nova/"
 
 
   private httpOptions = {
@@ -18,14 +18,14 @@ export class UserProfileService {
 
   /**
    * @author Erika Johnson
-   * @param profile 
-   * @returns 
+   * @param profile
+   * @returns
    *Logged in users are able to create their own User Profile
    */
 
   userProfile(profile: profile) :Observable<profile> {
     return this.http.post<profile>(
-      this.apiUrl + 'user/userProfile', 
+      this.apiUrl + 'user/userProfile',
       JSON.stringify(profile),
       this.httpOptions
     )

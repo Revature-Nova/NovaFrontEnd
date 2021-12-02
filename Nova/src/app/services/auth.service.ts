@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private client:HttpClient) {}
 
-  private url = 'http://localhost:8089/Nova/';
+  private url = 'http://localhost:8082/user-service/Nova/';
 
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
