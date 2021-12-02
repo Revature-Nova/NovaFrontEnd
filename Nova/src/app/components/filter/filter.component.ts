@@ -34,14 +34,14 @@ export class FilterComponent implements OnInit, OnDestroy {
   rawg!: RawgService;
   router!: Router;
   selectedProduct!: Product;
-  hidden: boolean = false;
   message!: String;
   subscription!: Subscription;
   sent!: String;
+  
   constructor(_productsService: ProductsService, private data: DataService, private _rawg: RawgService, private _router:Router) {
     this.productsService = _productsService;
-    this.rawg = _rawg;
-    this.router = _router;
+    // this.rawg = _rawg;
+    // this.router = _router;
   }
 
   ngOnInit(): void {
@@ -165,6 +165,7 @@ export class FilterComponent implements OnInit, OnDestroy {
         }
       }
     }
+    console.log(this.btnFilter);
   }
 
   /* Function for Filter Reset Button; Resets to Entire List of Products */

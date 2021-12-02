@@ -30,11 +30,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent"
     [ngClass]="{ 'show': navbarOpen }">
       <div class = "navbar-nav" routerLinkActive="active current">
-        <a class="nav-link active med-btn" routerLink ="login">Log In</a>
-        <a class="nav-link active med-btn" routerLink="register">Register</a>
-        <a class="nav-link active med-btn" routerLink="./userProfile">User Profile</a>
-        <a class="nav-link active med-btn" routerLink="/">Sign Out</a>
+        <a class="nav-link" data-bs-toggle="modal"
+        data-bs-target="modal" routerLink="./userProfile">User Profile</a>
+        <a class="nav-link" role="button" (click) = "logout()" routerLink="/">Sign Out</a>
      </div>
   </div>
 </nav>
-
+<router-outlet></router-outlet>
