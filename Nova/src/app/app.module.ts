@@ -19,6 +19,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from "./components/login/login.component";
 import {CommonModule} from "@angular/common";
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {CommonModule} from "@angular/common";
     ProductPageComponent,
     UserProfileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
