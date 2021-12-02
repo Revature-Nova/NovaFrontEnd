@@ -34,11 +34,11 @@ export class FilterComponent implements OnInit, OnDestroy {
   rawg!: RawgService;
   router!: Router;
   selectedProduct!: Product;
-  hidden: boolean = false;
   message!: String;
   subscription!: Subscription;
   sent!: String;
-  constructor(_productsService: ProductsService, private data: DataService) {
+  
+  constructor(_productsService: ProductsService, private data: DataService, private _rawg: RawgService, private _router:Router) {
     this.productsService = _productsService;
     this.rawg = _rawg;
     this.router = _router;
@@ -83,9 +83,7 @@ export class FilterComponent implements OnInit, OnDestroy {
           this.platforms = new Set(this.products.map(p => p.platform).sort());
           this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
-    });
-    console.log(value);
-    console.log(this.products);
+    })
   }
   
   this.data.changeSent('false');
@@ -121,6 +119,7 @@ export class FilterComponent implements OnInit, OnDestroy {
         }
       }
     }
+    console.log(this.btnFilter);
   }
 
   /* Function for Filter Reset Button; Resets to Entire List of Products */
@@ -128,6 +127,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.btnFilter = false;
     this.filter = "genre";
     this.value = "";
+    console.log(this.btnFilter);
   }
 
   ngOnDestroy() {
