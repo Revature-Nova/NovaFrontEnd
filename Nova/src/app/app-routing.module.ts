@@ -6,9 +6,10 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoginComponent } from "./components/login/login.component";
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
-  { path: 'product-page', component: ProductPageComponent },
+  { path: 'product', component: ProductComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'navbar', component: NavbarComponent,

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RawgService } from 'src/app/services/rawg.service';
 import { Product } from 'src/app/interfaces/product';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -8,22 +9,15 @@ import { Product } from 'src/app/interfaces/product';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  rawg: RawgService;
-  description!: string;
   product!: Product;
+  description!: string;
 
 
-  constructor(_rawg:RawgService) {
-    this.rawg = _rawg;
+  constructor(private router: Router, private rawg: RawgService, private route: ActivatedRoute) {
    }
 
   ngOnInit(): void {
+    console.log(this.product);
+    console.log(this.description);
   }
-
-  // productDetails(product: Product){
-  //   this.rawg.getDetails(product).subscribe(data => {
-  //     let details = data.stringify;
-  //     console.log(details);
-  //   })
-  // }
 }

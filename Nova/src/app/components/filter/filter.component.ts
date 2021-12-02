@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { Output, Input } from '@angular/core';
 import { RawgService } from 'src/app/services/rawg.service';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-filter',
@@ -28,10 +29,14 @@ export class FilterComponent implements OnInit {
   btnFilter: boolean = false;
   productsService: ProductsService;
   rawg!: RawgService;
+  router!: Router;
+  selectedProduct!: Product;
+  hidden: boolean = false;
   
-  constructor(_productsService: ProductsService, _rawg:RawgService) {
+  constructor(_productsService: ProductsService, _rawg:RawgService, _router:Router) {
     this.productsService = _productsService;
     this.rawg = _rawg;
+    this.router = _router;
   }
 
   ngOnInit(): void {
@@ -48,10 +53,12 @@ export class FilterComponent implements OnInit {
 
   onClick(product: Product){
     if (!this.btnBool){
-      console.log(product);
       this.rawg.getDetails(product).subscribe(data => {
+        ProductComponent.prototype.description = data;
         console.log(data);
       })
+      ProductComponent.prototype.product = product;
+      this.router.navigate(["/product"]);
     }
     this.btnBool = false;
   }

@@ -20,8 +20,8 @@ export class RawgService {
   };
 
   //Get Product Details
-  getDetails(product:Product): Observable<String> {
-    return this.client.get<String>(this.baseUrl+`/${product.productId}`, this.httpOptions).pipe(
+  getDetails(product:Product): Observable<string> {
+    return this.client.get<string>(this.baseUrl+`/${product.productId}`, this.httpOptions).pipe(
       catchError(this.errorHandler)
     );
   }
