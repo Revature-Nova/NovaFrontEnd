@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light pc-bg-light">
-    <a href="" class="navbar-brand">NOVA</a>
+    <a routerLink="/products" routerLinkActive="active" class="navbar-brand"><h4>NOVA</h4></a>
 
 
-    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0">
+    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
         
         <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
 
@@ -15,11 +15,12 @@
 
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
-                {{s}}
+                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of products | searchFilter: getSearchValue()'>
+                {{s.title}}
                 </div>
             </div>
         </div>
+    
     </form>
 
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -29,9 +30,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent"
     [ngClass]="{ 'show': navbarOpen }">
       <div class = "navbar-nav" routerLinkActive="active current">
-        <a class="nav-link active med-btn" data-bs-toggle="modal"
+        <a class="nav-link" data-bs-toggle="modal"
         data-bs-target="modal" routerLink="./userProfile">User Profile</a>
-        <a class="nav-link active med-btn" routerLink="/">Sign Out</a>
+        <a class="nav-link" role="button" (click) = "logout()" routerLink="/">Sign Out</a>
      </div>
   </div>
 </nav>

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
+import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,14 +14,18 @@ import { Product } from 'src/app/interfaces/product';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   faSearch = faSearch;
   cart = faShoppingCart;
   products: Product[] = [];
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-  search: String = '';
+
+  message!: String;
+  sent!: String;
+  subscription!: Subscription;
+//   search: String = '';
   navbarOpen = false;
 
   ngOnInit(): void {
@@ -32,19 +39,23 @@ export class NavbarComponent implements OnInit {
       for (const title of setGames) {
         this.productNames.push(title);
       }
-
+      this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+      this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     })
   }
 
   showDropDown = false;
 
-  toggleSearchOff() {
-    this.showDropDown = false;
+  async toggleSearchOff() {
+    setTimeout(() => {
+      this.showDropDown = false;
+    }, 100)
+    //console.log('...timeout passed.');
+    
   }
 
   //Check If the value of the form group exists or not
   toggleSearchOn() {
-    console.log(this.searchForm.value.search);
     if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
       this.showDropDown = false;
     } else {
@@ -52,7 +63,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  constructor( private fb: FormBuilder, _productsService: ProductsService) {
+  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService, private router: Router) {
     this.initForm()
     this.productsService = _productsService;
   }
@@ -70,13 +81,23 @@ export class NavbarComponent implements OnInit {
   }
 
   searchFor(value: any) {
-    let a = this.searchForm.value;
-    console.log(a);
+    this.showDropDown = false;
+    let a = this.searchForm.value.search;
+    this.data.changeMessage(a);
+    this.data.changeSent('true');
+    
   }
 
   selectValue(value: any) {
+    
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
+    this.searchFor({'search': value})
+  }
+
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   /**
@@ -88,17 +109,14 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
     console.log("clicked")
+  }  
+
+  logout(){
+    sessionStorage.clear();
+    // alert("You are now logged out")
+    console.log("logged out")
+    this.router.navigate(['/'])
   }
-
-  // states = ['Alabama', 'Alaska',  'Arizona', 'Arkansas', 'California', 'Colorado',
-  // 'Connecticut', 'Delaware', 'District of Columbia', 'Florida'
-  // , 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky'
-  // , 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-  // 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina',
-  // 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-  // 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington',
-  //  'West Virginia', 'Wisconsin', 'Wyoming'];
-
 }
 
 
