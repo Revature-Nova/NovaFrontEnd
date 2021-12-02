@@ -2,25 +2,27 @@
     <h2>No Product to Display</h2>
 </ng-template>
 
-<div class="container" *ngIf="product;else noProduct">
-    <div class="card">
+<div class="container my-5" *ngIf="product;else noProduct">
+    <div class="card border-primary">
         <div class="row">
-            <div class="col-sm-5">
-                <img src="{{product.imageUrl}}" class="justify-content-center" width="400" height="400" alt="">
+            <div class="col">
+                <img class="mx-4 my-4" src="{{product.imageUrl}}" class="justify-content-center" width="400"
+                    height="400" alt="">
             </div>
-            <div class="col-sm-5">
+            <div class="col mx-3">
                 <p>
-                    <br><h3>{{product.title}}</h3>
-                </p>
-                
+                    <br>
+                <h3>{{product.title}} - {{product.platform}}</h3>
+
                 <p>
-                    <br><h5>Rating:</h5>
-                </p>
-                {{product.rating}}
-                <p>
-                    <br><h5>Platform</h5>
-                </p>
-                {{product.platform}}
+                    <br>
+                <h5>$ {{product.price}}</h5>
+                <br><br>
+
+                <button class="btn btn-outline-primary">
+                    <h5>Add To Cart</h5>
+                </button>
+            </div>
         </div>
     </div>
 </div>
