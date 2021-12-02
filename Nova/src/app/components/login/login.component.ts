@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
         .subscribe(res => {
+          console.log(res);
           if (res.token != null) {
             sessionStorage.setItem("JWT", res.token);
             alert("Login Successful!")
