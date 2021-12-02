@@ -2,7 +2,7 @@
     <a routerLink="/products" routerLinkActive="active" class="navbar-brand"><h4>NOVA</h4></a>
 
 
-    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0">
+    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
         
         <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
 
@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+    
     </form>
 
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent"
