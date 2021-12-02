@@ -1,0 +1,10 @@
+<div class="text-center mt-5">
+  <form [formGroup]="loginForm" (submit)="submit()">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username">
+    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+
+    <button class="btn btn-primary" type="submit">Sign in</button>
+  </form>
+</div>

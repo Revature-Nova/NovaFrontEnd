@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { MockProduct } from 'src/app/mock-product';
-import { Products } from 'src/app/mock-products';
+import { ProductsService } from 'src/app/services/products.service';
+import { Product } from 'src/app/interfaces/product';
+import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,30 +13,58 @@ import { Products } from 'src/app/mock-products';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   faSearch = faSearch;
   cart = faShoppingCart;
-  products: MockProduct[] = Products;
-  productNames: string[] = this.products.map(p => p.title);
-
-
+  products: Product[] = [];
+  productNames: String[] = [];
+  productsService: ProductsService;
   searchForm!: FormGroup;
 
+  message!: String;
+  sent!: String;
+  subscription!: Subscription;
+//   search: String = '';
+  navbarOpen = false;
+
   ngOnInit(): void {
+    this.productsService.getProducts().subscribe(data => {
+      let setGames: Set<String> = new Set;
+      for(const item of data) {
+        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
+        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        setGames = new Set(this.products.map(p => p.title));
+      }
+      for (const title of setGames) {
+        this.productNames.push(title);
+      }
+      this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+      this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
+    })
   }
 
   showDropDown = false;
 
-  toggleSearchOff() {
-    this.showDropDown = false;
+  async toggleSearchOff() {
+    setTimeout(() => {
+      this.showDropDown = false;
+    }, 100)
+    //console.log('...timeout passed.');
+    
   }
 
+  //Check If the value of the form group exists or not
   toggleSearchOn() {
-    this.showDropDown = true;
+    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
+      this.showDropDown = false;
+    } else {
+      this.showDropDown = true;
+    }
   }
 
-  constructor( private fb: FormBuilder) {
+  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService) {
     this.initForm()
+    this.productsService = _productsService;
   }
 
   initForm(): FormGroup {
@@ -44,25 +74,42 @@ export class NavbarComponent implements OnInit {
   }
 
   getSearchValue() {
+    this.showDropDown = true;
     return this.searchForm.value.search;
+
   }
 
   searchFor(value: any) {
-    console.log("hi");
+    this.showDropDown = false;
+    let a = this.searchForm.value.search;
+    this.data.changeMessage(a);
+    this.data.changeSent('true');
+    
   }
 
   selectValue(value: any) {
+    
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
+    this.searchFor({'search': value})
   }
 
-  // states = ['Alabama', 'Alaska',  'Arizona', 'Arkansas', 'California', 'Colorado',
-  // 'Connecticut', 'Delaware', 'District of Columbia', 'Florida'
-  // , 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky'
-  // , 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-  // 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina',
-  // 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-  // 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington',
-  //  'West Virginia', 'Wisconsin', 'Wyoming'];
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * @author Erika Johnson
+   * Toggle for menu to display with various screen sizes(Hamburger Menu)
+   *
+   */
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen
+    console.log("clicked")
+  }  
 }
+
+
+

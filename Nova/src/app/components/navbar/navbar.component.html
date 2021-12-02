@@ -1,39 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-light pc-bg-light">
-    <a href="" class="navbar-brand">NOVA</a>
+    <a routerLink="/products" routerLinkActive="active" class="navbar-brand"><h4>NOVA</h4></a>
 
 
-    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0">
+    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
         
-        <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()'>
+        <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
+
         <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchFor('a')">
             <!-- This shows the search icon next to the input; The icon needs to be imported
             into the typescript file -->
-            <fa-icon [icon]="faSearch" > 
+            <fa-icon [icon]="faSearch" >
             </fa-icon>
         </button>
-        
-        <button class="btn btn-warning" *ngIf='showDropDown'(click)='toggleSearchOff()'>X</button>
-        
+
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
-                {{s}}
+                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of products | searchFilter: getSearchValue()'>
+                {{s.title}}
                 </div>
             </div>
         </div>
+    
     </form>
 
-    <!-- <button class="mx-5">
-        <fa-icon [icon]="cart"></fa-icon>
-    </button> -->
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <a routerLink = "register" class="nav-link active med-btn" >Register</a>
-    
-
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"
+    [ngClass]="{ 'show': navbarOpen }">
+      <div class = "navbar-nav" routerLinkActive="active current">
+        <a class="nav-link active med-btn" routerLink ="login">Log In</a>
+        <a class="nav-link active med-btn" routerLink="register">Register</a>
+        <a class="nav-link active med-btn" routerLink="./userProfile">User Profile</a>
+        <a class="nav-link active med-btn" routerLink="/">Sign Out</a>
+     </div>
+  </div>
 </nav>
 

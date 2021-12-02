@@ -1,19 +1,71 @@
-<form [formGroup]="form" (submit)="submit()">
-    
-    <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+<!--suppress XmlDuplicatedId -->
+<div class="text-center mt-5">
+  <form [formGroup]="registerForm" (submit)="submit()">
+    <h3 class="h3 mb-3 fw-normal">Please Register</h3>
 
-    <input formControlName = "firstName" class="form-control" id="floatingPassword" placeholder="First Name">
+    <div [class]="'mb-3'">
+      <input [type] = "'text'" [formControlName] = "'firstName'" [class]="'form-control'" [id]="'firstName'"
+             [placeholder]="'First Name'" required>
 
-    <input formControlName = "lastName" class="form-control" id="floatingPassword" placeholder="Last Name">
+      <div *ngIf ="firstName!.dirty || (firstName!.invalid && firstName!.touched)"
+           [class]= "'text-danger'" >
 
-    <input formControlName = "username" class="form-control" id="floatingInput" placeholder="username">
+        <small *ngIf="firstName!.errors?.['required']">First Name is required.</small>
 
-    <input formControlName = "email" class="form-control" id="floatingInput" placeholder="Email">
-    
-    <input formControlName = "password" class="form-control" id="floatingPassword" placeholder="Password">
+      </div>
+    </div>
 
-    
+    <div [class]="'mb-3'">
+      <input [type]="'text'" [formControlName] = "'lastName'" [class]="'form-control'" [id]="'lastName'"
+             [placeholder]="'Last Name'" required>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+      <div *ngIf ="lastName!.dirty || (lastName!.invalid && lastName!.touched)"
+           [class]= "'text-danger'" >
 
+        <small *ngIf="lastName!.errors?.['required']">Last Name is required.</small>
+
+      </div>
+    </div>
+
+    <div [class]="'mb-3'" [id]="'username'">
+      <input [type]="'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
+             [placeholder]="'Username'" required>
+
+      <div *ngIf ="username!.dirty || (username!.invalid && username!.touched)"
+           [class]= "'text-danger'" >
+
+        <small *ngIf="username!.errors?.['required']">Username is required.</small>
+        <small *ngIf="username!.errors?.['pattern']" [class]= "'text-danger'">Your username must be 8-20 characters long and can conatin numbers and letters.</small>
+
+      </div>
+    </div>
+
+    <div [class]="'mb-3'" [id]="'password'">
+      <input [type]="'password'" [formControlName]="'password'" [class]="'form-control'" [id]="'password'"
+             [placeholder]="'Password'" required>
+
+      <div *ngIf ="password!.dirty || (password!.invalid && password!.touched)"
+           [class]= "'text-danger'" >
+
+        <small *ngIf="password!.errors?.['required']">Password is required.</small>
+        <small *ngIf="password!.errors?.['pattern']" [class]= "'text-danger'">Your password must be 8-25 characters long, contain a capital letter, a number, and a special character. Must not contain spaces or emoji.</small>
+
+      </div>
+    </div>
+
+    <div [class]="'mb-3'" [id]="'email'">
+      <input [type]="'email'" [formControlName]="'email'" [class]="'form-control'" [id]="'email'"
+             [placeholder]="'Email'" required>
+
+      <div *ngIf ="email!.dirty || (email!.invalid && email!.touched)"
+           [class]= "'text-danger'" >
+
+        <small *ngIf="email!.errors?.['required']">Email is required.</small>
+        <small *ngIf="email!.errors?.['pattern']" [class]= "'text-danger'">Please provide a valid email address.</small>
+
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+</div>
