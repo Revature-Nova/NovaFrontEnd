@@ -1,12 +1,10 @@
 import { RegisterComponent } from './components/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BehaviorSubject } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -43,7 +41,10 @@ import { ProductComponent } from './components/product/product.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+
   ],
+
+
   providers: [UserProfileService],
   bootstrap: [AppComponent],
 })
