@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from "../../services/auth.service";
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth:AuthService) {}
+  constructor(private formBuilder: FormBuilder, private auth:AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -56,6 +57,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(res => {
           if (res.status === "Successfully Registered!") {
             alert(res.status)
+              this.router.navigate(['/login']);
           } else {
             alert("Register Failed!")
           }
