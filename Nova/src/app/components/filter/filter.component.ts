@@ -38,7 +38,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   message!: String;
   subscription!: Subscription;
   sent!: String;
-  constructor(_productsService: ProductsService, private data: DataService) {
+  constructor(_productsService: ProductsService, private data: DataService, _rawg: RawgService, _router: Router) {
     this.productsService = _productsService;
     this.rawg = _rawg;
     this.router = _router;
@@ -56,8 +56,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     })
     this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
-    console.log(this.message);
-    console.log(this.sent);
+    // console.log(this.message);
+    // console.log(this.sent);
   }
 
   onClick(product: Product){
@@ -128,6 +128,16 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.btnFilter = false;
     this.filter = "genre";
     this.value = "";
+    this.products = [];
+    this.productsService.getProducts().subscribe(data => {
+      for(const item of data) {
+        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
+        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        this.genres = new Set(this.products.map(p => p.genre).sort());
+        this.platforms = new Set(this.products.map(p => p.platform).sort());
+        this.ratings = new Set(this.products.map(p => p.rating).sort());
+      }
+    })
   }
 
   ngOnDestroy() {

@@ -15,8 +15,9 @@
 
         <div *ngIf='showDropDown' class="searchDropdown">
             <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of products | searchFilter: getSearchValue()'>
-                {{s.title}}
+                <!-- Do Not Change Below Code, The search bar can only read Strings-->
+                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
+                {{s}}
                 </div>
             </div>
         </div>
