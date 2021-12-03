@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 
@@ -9,6 +9,9 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+
+  @Input() username!: string;
+  @Input() email!: string;
 
   profileForm: FormGroup | any;
 

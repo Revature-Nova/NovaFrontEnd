@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 //   search: String = '';
   navbarOpen = false;
 
+
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
