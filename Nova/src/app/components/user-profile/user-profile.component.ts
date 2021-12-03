@@ -11,7 +11,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 export class UserProfileComponent implements OnInit {
 
   @Input() username!: string;
-  @Input() email!: string;
+ 
 
   profileForm: FormGroup | any;
 
@@ -38,6 +38,5 @@ export class UserProfileComponent implements OnInit {
     )
     this.profileForm.reset();
   }
-
 
 }
