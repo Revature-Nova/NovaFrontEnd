@@ -64,7 +64,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     if (!this.btnBool){
       this.rawg.getDetails(product).subscribe(data => {
         if (data.includes("#")){
-          data = data.substring(0, data.indexOf('#'));
+          data = data.replace(/#/g, '');
+          ;
         }
         ProductComponent.prototype.description = data;
         console.log(data);

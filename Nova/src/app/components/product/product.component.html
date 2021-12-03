@@ -23,17 +23,14 @@
                     <button class="btn btn-outline-primary">Add To Cart</button>
 
                     <div class="container" (click)="expanded=!expanded">
-                        Product Description
+                        <p>
+                            <br>
+                            <hr>
+                        <h5><u>Product Description</u></h5>
                     </div>
-                    <div *ngIf="expanded">
+                    <div class="container" *ngIf="expanded">
                         {{description}}
                     </div>
-
-                    <p>
-                        <br>
-                        <hr>
-
-
                 </div>
             </div>
             <!-- <div class="row">
