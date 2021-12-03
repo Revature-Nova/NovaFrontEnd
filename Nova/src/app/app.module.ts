@@ -20,6 +20,8 @@ import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from "./components/login/login.component";
 import {CommonModule} from "@angular/common";
 import { ProductComponent } from './components/product/product.component';
+import { HompageComponent } from './hompage/hompage.component';
+import { PageComponent } from './page/page.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ProductComponent } from './components/product/product.component';
     UserProfileComponent,
     RegisterComponent,
     LoginComponent,
-    ProductComponent
+    ProductComponent,
+    HompageComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,

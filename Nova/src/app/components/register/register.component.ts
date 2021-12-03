@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from "../../services/auth.service";
+import { ActivatedRoute, Router } from "@angular/router"
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { AuthService } from "../../services/auth.service";
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth:AuthService) {}
+  constructor(private formBuilder: FormBuilder, private auth:AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -49,18 +50,22 @@ export class RegisterComponent implements OnInit {
    * @author Nova User Service
    */
   submit(): void {
+    console.log("Hello")
     const registerValues = this.registerForm.getRawValue();
 
     if (this.registerForm.valid) {
       this.auth.registerUser(registerValues)
         .subscribe(res => {
           if (res.status === "Successfully Registered!") {
+            console.log(res.status)
             alert(res.status)
           } else {
             alert("Register Failed!")
           }
         });
     }
+
+    this.router.navigate(["page"])
 
     this.registerForm.reset();
   }
