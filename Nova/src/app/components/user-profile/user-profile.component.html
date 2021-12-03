@@ -1,11 +1,21 @@
 <div class="text-center mt-5" >
-  <form [formGroup]="form" (submit)="submit()">
-    <h1>Type in your information</h1>
-    <input formControlName="username" class="form-Control" id="floatingInput" placeholder="Username"><br>
-    <input formControlName="email" class="form-Control" id="floatingInput" placeholder="Email"><br>
-    <input formControlName="state" class="form-Control" id="floatingInput" placeholder="State"><br>
-    <input formControlName="favoriteGenre" class="form-Control" id="floatingInput" placeholder="Favorite Genre"><br>
-    <input formControlName="message" class="form-Control" id="floatingInput" placeholder="Tell us about yourself">
+
+  <form [formGroup]="loginForm" (submit)="submit()">
+
+    <h1 class="h3 mb-3 fw-normal">Type in your information</h1>
+
+    <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username"><br>
+
+    <input type="text" formControlName="email" class="form-Control" id="email" placeholder="Email"><br>
+
+    <input type="text" formControlName="state" class="form-Control" id="state" placeholder="State"><br>
+
+    <input type="text" formControlName="favoriteGenre" class="form-Control" id="favoriteGenre" placeholder="Favorite Genre"><br>
+
+    <input type="text" formControlName="message" class="form-Control" id="message" placeholder="Tell us about yourself">
+
     <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
 </form>
+
+
 </div>
