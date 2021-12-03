@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,13 +12,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserProfileComponent implements OnInit {
 
-  form: FormGroup | any;
+@Input() username!: string;
+@Input() email!: string;
 
-  constructor(private formBuilder: FormBuilder, private profile: UserProfileService, private http: HttpClient ) { }
+profileForm: FormGroup | any;
 
-  ngOnInit(): void {
+constructor(private formBuilder: FormBuilder, private profile: UserProfileService, private http: HttpClient ) { }
 
-    this.form = this.formBuilder.group({
+ngOnInit(): void {
+
+  this.form = this.formBuilder.group({
       username: '',
       email: '',
       state: '',
@@ -35,7 +38,4 @@ export class UserProfileComponent implements OnInit {
         console.log(res);
       });
   }
-
-
-
 }
