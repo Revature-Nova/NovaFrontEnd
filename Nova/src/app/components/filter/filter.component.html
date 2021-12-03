@@ -1,6 +1,6 @@
 <div *ngIf='test(message +"")' ></div>
 <div class="d-flex justify-content-center py-5">
-    <label class="font-weight-bold font" for="filter">Filter:</label>
+    <label class="font-weight-bold font" for="filter"><h5>Filter:</h5></label>
     <select name="filter" class="mx-3" id="" [(ngModel)]="filter">
         <option value="genre">Genre</option>
         <option value="platform">Platform</option>
@@ -33,30 +33,8 @@
 
 <!--  Tentative Set-Up for Multiple Filters-->
 <div class="row">
-    <div class="col mx-5">
-        <h3>Filters:</h3><hr>
-        <label class="font-weight-bold" for="filter">Genre:</label><br>
-        <div class="form-check" *ngFor="let genre of genres">
-            <input type="checkbox" name="" id="">
-            <label for="genre">
-                {{genre}}
-            </label><br>
-        </div>
-        <label class="font-weight-bold" for="filter">Platform:</label><br>
-        <div class="form-check" *ngFor="let platform of platforms">
-            <input type="checkbox" name="" id="">
-            <label for="platform">
-                {{platform}}
-            </label><br>
-        </div>
-        <label class="font-weight-bold" for="filter">Rating:</label><br>
-        <div class="form-check" *ngFor="let rating of ratings">
-            <input type="checkbox" name="" id="">
-            <label for="rating">
-                {{rating}}
-            </label><br>
-        </div>
-    </div>
+    <div class="col-2"></div>
+</div>
 
     <!-- Displays All Products Saved Within Our Database -->
 
@@ -82,7 +60,7 @@
                     <div class="col-2 my-5">
                         <div class="card-body">
                             <h4>Price</h4>
-                            <p>$ {{product.price}}</p>
+                            <p>${{product.price}}</p>
                         </div>
                     </div>
                     <div class="col-2 my-5">
@@ -142,83 +120,3 @@
         </div>
     </div>
     <div class="col-2"></div>
-</div>
-
-
-
-<!--------------------------------------- DO NOT DELETE CODE UNDER THIS LINE ------------------------------>
-
-
-<!-- Shows Entire Listing of Products; Disappears once customer uses filters
-     This listing is shown again once customer clicks Reset Button -->
-
-<!-- <div class="container" *ngIf="btnFilter">
-    <div class="row" *ngFor="let product of filtered;">
-        <div class="justify-content-center col py-2 card-outline-primary">
-            <div class="card border border-primary" (click)="onClick()">
-                <div class="row">
-                    <div class="col md-auto">
-                        <div class="card-body">
-                            <p class="card-text"><img src="{{product.imageUrl}}" alt="" height="200" width="200"></p>
-                        </div>
-                    </div>
-                    <div class="col md-auto my-5">
-                        <div class="card-body">
-                            <h5>{{product.title}}</h5>
-                            <p>{{product.genre}}</p>
-                        </div>
-                    </div>
-                    <div class="col md-auto ml-4 my-5">
-                        <div class="card-body">
-                            <h4>Price</h4>
-                            <p>{{product.price}}</p>
-                        </div>
-                    </div>
-                    <div class="col md-auto my-5">
-                        <div class="card-body">
-                            <button class="btn btn-outline-primary" (click)="btnClick()">
-                                Add To Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- First Attempt at Filtering Products; Will Likely Change Once connected to backend 
-     Filtered Products are shown once customer clicks Apply Filter Button -->
-<!-- <div class="container" *ngIf="btnFilter">
-    <div class="row" *ngFor="let product of filtered;">
-        <div class="justify-content-center col py-2 card-outline-primary">
-            <div class="card border border-primary" (click)="onClick()">
-                <div class="row">
-                    <div class="col md-auto">
-                        <div class="card-body">
-                            <p class="card-text"><img src="{{product.imageUrl}}" alt="" height="200" width="200"></p>
-                        </div>
-                    </div>
-                    <div class="col md-auto my-5">
-                        <div class="card-body">
-                            <h5>{{product.title}}</h5>
-                            <p>{{product.genre}}</p>
-                        </div>
-                    </div>
-                    <div class="col md-auto ml-4 my-5">
-                        <div class="card-body">
-                            <h4>Price</h4>
-                            <p>{{product.price}}</p>
-                        </div>
-                    </div>
-                    <div class="col md-auto my-5">
-                        <div class="card-body">
-                            <button class="btn btn-outline-primary" (click)="btnClick()">
-                                Add To Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

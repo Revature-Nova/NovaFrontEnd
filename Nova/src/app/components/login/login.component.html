@@ -1,11 +1,28 @@
 <div class="text-center mt-5">
   <form [formGroup]="loginForm" (submit)="submit()">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h2 class="title">Please Sign In</h2>
 
-    <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username">
-    <br>
-    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
-    <br>
+    <div class = "container">
+
+    <div class='mb-3' id = 'username'>
+    <input
+      type="text"
+      formControlName="username"
+      class="form-control"
+      id="username"
+      placeholder="Username"
+    />
+    </div>
+    <div class='mb-3' id = 'password'>
+    <input
+      type="password"
+      formControlName="password"
+      class="form-control"
+      id="password"
+      placeholder="Password"
+    />
+  </div>
     <button class="btn btn-primary" type="submit">Sign in</button>
+  </div>
   </form>
 </div>
