@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductComponent implements OnInit {
   product!: Product;
   description!: string;
+  expanded: boolean = false;
 
 
   constructor(private router: Router, private rawg: RawgService, private route: ActivatedRoute) {

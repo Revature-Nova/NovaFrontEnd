@@ -5,30 +5,38 @@
     <div class="col-"></div>
     <div class="col-lg">
         <div class="container my-5" *ngIf="product;else noProduct">
-                <div class="row">
-                    <div class="col ml-5 my-5" id="image">
-                        <img class="shadow-lg p-3 mb-5 bg-white rounded" src="{{product.imageUrl}}" height=500 width=500 alt="">
-                    </div>
-                    <div class="col my-5" id="details">
-                        <p>
-                            <br>
-                        <h3>{{product.title}} - {{product.platform}}</h3>
-
-                        <p>
-                            <br>
-                        <h5>Price: ${{product.price}}</h5>
-                        <br><br>
-
-                        <button class="btn btn-outline-primary">Add To Cart</button>
-
-                        <p>
-                            <br>
-                            <hr>
-                            {{description}}
-                        
-                    </div>
+            <div class="row">
+                <div class="col ml-5 my-5" id="image">
+                    <img class="shadow-lg p-3 mb-5 bg-white rounded" src="{{product.imageUrl}}" height=500 width=500
+                        alt="">
                 </div>
-                <!-- <div class="row">
+                <div class="col my-5" id="details">
+                    <p>
+                        <br>
+                    <h3>{{product.title}} - {{product.platform}}</h3>
+
+                    <p>
+                        <br>
+                    <h5>Price: ${{product.price}}</h5>
+                    <br><br>
+
+                    <button class="btn btn-outline-primary">Add To Cart</button>
+
+                    <div class="container" (click)="expanded=!expanded">
+                        Product Description
+                    </div>
+                    <div *ngIf="expanded">
+                        {{description}}
+                    </div>
+
+                    <p>
+                        <br>
+                        <hr>
+
+
+                </div>
+            </div>
+            <!-- <div class="row">
                     <div class="col mx-5 justify-content-center" id="description">
                         <p>
                             <h5>Product Description</h5><hr>
@@ -36,7 +44,7 @@
                     </div>
                     <div class="col"></div>
                 </div> -->
-            </div>
+        </div>
     </div>
     <div class="col-"></div>
 </div>
