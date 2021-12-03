@@ -23,7 +23,7 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       username: '',
       email: '',
       state: '',
