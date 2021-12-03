@@ -57,15 +57,14 @@ export class RegisterComponent implements OnInit {
       this.auth.registerUser(registerValues)
         .subscribe(res => {
           if (res.status === "Successfully Registered!") {
-            console.log(res.status)
-            alert(res.status)
+            this.router.navigate(["page"])
           } else {
             alert("Register Failed!")
           }
         });
     }
 
-    this.router.navigate(["page"])
+    
 
     this.registerForm.reset();
   }
