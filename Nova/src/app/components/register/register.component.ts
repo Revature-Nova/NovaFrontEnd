@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
           if (res.status === "Successfully Registered!") {
             this.router.navigate(["page"])
           } else {
+            console.log("fail")
             alert("Register Failed!")
           }
         });
