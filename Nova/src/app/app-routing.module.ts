@@ -12,10 +12,8 @@ import { ProductComponent } from './components/product/product.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'navbar', component: NavbarComponent,
-      children: [
-        { path: 'userProfile', component: UserProfileComponent},
-      ] },
+  { path: 'navbar', component: NavbarComponent},
+  { path: 'userProfile', component: UserProfileComponent},
   { path: 'products', component: FilterComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
 
