@@ -1,34 +1,45 @@
 <ng-template #noProduct>
-    <h2>No Product to Display</h2>
+  <h2>No Product to Display</h2>
 </ng-template>
 <div class="row">
-    <div class="col-"></div>
-    <div class="col-lg">
-        <div class="container my-5" *ngIf="product;else noProduct">
-                <div class="row">
-                    <div class="col ml-5 my-5" id="image">
-                        <img class="shadow-lg p-3 mb-5 bg-white rounded" src="{{product.imageUrl}}" height=500 width=500 alt="">
-                    </div>
-                    <div class="col my-5" id="details">
-                        <p>
-                            <br>
-                        <h3>{{product.title}} - {{product.platform}}</h3>
+  <div class="col-"></div>
+  <div class="col-lg">
+    <div class="container my-5" *ngIf="product; else noProduct">
+      <div class="row">
+        <div class="col ml-5 my-5" id="image">
+          <img
+            class="shadow-lg p-3 mb-5 bg-white rounded"
+            src="{{ product.imageUrl }}"
+            height="500"
+            width="500"
+            alt=""
+          />
+        </div>
+        <div class="col my-5" id="details">
+          <p>
+            <br />
+          </p>
 
-                        <p>
-                            <br>
-                        <h5>Price: ${{product.price}}</h5>
-                        <br><br>
+          <h3>{{ product.title }} - {{ product.platform }}</h3>
 
-                        <button class="btn btn-outline-primary">Add To Cart</button>
+          <p>
+            <br />
+          </p>
 
-                        <p>
-                            <br>
-                            <hr>
-                            {{description}}
-                        
-                    </div>
-                </div>
-                <!-- <div class="row">
+          <h5>Price: ${{ product.price }}</h5>
+          <br /><br />
+
+          <button class="btn btn-outline-primary">Add To Cart</button>
+
+          <p>
+            <br />
+          </p>
+
+          <hr />
+          {{ description }}
+        </div>
+      </div>
+      <!-- <div class="row">
                     <div class="col mx-5 justify-content-center" id="description">
                         <p>
                             <h5>Product Description</h5><hr>
@@ -36,7 +47,7 @@
                     </div>
                     <div class="col"></div>
                 </div> -->
-            </div>
     </div>
-    <div class="col-"></div>
+  </div>
+  <div class="col-"></div>
 </div>
