@@ -20,27 +20,15 @@
                     <h5>Price: ${{product.price}}</h5>
                     <br><br>
 
-                    <button class="btn btn-outline-primary">Add To Cart</button>
-
-                    <div class="container" (click)="expanded=!expanded">
-                        <p>
-                            <br>
-                            <hr>
+                    <button class="btn btn-outline-primary">Add To Cart</button><br><hr>
+                    <div class="container" id="description" (click)="expanded=!expanded">
                         <h5><u>Product Description</u></h5>
                     </div>
-                    <div class="container" *ngIf="expanded">
+                    <div class="container content" *ngIf="expanded">
                         {{description}}
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
-                    <div class="col mx-5 justify-content-center" id="description">
-                        <p>
-                            <h5>Product Description</h5><hr>
-                            {{description}}
-                    </div>
-                    <div class="col"></div>
-                </div> -->
         </div>
     </div>
     <div class="col-"></div>

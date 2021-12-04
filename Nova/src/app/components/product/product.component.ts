@@ -21,5 +21,6 @@ export class ProductComponent implements OnInit {
     if (this.product == undefined){
       this.router.navigate(['/products']);
     }
+    // this.route.snapshot.params[this.product.productId];
   }
 }
