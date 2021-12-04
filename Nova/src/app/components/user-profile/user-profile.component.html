@@ -2,10 +2,12 @@
 <div class="text-center mt-5" >
   <form [formGroup]="form" (submit)="submit()">
     
-    <h1 class="h3 mb-3 fw-normal">Type in your information</h1>
+    <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+    <br>
+    <br>
 
-    <input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
-    [placeholder]="'Username'" required><br>
+    <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
+    [placeholder]="'Username'" required><br>-->
 
     <input [type] = "'text'" [formControlName] = "'email'" [class]="'form-control'" [id]="'email'"
     [placeholder]="'Email'" required><br>
