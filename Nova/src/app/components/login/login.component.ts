@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           if (res.token != null) {
             sessionStorage.setItem("JWT", res.token);
+            sessionStorage.setItem("userId", res.id.toString())
+            sessionStorage.setItem("username", res.username)
+            sessionStorage.setItem("email", res.email)
+            sessionStorage.setItem("firstName", res.firstName)
+            sessionStorage.setItem("lastName", res.lastName)
             this.router.navigate(["products"])
           } else {
             alert("Login Failed!")

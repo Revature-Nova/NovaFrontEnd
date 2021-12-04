@@ -22,6 +22,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productsService: ProductsService;
   searchForm!: FormGroup;
 
+  username: String |null = sessionStorage.getItem("username");
+
   message!: String;
   sent!: String;
   subscription!: Subscription;
