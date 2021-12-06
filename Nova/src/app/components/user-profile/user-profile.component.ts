@@ -21,7 +21,7 @@ constructor(private formBuilder: FormBuilder, private profile: UserProfileServic
 
 ngOnInit(): void {
 
-  this.form = this.formBuilder.group({
+  this.profileForm = this.formBuilder.group({
       username: '',
       email: '',
       state: '',
@@ -31,9 +31,9 @@ ngOnInit(): void {
   }
 
   submit(): void {
-    console.log(this.form.getRawValue());
+    console.log(this.profileForm.getRawValue());
     this.http
-      .post('http://localhost:8082/user-service/Nova/user/profile', this.form.getRawValue())
+      .post('http://18.212.102.32:8082/user-service/Nova/user/profile', this.profileForm.getRawValue())
       .subscribe((res) => {
         console.log(res);
       });
