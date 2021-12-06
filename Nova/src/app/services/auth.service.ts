@@ -35,7 +35,7 @@ export class AuthService {
 
   logout(): Observable<HttpResponse<any>>{
     return this.client
-      .put<any>(this.url + 'logout', null,{observe: 'response'})
+      .get(this.url + 'logout',{observe: 'response'})
       .pipe(catchError(this.handleError))
   }
 }

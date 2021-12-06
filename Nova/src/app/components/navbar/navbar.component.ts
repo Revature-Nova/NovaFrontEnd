@@ -119,6 +119,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(){
     this.auth.logout()
       .subscribe(resp => {
+        console.log(resp);
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();

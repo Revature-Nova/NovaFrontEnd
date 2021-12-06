@@ -12,6 +12,12 @@ import {profile} from "../../interfaces/profile";
 })
 export class UserProfileComponent implements OnInit {
   form: FormGroup | any;
+  email!: string | undefined;
+  state!: string | undefined;
+  favoriteGenre!: string | undefined;
+  message!: string | undefined;
+
+  icon = "/assets/blue_user_client_person_12581.ico";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,12 +26,16 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    UserProfileComponent.prototype.email = CurrentUser.email;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+
     this.form = this.formBuilder.group({
-      username: CurrentUser.username,
-      email: CurrentUser.email,
-      state: CurrentUser.state,
-      favoriteGenre: CurrentUser.favoriteGenre,
-      message: CurrentUser.message,
+      email: '',
+      state: '',
+      favoriteGenre: '',
+      message: '',
     });
   }
 
@@ -36,7 +46,7 @@ export class UserProfileComponent implements OnInit {
         this.form.getRawValue(),
         {observe: 'response'})
       .subscribe((res) => {
-        CurrentUser.email = res.body?.email;
+        CurrentUser.email = CurrentUser.email = res.body?.email;
         CurrentUser.state = res.body?.state;
         CurrentUser.favoriteGenre = res.body?.favoriteGenre;
         CurrentUser.message = res.body?.message;
