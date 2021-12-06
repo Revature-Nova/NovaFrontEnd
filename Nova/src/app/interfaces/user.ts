@@ -8,7 +8,11 @@ export interface newUser {
 }
 
 export interface returningUser {
-  token: string,
   username: string,
-  password: string
+  email: string,
+  state: string,
+  favoriteGenre: string,
+  message: string,
+  firstName: string,
+  lastName: string
 }

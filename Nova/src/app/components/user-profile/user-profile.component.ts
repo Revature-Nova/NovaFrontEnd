@@ -33,7 +33,7 @@ ngOnInit(): void {
   submit(): void {
     console.log(this.form.getRawValue());
     this.http
-      .post('http://localhost:8089/Nova/user/userProfile', this.form.getRawValue())
+      .post('http://localhost:8082/user-service/Nova/user/profile', this.form.getRawValue())
       .subscribe((res) => {
         console.log(res);
       });

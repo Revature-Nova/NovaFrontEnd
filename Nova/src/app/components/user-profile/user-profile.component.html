@@ -1,11 +1,51 @@
-<div class="text-center mt-5" >
-    <form [formGroup]="profileForm" (ngSubmit)="userProfile()">
-      <h1>Type in your information</h1>
-      <input formControlName="username" class="form-Control" id="floatingInput" placeholder="Username"><br>
-      <input formControlName="email" class="form-Control" id="floatingInput" placeholder="Email"><br>
-      <input formControlName="state" class="form-Control" id="floatingInput" placeholder="State"><br>
-      <input formControlName="favoriteGenre" class="form-Control" id="floatingInput" placeholder="Favorite Genre"><br>
-      <input formControlName="message" class="form-Control" id="floatingInput" placeholder="Tell us about yourself">
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-  </form>
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+  <app-navbar></app-navbar>
+  <div class="text-center mt-5">
+    <form [formGroup]="form" (submit)="submit()">
+      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+      <br />
+      <br />
+
+      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
+    [placeholder]="'Username'" required><br>-->
+
+      <input
+        [type]="'text'"
+        [formControlName]="'email'"
+        [class]="'form-control'"
+        [id]="'email'"
+        [placeholder]="'Email'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'state'"
+        [class]="'form-control'"
+        [id]="'state'"
+        [placeholder]="'State'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'favoriteGenre'"
+        [class]="'form-control'"
+        [id]="'favoriteGenre'"
+        [placeholder]="'FavoriteGenre'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'message'"
+        [class]="'form-control'"
+        [id]="'message'"
+        [placeholder]="'Message'"
+        required
+      /><br />
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
   </div>
+</div>

@@ -1,39 +1,88 @@
 <nav class="navbar navbar-expand-lg navbar-light pc-bg-light">
-    <a routerLink="/products" routerLinkActive="active" class="navbar-brand"><h4>NOVA</h4></a>
+  <a routerLink="/products" routerLinkActive="active" class="navbar-brand"
+    ><article><h4>NOVA</h4></article></a
+  >
 
+  <ul class="navbar-nav ml-auto">
+    <li>
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+        [ngClass]="{ show: navbarOpen }"
+      >
+        <div class="navbar-nav" routerLinkActive="active current">
+          <a class="nav-link mr-5" routerLink="../cart">Cart</a>
+          <a class="nav-link mr-5"
+            data-bs-toggle="modal"
+            data-bs-target="modal"
+            routerLink="../userProfile"
+            >{{ username }}</a
+          >
+          <a
+            class="nav-link mr-5"
+            role="button"
+            (click)="logout()"
+            routerLink="/"
+            >Sign Out</a
+          >
+        </div>
+      </div>
+    </li>
 
-    <form autocomplete="off" [formGroup]='searchForm' action="" class="form-inline my-2 mylg-0" >
-        
-        <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
+    <li>
+      <form
+        autocomplete="off"
+        [formGroup]="searchForm"
+        action=""
+        class="form-inline my-2 mylg-0"
+      >
+        <input
+          id="search"
+          formControlName="search"
+          type="text"
+          class="form-control mr-sm-2"
+          placeholder="Search"
+          aria-label="Search"
+          (click)="toggleSearchOn()"
+          (keyup)="toggleSearchOn()"
+          (blur)="toggleSearchOff()"
+        >
 
-        <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchFor('a')">
-            <!-- This shows the search icon next to the input; The icon needs to be imported
-            into the typescript file -->
-            <fa-icon [icon]="faSearch" >
-            </fa-icon>
+        <button
+          class="btn btn-outline-primary my-2 my-sm-0"
+          (click)="searchFor('a')"
+        >
+          <!-- This shows the search icon next to the input; The icon needs to be imported
+              into the typescript file -->
+          <fa-icon [icon]="faSearch"> </fa-icon>
         </button>
 
-        <div *ngIf='showDropDown' class="searchDropdown">
-            <div>
-                <div (click)='selectValue(s)' class ='searchObj' *ngFor='let s of productNames | searchFilter: getSearchValue()'>
-                    {{s}}
-                </div>
+        <div *ngIf="showDropDown" class="searchDropdown">
+          <div>
+            <div
+              (click)="selectValue(s)"
+              class="searchObj"
+              *ngFor="let s of productNames | searchFilter: getSearchValue()"
+            >
+              {{ s }}
             </div>
+          </div>
         </div>
-    
-    </form>
+      </form>
 
-    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="toggleNavbar()"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"
-    [ngClass]="{ 'show': navbarOpen }">
-      <div class = "navbar-nav" routerLinkActive="active current">
-        <a class="nav-link" routerLink="./userProfile">User Profile</a>
-     </div>
-     <button (click) = 'logout()' type = "button" class="btn btn-warning" > Sign Out</button>
-  </div>
-  
+      </button>
+    </li>
+  </ul>
 </nav>
 <router-outlet></router-outlet>
