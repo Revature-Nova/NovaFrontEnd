@@ -8,7 +8,7 @@ import { profile } from '../interfaces/profile';
 })
 export class UserProfileService {
 
-  private apiUrl = "http://localhost:8089/Nova/"
+  private apiUrl = "http://18.212.102.32:8089/Nova/"
 
 
   private httpOptions = {
