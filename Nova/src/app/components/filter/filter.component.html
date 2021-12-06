@@ -45,7 +45,7 @@
     Above Code is basic logic for showing something if there no products to display. If used, be sure to format -->
 
     <div class="container" *ngIf="!btnFilter">
-        <div class="col py-2 px-3 justify-content-center card-outline-primary" *ngFor="let product of products;">
+        <div class="py-2 px-3 justify-content-center card-outline-primary" *ngFor="let product of products;">
             <div class="card border border-primary" (click)="onClick(product)">
                 <div class="row">
                     <div class="col">

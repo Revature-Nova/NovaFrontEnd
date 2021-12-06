@@ -4,7 +4,7 @@
   z-index: 1;
   width: 13em;
   height: 8em;
-  background: #f6f6f6;
+  background:rgb(0, 0, 0);
   overflow-y: auto;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .searchObj:hover {
-  background: #c2c2c2;
+  cursor: pointer;
 }
 
 button.btn.delete {
