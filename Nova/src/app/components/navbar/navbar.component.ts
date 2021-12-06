@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 //   search: String = '';
   navbarOpen = false;
 
+
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
@@ -62,11 +63,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
+
   constructor( private fb: FormBuilder,
                private _productsService: ProductsService,
                private data: DataService,
                private router: Router,
                private auth: AuthService) {
+
     this.initForm()
     this.productsService = _productsService;
   }

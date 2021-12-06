@@ -9,10 +9,9 @@ import {newUser, returningUser} from "../interfaces/user";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   constructor(private client: HttpClient) {}
 
   private url = 'http://localhost:8082/user-service/Nova/';
