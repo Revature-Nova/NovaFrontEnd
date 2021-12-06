@@ -1,17 +1,51 @@
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+  <app-navbar></app-navbar>
+  <div class="text-center mt-5">
+    <form [formGroup]="form" (submit)="submit()">
+      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+      <br />
+      <br />
+
+      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
+    [placeholder]="'Username'" required><br>-->
+
+      <input
+        [type]="'text'"
+        [formControlName]="'email'"
+        [class]="'form-control'"
+        [id]="'email'"
+        [placeholder]="'Email'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'state'"
+        [class]="'form-control'"
+        [id]="'state'"
+        [placeholder]="'State'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'favoriteGenre'"
+        [class]="'form-control'"
+        [id]="'favoriteGenre'"
+        [placeholder]="'FavoriteGenre'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'message'"
+        [class]="'form-control'"
+        [id]="'message'"
+        [placeholder]="'Message'"
+        required
+      /><br />
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
   </div>
+</div>

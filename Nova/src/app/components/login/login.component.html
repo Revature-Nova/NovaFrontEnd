@@ -1,10 +1,26 @@
-<div class="text-center mt-5">
-  <form [formGroup]="loginForm" (submit)="submit()">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+  <div class="text-center mt-5">
 
-    <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username">
-    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+    <h1 class="text-light">Welcome to Nova</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form [formGroup]="loginForm" (submit)="submit()">
+      <h2 class="h3 mb-3 fw-normal text-light">Please sign in</h2>
 
-    <button class="btn btn-primary" type="submit">Sign in</button>
-  </form>
+      <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username">
+      <br>
+      <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+      <br>
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+  </div>
+  <br>
+  <p class="text-light text-center">if you don't have an account you can sign up for one.</p>
+  <br>
+  <div class="text-center">
+  <button class="btn btn-primary " routerLink="../register">Register</button>
+
+  </div>
 </div>

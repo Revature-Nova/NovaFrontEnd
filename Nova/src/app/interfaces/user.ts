@@ -9,6 +9,9 @@ export interface newUser {
 
 export interface returningUser {
   token: string,
+  id: number,
   username: string,
-  password: string
+  email: string,
+  firstName: string,
+  lastName: string
 }
