@@ -6,12 +6,8 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-<<<<<<< HEAD
-
-=======
 import { Router } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
->>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
 
 
 @Component({
@@ -69,9 +65,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
-<<<<<<< HEAD
-  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService) {
-=======
 
   constructor( private fb: FormBuilder,
                private _productsService: ProductsService,
@@ -79,7 +72,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
                private router: Router,
                private auth: AuthService) {
 
->>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
     this.initForm()
     this.productsService = _productsService;
   }
@@ -127,8 +119,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     console.log("clicked")
   }
 
-<<<<<<< HEAD
-=======
   logout(){
     this.auth.logout()
       .subscribe(resp => {
@@ -136,11 +126,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         {
           sessionStorage.clear();
           console.log("logged out")
-          // this.router.navigate(['/'])
+          this.router.navigate(['/'])
         }
       })
   }
->>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
 }
 
 

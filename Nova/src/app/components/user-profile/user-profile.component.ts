@@ -21,7 +21,6 @@ constructor(private formBuilder: FormBuilder, private profile: UserProfileServic
 ngOnInit(): void {
 
   this.profileForm = this.formBuilder.group({
-      username: '',
       email: '',
       state: '',
       favoriteGenre: '',

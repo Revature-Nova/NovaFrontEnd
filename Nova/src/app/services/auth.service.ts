@@ -14,7 +14,9 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 export class AuthService {
   constructor(private client: HttpClient) {}
 
-  private url = 'http://18.212.102.32:8082/user-service/Nova/';
+  // private url = 'http://18.212.102.32:8082/user-service/Nova/';
+
+  private url = 'http://localhost:8089/Nova/'
 
   handleError(error: HttpErrorResponse) {
     console.log(error);

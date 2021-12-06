@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
           if (resp.headers.get("Authorization") != null) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
             alert("Login Successful!")
-            this.router.navigate(['/home']);
+            this.router.navigate(['/navbar']);
           } else {
             alert("Login Failed!")
           }
