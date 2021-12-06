@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FilterComponent } from './components/filter/filter.component';
@@ -8,17 +7,16 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from "./components/login/login.component";
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'navbar', component: NavbarComponent,
-      children: [
-        { path: 'userProfile', component: UserProfileComponent},
-      ] },
+  { path: 'navbar', component: NavbarComponent},
+  { path: 'userProfile', component: UserProfileComponent},
   { path: 'products', component: FilterComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
-
+  { path: "cart", component: CartComponent}
 ];
 
 @NgModule({
