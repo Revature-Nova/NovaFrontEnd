@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
-import { newUser, returningUser } from "../interfaces/user";
-import { catchError, Observable, retry, throwError } from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHandler,
+  HttpHeaders,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse
+} from "@angular/common/http";
+import {newUser, returningUser} from "../interfaces/user";
+import {catchError, Observable, retry, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private client:HttpClient) {}
+  constructor(private client: HttpClient) {}
 
   private url = 'http://localhost:8082/user-service/Nova/';
 
@@ -27,5 +32,11 @@ export class AuthService {
     return this.client
       .post<returningUser>(this.url + 'login', returningUser, {observe: 'response'})
       .pipe(retry(1), catchError(this.handleError));
+  }
+
+  logout(): Observable<HttpResponse<any>>{
+    return this.client
+      .put<any>(this.url + 'logout', null,{observe: 'response'})
+      .pipe(catchError(this.handleError))
   }
 }
