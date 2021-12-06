@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
+import {CurrentUser} from "../../interfaces/user";
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(resp => {
           if (resp.headers.get("Authorization") != null) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
+            CurrentUser.username = this.loginForm.get("username");
             alert("Login Successful!")
           } else {
             alert("Login Failed!")
