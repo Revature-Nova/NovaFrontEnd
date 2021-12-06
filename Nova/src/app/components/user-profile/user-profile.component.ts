@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { HttpClient } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
+
   form: FormGroup | any;
 
   constructor(
@@ -20,6 +21,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       username: sessionStorage.getItem('username'),
+
       email: '',
       state: '',
       favoriteGenre: '',
@@ -28,12 +30,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.form.getRawValue());
+    console.log(this.profileForm.getRawValue());
     this.http
+
       .post(
         'http://18.212.102.32:8082/user-service/Nova/user/profile/set',
         this.form.getRawValue()
       )
+
       .subscribe((res) => {
         console.log(res);
       });
