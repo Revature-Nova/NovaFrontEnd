@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
   submit(): void {
     console.log(this.form.getRawValue());
     this.http
-      .post('http://18.212.102.32:8082/user-service/Nova/user/profile', this.form.getRawValue())
+      .post('http://localhost:8082/user-service/Nova/user/profile', this.form.getRawValue())
       .subscribe((res) => {
         console.log(res);
       });

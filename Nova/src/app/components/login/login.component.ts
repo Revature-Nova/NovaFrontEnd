@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -31,10 +30,9 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
-        .subscribe(res => {
-          console.log(res);
-          if (res.token != null) {
-            sessionStorage.setItem("JWT", res.token);
+        .subscribe(resp => {
+          if (resp.headers.get("Authorization") != null) {
+            sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
             alert("Login Successful!")
           } else {
             alert("Login Failed!")

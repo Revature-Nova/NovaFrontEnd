@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.auth.registerUser(registerValues)
         .subscribe(res => {
-          if (res.status === "Successfully Registered!") {
+          if (res.body?.status === "Successfully Registered!") {
             alert(res.status)
           } else {
             alert("Register Failed!")
