@@ -22,13 +22,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-
   username: String | null = sessionStorage.getItem("username");
-
   message!: String;
   sent!: String;
   subscription!: Subscription;
-//   search: String = '';
+  test: String = '#Words, :)! ##More Words! ###.MD?';
   navbarOpen = false;
 
 
@@ -45,6 +43,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
       this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
+      // console.log('Before: ', this.test);
+      // this.test = this.test.replace(/#/g, '');
+      // console.log('After: ', this.test);
     })
   }
 
