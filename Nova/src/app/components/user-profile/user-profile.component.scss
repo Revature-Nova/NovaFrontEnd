@@ -38,7 +38,8 @@ a,
 h2,
 input,
 div,
-button {
+button,
+#user-info {
   background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -75,4 +76,25 @@ p {
 html {
   block-size: 100%;
   inline-size: 100%;
+}
+
+.container {
+  display: inline-block;
+  border-radius: 10px;
+  box-sizing: content-box;
+  block-size: fit-content;
+  width: fit-content;
+}
+
+.button-class {
+  margin-bottom: 10px;
+}
+
+#user-info {
+  position: relative;
+  right: 100px;
+  border: white;
+}
+
+.text-center {
 }

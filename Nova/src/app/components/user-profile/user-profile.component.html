@@ -1,6 +1,26 @@
+
+
 <div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
   <app-navbar></app-navbar>
-  <div class="text-center mt-5">
+  <div class="container">
+
+    <div class="img-div"><img src="C:\Users\Emmanuel\Desktop\Work\Repos\NovaFrontEnd\Nova\src\assets\account-icon-avatar-icon-person-icon.png" alt="user-profile-image"></div>
+
+
+    <div class="row mt-3">
+
+      <div id= "user-info" class="col-md mt-5 text-center">
+  
+        <h4>User Info</h4><br><br><br>
+        <p>Username</p><br>
+        <p>email</p><br>
+        <p>State</p><br>
+        <p>Favorite Genre</p><br>
+        <p>Message</p><br><br>
+      
+      </div>
+
+  <div class="text-center mt-5 col-md">
     <form [formGroup]="form" (submit)="submit()">
       <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
       <br />
@@ -44,8 +64,16 @@
         [placeholder]="'Message'"
         required
       /><br />
-
+        
+      <div class="button-class">
       <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+
     </form>
   </div>
+
+  
 </div>
+</div>
+</div>
+
