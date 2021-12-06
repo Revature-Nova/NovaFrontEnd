@@ -11,11 +11,11 @@ export class RawgService {
   constructor(private client: HttpClient) { }
 
   baseUrl = 'http://localhost:8090/Nova';
-  // baseUrl = 'http://http://18.212.102.32:8082/product-service/Nova';
+  // baseUrl = 'http://http://localhost:8082/product-service/Nova';
 
   httpOptions = {
     headers: new HttpHeaders({
-      
+
     }),
     responseType: 'text' as 'json'
   };
@@ -36,7 +36,7 @@ export class RawgService {
     } else {
         //Get server-side error
         message = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    } 
+    }
     console.log(message);
     return throwError(() => new Error(message));
   }

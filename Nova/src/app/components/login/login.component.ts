@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import {CurrentUser} from "../../classes/user";
 
 @Component({
   selector: 'app-login',
@@ -35,19 +36,22 @@ export class LoginComponent implements OnInit {
     const loginValues = this.loginForm.getRawValue();
 
     if (this.loginForm.valid) {
-      this.auth.login(loginValues).subscribe((res) => {
-        if (res.token != null) {
-          sessionStorage.setItem('JWT', res.token);
-          sessionStorage.setItem('userId', res.id.toString());
-          sessionStorage.setItem('username', res.username);
-          sessionStorage.setItem('email', res.email);
-          sessionStorage.setItem('firstName', res.firstName);
-          sessionStorage.setItem('lastName', res.lastName);
-          this.router.navigate(['products']);
-        } else {
-          alert('Login Failed!');
-        }
-      });
+      this.auth.login(loginValues)
+        .subscribe(resp => {
+          if (resp.headers.get("Authorization") != null) {
+            sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
+
+            CurrentUser.username = resp.body?.username;
+            CurrentUser.message = resp.body?.message;
+            CurrentUser.email = resp.body?.email;
+            CurrentUser.state = resp.body?.state;
+
+            this.router.navigate(['products']);
+            alert("Login Successful!")
+          } else {
+            alert("Login Failed!")
+          }
+        });
     }
 
     this.loginForm.reset();
