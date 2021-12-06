@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
-      username: '',
+      username: sessionStorage.getItem("username"),
       email: '',
       state: '',
       favoriteGenre: '',
@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
   submit(): void {
     console.log(this.form.getRawValue());
     this.http
-      .post('http://localhost:8089/Nova/user/userProfile', this.form.getRawValue())
+      .post('http://18.212.102.32:8082/user-service/Nova/user/profile', this.form.getRawValue())
       .subscribe((res) => {
         console.log(res);
       });

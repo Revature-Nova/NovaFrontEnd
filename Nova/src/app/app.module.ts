@@ -18,6 +18,7 @@ import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductComponent } from './components/product/product.component';
     RegisterComponent,
     LoginComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
