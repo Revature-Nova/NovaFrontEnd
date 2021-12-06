@@ -2,9 +2,8 @@
 <app-navbar></app-navbar>
 <div *ngIf='test(message +"")' ></div>
 
-    
+<div id="game-list" class="d-flex justify-content-center py-5">
 
-<div class="d-flex justify-content-center py-5">
     <label class="font-weight-bold font" for="filter"><h5>Filter:</h5></label>
     <select name="filter" class="mx-3" id="filter" [(ngModel)]="filter">
         <option value="genre">Genre</option>
@@ -37,10 +36,11 @@
 <br><br>
 
 <!--  Tentative Set-Up for Multiple Filters-->
- <div class="row">
-     <div class="col mx-5">
-       
- </div> 
+
+<div id="all-games"class="row">
+    <div class="col-2"></div>
+</div>
+
 
     <!-- Displays All Products Saved Within Our Database -->
 
