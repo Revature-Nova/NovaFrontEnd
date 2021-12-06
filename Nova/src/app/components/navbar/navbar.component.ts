@@ -6,7 +6,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
+
 
 
 @Component({
@@ -64,7 +64,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService, private auth: AuthService) {
+  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService) {
     this.initForm()
     this.productsService = _productsService;
   }
@@ -112,9 +112,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     console.log("clicked")
   }  
 
-  logout(){
-  this.auth.logout();
-  }
 }
 
 

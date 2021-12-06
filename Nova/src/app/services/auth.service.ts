@@ -34,6 +34,7 @@ export class AuthService {
     return this.client
       .post<returningUser>(this.url + 'login', returningUser, this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
+      
   }
 
   logout() {

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,6 +18,7 @@ import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductComponent } from './components/product/product.component';
     RegisterComponent,
     LoginComponent,
     ProductComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { ProductComponent } from './components/product/product.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule
 
   ],
 
