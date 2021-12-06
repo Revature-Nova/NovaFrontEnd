@@ -1,4 +1,7 @@
 <div *ngIf='test(message +"")' ></div>
+
+    
+
 <div class="d-flex justify-content-center py-5">
     <label class="font-weight-bold font" for="filter">Filter:</label>
     <select name="filter" class="mx-3" id="" [(ngModel)]="filter">
@@ -93,7 +96,7 @@
                     </div>
                     <div class="col-2 my-5">
                         <div class="card-body">
-                            <button class="btn btn-outline-primary" (click)="btnClick()">
+                            <button class="btn btn-outline-primary" (click)="btnClick(product)">
                                 Add To Cart
                             </button>
                         </div>
@@ -132,7 +135,7 @@
                     </div>
                     <div class="col md-auto my-5">
                         <div class="card-body">
-                            <button class="btn btn-outline-primary" (click)="btnClick()">
+                            <button class="btn btn-outline-primary" (click)="btnClick(product)">
                                 Add To Cart
                             </button>
                         </div>
