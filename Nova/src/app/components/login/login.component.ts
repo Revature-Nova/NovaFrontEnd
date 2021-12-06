@@ -1,22 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private auth: AuthService,
-    private router: Router
-  ) {}
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -35,19 +29,15 @@ export class LoginComponent implements OnInit {
     const loginValues = this.loginForm.getRawValue();
 
     if (this.loginForm.valid) {
-      this.auth.login(loginValues).subscribe((res) => {
-        if (res.token != null) {
-          sessionStorage.setItem('JWT', res.token);
-          sessionStorage.setItem('userId', res.id.toString());
-          sessionStorage.setItem('username', res.username);
-          sessionStorage.setItem('email', res.email);
-          sessionStorage.setItem('firstName', res.firstName);
-          sessionStorage.setItem('lastName', res.lastName);
-          this.router.navigate(['products']);
-        } else {
-          alert('Login Failed!');
-        }
-      });
+      this.auth.login(loginValues)
+        .subscribe(resp => {
+          if (resp.headers.get("Authorization") != null) {
+            sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
+            alert("Login Successful!")
+          } else {
+            alert("Login Failed!")
+          }
+        });
     }
 
     this.loginForm.reset();
