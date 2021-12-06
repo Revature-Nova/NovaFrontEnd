@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
-      username: sessionStorage.getItem("username"),
+      username: '',
       email: '',
       state: '',
       favoriteGenre: '',
@@ -35,7 +35,4 @@ export class UserProfileComponent implements OnInit {
         console.log(res);
       });
   }
-
-
-
 }

@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productsService: ProductsService;
   searchForm!: FormGroup;
 
-  username: String |null = sessionStorage.getItem("username");
+  username: String | null = sessionStorage.getItem("username");
 
   message!: String;
   sent!: String;
@@ -53,16 +53,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.showDropDown = false;
     }, 100)
     //console.log('...timeout passed.');
-    
+
   }
 
   //Check If the value of the form group exists or not
   toggleSearchOn() {
-    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
-      this.showDropDown = false;
-    } else {
-      this.showDropDown = true;
-    }
+    this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
   constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService, private router: Router) {
@@ -87,11 +83,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-    
+
   }
 
   selectValue(value: any) {
-    
+
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
     this.searchFor({'search': value})
@@ -111,7 +107,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
     console.log("clicked")
-  }  
+  }
 
   logout(){
     sessionStorage.clear();
