@@ -132,10 +132,11 @@ export class FilterComponent implements OnInit, OnDestroy {
     return 'works';
   }
 
+  // TODO: Change to persisted cart info
   btnClick(prod: Product){
-    this.btnBool = true;
-    this.cartStorage.push(prod);
-    sessionStorage.setItem('cart', JSON.stringify(this.cartStorage));
+    // this.btnBool = true;
+    // this.cartStorage.push(prod);
+    // sessionStorage.setItem('cart', JSON.stringify(this.cartStorage));
   }
 
   /* Function for filtering movies on the Front End
