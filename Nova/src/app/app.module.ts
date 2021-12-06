@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/filter/filter.component';
@@ -42,8 +41,7 @@ import { ProductComponent } from './components/product/product.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ActivatedRoute
-
+    
   ],
 
 

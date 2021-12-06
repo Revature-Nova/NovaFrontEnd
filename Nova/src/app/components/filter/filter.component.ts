@@ -38,10 +38,10 @@ export class FilterComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   sent!: String;
   
-  constructor(_productsService: ProductsService, private data: DataService, private _rawg: RawgService, private _router:Router) {
+  constructor(_productsService: ProductsService, private data: DataService, _rawg: RawgService, _router:Router) {
     this.productsService = _productsService;
-    // this.rawg = _rawg;
-    // this.router = _router;
+    this.rawg = _rawg;
+    this.router = _router;
   }
 
   ngOnInit(): void {
@@ -91,10 +91,9 @@ export class FilterComponent implements OnInit, OnDestroy {
           data = data.replace(/#/g, '');
         }
         ProductComponent.prototype.description = data;
-        console.log(data);
       });
       ProductComponent.prototype.product = product;
-      this.router.navigate(['/product']);
+      this.router.navigate(["/product"]);
     }
     this.btnBool = false;
   }

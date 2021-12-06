@@ -10,6 +10,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
+  { path: 'product', component: ProductComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'navbar', component: NavbarComponent,
@@ -18,7 +19,6 @@ const routes: Routes = [
       ] },
   { path: 'products', component: FilterComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: ':id', component: ProductComponent}
 
 ];
 
