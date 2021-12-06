@@ -6,7 +6,12 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
+<<<<<<< HEAD
 
+=======
+import { Router } from '@angular/router';
+import {AuthService} from "../../services/auth.service";
+>>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
 
 
 @Component({
@@ -21,11 +26,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-
+  // TODO: Change to persisted username
+  username: String | null = sessionStorage.getItem("username");
   message!: String;
   sent!: String;
   subscription!: Subscription;
-//   search: String = '';
+  test: String = '#Words, :)! ##More Words! ###.MD?';
   navbarOpen = false;
 
 
@@ -42,6 +48,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
       this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
+      // console.log('Before: ', this.test);
+      // this.test = this.test.replace(/#/g, '');
+      // console.log('After: ', this.test);
     })
   }
 
@@ -52,19 +61,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.showDropDown = false;
     }, 100)
     //console.log('...timeout passed.');
-    
+
   }
 
   //Check If the value of the form group exists or not
   toggleSearchOn() {
-    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
-      this.showDropDown = false;
-    } else {
-      this.showDropDown = true;
-    }
+    this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
+<<<<<<< HEAD
   constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService) {
+=======
+
+  constructor( private fb: FormBuilder,
+               private _productsService: ProductsService,
+               private data: DataService,
+               private router: Router,
+               private auth: AuthService) {
+
+>>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
     this.initForm()
     this.productsService = _productsService;
   }
@@ -86,11 +101,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-    
+
   }
 
   selectValue(value: any) {
-    
+
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
     this.searchFor({'search': value})
@@ -110,8 +125,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
     console.log("clicked")
-  }  
+  }
 
+<<<<<<< HEAD
+=======
+  logout(){
+    this.auth.logout()
+      .subscribe(resp => {
+        if (resp.body == 'Successful Logout')
+        {
+          sessionStorage.clear();
+          console.log("logged out")
+          // this.router.navigate(['/'])
+        }
+      })
+  }
+>>>>>>> 7910a54bf7f17bb6e89077c62a6ceedd3b65cd66
 }
 
 

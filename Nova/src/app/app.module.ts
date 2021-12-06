@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,7 +18,9 @@ import { UserProfileService } from './services/user-profile.service';
 import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { CartComponent } from './cart/cart.component';
+import {AuthService} from "./services/auth.service";
+import { InterceptorComponent } from './interceptor/interceptor.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     RegisterComponent,
     LoginComponent,
     ProductComponent,
-    LogoutComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,12 +45,12 @@ import { LogoutComponent } from './components/logout/logout.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
-
   ],
 
-
-  providers: [UserProfileService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi: true },
+      UserProfileService
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
