@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from 'src/app/services/auth.service';
+import {CurrentUser} from "../../classes/user";
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { AuthService } from "../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+ 
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {}
 
@@ -34,8 +36,14 @@ export class LoginComponent implements OnInit {
         .subscribe(resp => {
           if (resp.headers.get("Authorization") != null) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
+
+            CurrentUser.username = resp.body?.username;
+            CurrentUser.message = resp.body?.message;
+            CurrentUser.email = resp.body?.email;
+            CurrentUser.state = resp.body?.state;
+
+            this.router.navigate(['navbar']);
             alert("Login Successful!")
-            this.router.navigate(['/navbar']);
           } else {
             alert("Login Failed!")
           }
