@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent},
   { path: 'userProfile', component: UserProfileComponent},
   { path: 'products', component: FilterComponent },
-  { path: '/', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: "cart", component: CartComponent}
 ];
 
