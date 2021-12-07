@@ -2,15 +2,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SplitComponent } from './components/split/split.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './components/navbar/filter-pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -20,7 +18,8 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './cart/cart.component';
 import {AuthService} from "./services/auth.service";
-import { InterceptorComponent } from './interceptor/interceptor.component';
+import {InterceptorComponent} from "./components/interceptor/interceptor.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,10 +40,10 @@ import { InterceptorComponent } from './interceptor/interceptor.component';
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    NoopAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NoopAnimationsModule
   ],
 
   providers: [
