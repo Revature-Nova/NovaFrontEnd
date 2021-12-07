@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
 import { newUser, returningUser } from "../interfaces/user";
 import { catchError, Observable, retry, throwError } from "rxjs";
+import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,9 @@ export class AuthService {
   }
 
   logout(): Observable<HttpResponse<any>>{
+    const cart:Product[] = JSON.parse(sessionStorage.getItem('cart') + '');
     return this.client
-      .get(this.url + 'logout',{observe: 'response'})
+      .put(this.url + 'logout', cart, {observe: 'response'})
       .pipe(catchError(this.handleError))
   }
 }

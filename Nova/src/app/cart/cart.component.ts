@@ -46,10 +46,12 @@ export class CartComponent implements OnInit {
     //       });
     //     }
     //   })
-    //   console.log(this.productList)
+      console.log(this.productList)
+      if (sessionStorage.getItem('cart')) {this.productList = JSON.parse(sessionStorage.getItem('cart') +'')}
+      
   }
   
-  productList: Product[] = JSON.parse(sessionStorage.getItem('cart') +'');
+  productList: Product[] = [];
   productService: ProductsService;
   subscription!: Subscription;
   quant = 0;
@@ -66,5 +68,20 @@ export class CartComponent implements OnInit {
     this.tax = this.st * 0.08;
     this.total = this.tax + this.st;
     return 1;
+  }
+  // const index = myArray.indexOf(key, 0);
+  //   if (index > -1) {
+  //  myArray.splice(index, 1);
+
+  
+  removeCart(prod: Product) {
+    let rm = prod.productId;
+    let index = this.productList.indexOf(prod);
+    console.log(index);
+    this.productList.splice(index, 1);
+    sessionStorage.setItem('cart', JSON.stringify(this.productList))
+
+    // this.productList.splice(this.productList.findIndex((product => product.productId === rm), 1))
+
   }
 }
