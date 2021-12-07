@@ -8,9 +8,9 @@ import { profile } from '../interfaces/profile';
 })
 export class UserProfileService {
 
-  // private apiUrl = "http://18.212.102.32:8089/Nova/"
-  private apiUrl = 'http://localhost:8082/user-service/Nova'
-  
+
+  private apiUrl = "http://18.212.102.32:8089/Nova/"
+
 
 
   private httpOptions = {
@@ -39,6 +39,7 @@ export class UserProfileService {
     return throwError(() => error)
   }
 
+
   displayProfiles():Observable<any>{
     return this.http.get<any>(
       this.apiUrl + '/user/profile/all',
@@ -46,5 +47,6 @@ export class UserProfileService {
     )
     .pipe(retry(1), catchError(this.handleError))
   }
+
 
 }

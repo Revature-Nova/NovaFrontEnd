@@ -16,6 +16,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class UserProfileComponent implements OnInit {
 
   form: FormGroup | any;
+  email!: string | undefined;
+  state!: string | undefined;
+  favoriteGenre!: string | undefined;
+  message!: string | undefined;
+
+  icon = "/assets/blue_user_client_person_12581.ico";
 
   username = CurrentUser.username;
   email!: '';
@@ -32,11 +38,14 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    UserProfileComponent.prototype.email = CurrentUser.email;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
 
+    this.form = this.formBuilder.group({
       username: CurrentUser.username,
       email: CurrentUser.email,
-
       state: '',
       favoriteGenre: '',
       message: '',
@@ -46,16 +55,13 @@ export class UserProfileComponent implements OnInit {
   submit() {
     console.log(this.form.getRawValue());
     this.http
-
-      .post<profile>(
-        'http://localhost:8082/user-service/Nova/user/profile/set',
+      .post<profile>('http://18.212.102.32:8082/user-service/Nova/user/profile/set',
         this.form.getRawValue(),
         { observe: 'response' }
       )
 
       .subscribe((res) => {
-        console.log(res);
-        CurrentUser.email = res.body?.email;
+        CurrentUser.email = CurrentUser.email = res.body?.email;
         CurrentUser.state = res.body?.state;
         CurrentUser.favoriteGenre = res.body?.favoriteGenre;
         CurrentUser.message = res.body?.message;

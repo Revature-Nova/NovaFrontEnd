@@ -90,7 +90,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-
   }
 
   selectValue(value: any) {
@@ -119,6 +118,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(){
     this.auth.logout()
       .subscribe(resp => {
+        console.log(resp);
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();

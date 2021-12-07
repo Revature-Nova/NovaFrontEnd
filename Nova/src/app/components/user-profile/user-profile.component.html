@@ -1,19 +1,23 @@
-<div
-  id="login-page"
-  style="height: 100vh; top: 0px; position: fixed; width: 100%"
->
+
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
   <app-navbar></app-navbar>
   <div class="container">
-    
+
+    <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
+
+
     <div class="row mt-3">
-      <div id="user-info" class="col-md mt-5 text-center">
-        <h4>User Info</h4>
-        <div class="userIcon"><fa-icon [icon]="userIcon"></fa-icon></div>
+
+      <div id= "my-profile" class="col-md mt-5 text-center">
+
+        <h4>My Profile</h4><br><br><br>
         <p>{{ username }}</p>
-        <p>{{ email }}</p>
-        <p>{{ state }}</p>
-        <p>{{ favoriteGenre }}</p>
-        <p>{{ message }}</p>
+        <p>{{ email }}</p><br>
+        <p>{{ state }}</p><br>
+        <p>{{ favoriteGenre }}</p><br>
+        <p>{{ message }}</p><br><br>
+
+
       </div>
 
       <div class="text-center mt-5">
@@ -65,22 +69,21 @@
             required
           />
 
-          <input
-            type="text"
-            formControlName="message"
-            class="form-control"
-            id="message"
-            placeholder="Message"
-            message="value"
-            [(ngModel)]="message"
-            required
-          />
-        </div>
-          <div class="button-class">
-            <button class="btn btn-primary" type="submit">Submit</button>
-          </div>
-        </form>
+
+      <input
+        [type]="'text'"
+        [formControlName]="'message'"
+        [class]="'form-control'"
+        [id]="'message'"
+        [placeholder]="'Message'"
+        required
+      /><br />
+
+      <div class="button-class">
+      <button class="btn btn-primary" type="submit" >Submit</button>
+
       </div>
     </div>
   </div>
+
 </div>
