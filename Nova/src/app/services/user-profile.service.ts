@@ -36,4 +36,6 @@ export class UserProfileService {
     console.log(error)
     return throwError(() => error)
   }
+
+  
 }

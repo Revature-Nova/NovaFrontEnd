@@ -88,6 +88,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.data.changeMessage(a);
     this.data.changeSent('true');
     
+    
   }
 
   selectValue(value: any) {

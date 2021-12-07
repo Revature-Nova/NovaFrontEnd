@@ -31,6 +31,8 @@ export class FilterComponent implements OnInit, OnDestroy {
   btnFilter: boolean = false;
   productsService: ProductsService;
   testArrCreate: String[] = [];
+  cart: Product[] = JSON.parse(sessionStorage.getItem('cart') +'');
+
   rawg!: RawgService;
   router!: Router;
   selectedProduct!: Product;
@@ -44,6 +46,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    
     this.productsService.getProducts().subscribe((data) => {
       for (const item of data) {
         let {
@@ -131,11 +134,10 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.data.changeSent('false');
     return 'works';
   }
-
-  btnClick(prod: Product){
+  btnClick(prod: Product) {
     this.btnBool = true;
-    this.cartStorage.push(prod);
-    sessionStorage.setItem('cart', JSON.stringify(this.cartStorage));
+    this.cart.push(prod);
+    sessionStorage.setItem('cart', JSON.stringify(this.cart))
   }
 
   /* Function for filtering movies on the Front End
@@ -181,7 +183,6 @@ export class FilterComponent implements OnInit, OnDestroy {
         this.ratings = new Set(this.products.map(p => p.rating).sort());
       }
     })
-
   }
 
   ngOnDestroy() {

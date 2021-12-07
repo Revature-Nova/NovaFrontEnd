@@ -1,0 +1,96 @@
+#login-page {
+    overflow-y: scroll;
+  }
+  .card {
+    background-color: #0a1d2f;
+    &:hover {
+      // transition-timing-function: ease-in-out;
+      // transition: 0.25s;
+      // margin: 25px;
+      background-color: #0a1d2f;
+    }
+  }
+  
+  h3,
+  label {
+    color: #0a1d2f;
+  }
+  
+  #login-page {
+    overflow-y: scroll;
+  }
+  
+  button,
+  select,
+  option,
+  h5,
+  h4,
+  option,
+  p,
+  h1,
+  h6,
+  th,
+  td
+  
+    
+   {
+    background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+  }
+  
+  body {
+    background: hsl(204 100% 5%);
+  
+    min-block-size: 100%;
+    min-inline-size: 100%;
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+    font-family: system-ui;
+    font-size: min(200%, 5vmin);
+  }
+  
+  h1,
+  p,
+  body {
+    margin: 0;
+  }
+  
+  p {
+    font-family: "Dank Mono", ui-monospace, monospace;
+  }
+  
+  html {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+  .row {
+  // display: inline-block;
+  // border-radius: 10px;
+  // box-sizing: content-box;
+  // block-size: fit-content;
+  // width: fit-content;
+
+  }
+  #cardHeader {
+
+  }
+  #price{
+    float: right;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab {
+    text-align: left;
+  }
+  .tabl {
+    text-align:center;
+  }
+  .tabR {
+    text-align: center;
+  }

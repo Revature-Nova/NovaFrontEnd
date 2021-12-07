@@ -6,11 +6,14 @@
         
         <input id='search' formControlName='search' type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" (click)='toggleSearchOn()' (keyup)='toggleSearchOn()' (blur)='toggleSearchOff()'>
 
-        <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchFor('a')">
-            <!-- This shows the search icon next to the input; The icon needs to be imported
-            into the typescript file -->
-            <fa-icon [icon]="faSearch" >
-            </fa-icon>
+        <button
+          class="btn btn-outline-primary my-2 my-sm-0"
+          (click)="searchFor('a')"
+          routerLink="/products"
+        >
+          <!-- This shows the search icon next to the input; The icon needs to be imported
+              into the typescript file -->
+          <fa-icon [icon]="faSearch"> </fa-icon>
         </button>
 
         <div *ngIf='showDropDown' class="searchDropdown">
