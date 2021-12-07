@@ -1,17 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import {CurrentUser} from "../../classes/user";
 >>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
+=======
+import {CurrentUser} from "../../classes/user";
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
 
 
 @Component({
@@ -27,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productsService: ProductsService;
   searchForm!: FormGroup;
 <<<<<<< HEAD
+<<<<<<< HEAD
   // TODO: Change to persisted username
   username: String | null = sessionStorage.getItem("username");
   message!: String;
@@ -34,11 +39,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   test: String = '#Words, :)! ##More Words! ###.MD?';
 =======
+=======
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
   username: String | undefined = CurrentUser.username;
   message!: String;
   sent!: String;
   subscription!: Subscription;
+<<<<<<< HEAD
 >>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
+=======
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
   navbarOpen = false;
 
 
@@ -77,19 +87,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
+=======
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
   constructor( private fb: FormBuilder,
                private _productsService: ProductsService,
                private data: DataService,
                private router: Router,
+<<<<<<< HEAD
 <<<<<<< HEAD
                private auth: AuthService) {
 
 =======
                private auth: AuthService){
 >>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
+=======
+               private auth: AuthService){
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
     this.initForm()
     this.productsService = _productsService;
   }
@@ -111,7 +128,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-
   }
 
   selectValue(value: any) {
@@ -141,18 +157,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.auth.logout()
       .subscribe(resp => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();
           console.log("logged out")
           // this.router.navigate(['/'])
 =======
+=======
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
         console.log(resp);
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();
           this.router.navigate(['/']);
+<<<<<<< HEAD
 >>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
+=======
+>>>>>>> c4a4129bac5fffb1c32577fbd7e5ef321928b9b0
         }
       })
   }

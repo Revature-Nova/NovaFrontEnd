@@ -1,9 +1,9 @@
+
 <div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
   <app-navbar></app-navbar>
-<<<<<<< HEAD
   <div class="text-center mt-5">
     <form [formGroup]="profileForm" (submit)="submit()">
-=======
+
   <div class="container">
 
     <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
@@ -14,6 +14,7 @@
       <div id= "my-profile" class="col-md mt-5 text-center">
 
         <h4>My Profile</h4><br><br><br>
+        <p>{{ username }}</p>
         <p>{{ email }}</p><br>
         <p>{{ state }}</p><br>
         <p>{{ favoriteGenre }}</p><br>
@@ -21,42 +22,55 @@
 
       </div>
 
-  <div class="text-center mt-5 col-md">
-    <form [formGroup]="form" (submit)="submit()">
->>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
-      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
-      <br />
-      <br />
+      <div class="text-center mt-5">
+        <form [formGroup]="form" (submit)="submit()">
+          <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+      
 
-      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
-    [placeholder]="'Username'" required><br>-->
+          <!-- <input
+            type='text'
+            formControlName='username'
+            class='form-control'
+            id='username'
+            placeholder='Username'
+            username= "value"
+            [(ngModel)] = "username"
+            required
+          /> -->
+            <div class = "inputFields">
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            email="value"
+            [(ngModel)]="email"
+            required
+          />
 
-      <input
-        [type]="'text'"
-        [formControlName]="'email'"
-        [class]="'form-control'"
-        [id]="'email'"
-        [placeholder]="'Email'"
-        required
-      /><br />
+          <input
+            type="text"
+            formControlName="state"
+            class="form-control"
+            id="state"
+            placeholder="State"
+            state="value"
+            [(ngModel)]="state"
+            required
+          />
 
-      <input
-        [type]="'text'"
-        [formControlName]="'state'"
-        [class]="'form-control'"
-        [id]="'state'"
-        [placeholder]="'State'"
-        required
-      /><br />
+          <input
+            type="text"
+            formControlName="favoriteGenre"
+            class="form-control"
+            id="favoriteGenre"
+            placeholder="FavoriteGenre"
+            favoriteGenre="value"
+            [(ngModel)]="favoriteGenre"
+            required
+          />
 
-      <input
-        [type]="'text'"
-        [formControlName]="'favoriteGenre'"
-        [class]="'form-control'"
-        [id]="'favoriteGenre'"
-        [placeholder]="'FavoriteGenre'"
-        required
-      /><br />
 
       <input
         [type]="'text'"
@@ -69,13 +83,9 @@
 
       <div class="button-class">
       <button class="btn btn-primary" type="submit" >Submit</button>
-      </div>
 
-    </form>
+      </div>
+    </div>
   </div>
 
-
 </div>
-</div>
-</div>
-
