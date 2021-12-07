@@ -1,6 +1,9 @@
 
 <div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
   <app-navbar></app-navbar>
+  <div class="text-center mt-5">
+    <form [formGroup]="profileForm" (submit)="submit()">
+
   <div class="container">
 
     <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
@@ -16,7 +19,6 @@
         <p>{{ state }}</p><br>
         <p>{{ favoriteGenre }}</p><br>
         <p>{{ message }}</p><br><br>
-
 
       </div>
 

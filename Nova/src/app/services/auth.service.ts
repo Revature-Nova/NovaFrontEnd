@@ -39,6 +39,7 @@ export class AuthService {
   logout(): Observable<HttpResponse<any>>{
     const cart:Product[] = JSON.parse(sessionStorage.getItem('cart') + '');
     return this.client
+
       .put(this.url + 'logout', cart, {observe: 'response'})
       .pipe(catchError(this.handleError))
   }

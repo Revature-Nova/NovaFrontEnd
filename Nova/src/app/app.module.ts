@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './cart/cart.component';
+import {AuthService} from "./services/auth.service";
 import {InterceptorComponent} from "./components/interceptor/interceptor.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -47,8 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi: true },
-    UserProfileService
-  ],
+      UserProfileService
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

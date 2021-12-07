@@ -24,10 +24,6 @@ export class UserProfileComponent implements OnInit {
   icon = "/assets/blue_user_client_person_12581.ico";
 
   username = CurrentUser.username;
-  email!: '';
-  state!: '';
-  favoriteGenre!: '';
-  message!: '';
   userIcon = faUser;
 
 
@@ -59,7 +55,6 @@ export class UserProfileComponent implements OnInit {
         this.form.getRawValue(),
         { observe: 'response' }
       )
-
       .subscribe((res) => {
         CurrentUser.email = CurrentUser.email = res.body?.email;
         CurrentUser.state = res.body?.state;

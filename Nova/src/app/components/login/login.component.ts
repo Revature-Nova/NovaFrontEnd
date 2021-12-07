@@ -1,8 +1,9 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 import {CurrentUser} from "../../classes/user";
 
 @Component({
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
         .subscribe(resp => {
           if (resp.status == HttpStatusCode.Accepted) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
-    
+
+            alert("Login Successful!")
+
             CurrentUser.username = resp.body?.username;
             CurrentUser.message = resp.body?.message;
             CurrentUser.email = resp.body?.email;
@@ -45,6 +48,7 @@ export class LoginComponent implements OnInit {
           
             this.router.navigate(['products']);
            
+
           } else {
             alert("Login Failed!")
           }

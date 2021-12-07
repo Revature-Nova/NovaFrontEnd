@@ -68,7 +68,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                private _productsService: ProductsService,
                private data: DataService,
                private router: Router,
-               private auth: AuthService){
+               private auth: AuthService) {
     this.initForm()
     this.productsService = _productsService;
   }
@@ -118,11 +118,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(){
     this.auth.logout()
       .subscribe(resp => {
-        console.log(resp);
+
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();
-          this.router.navigate(['/']);
+          console.log("logged out")
+          this.router.navigate(['/'])
         }
       })
   }
