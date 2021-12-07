@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
         .subscribe(resp => {
-          if (resp.status == HttpStatusCode.Accepted) {
+          if (resp.status === HttpStatusCode.Ok.valueOf()) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
 
             alert("Login Successful!")
@@ -45,10 +45,8 @@ export class LoginComponent implements OnInit {
             CurrentUser.message = resp.body?.message;
             CurrentUser.email = resp.body?.email;
             CurrentUser.state = resp.body?.state;
-          
-            this.router.navigate(['products']);
-           
 
+            this.router.navigate(['products']);
           } else {
             alert("Login Failed!")
           }
