@@ -7,6 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
+
   // baseUrl = 'http://localhost:8090/Nova';
   baseUrl = 'http://localhost:8082/product-service/Nova'
 
