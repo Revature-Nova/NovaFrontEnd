@@ -1,36 +1,56 @@
-input#username {
-  width: 50%;
+input#username{
+  position: relative;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#email {
-  width: 50%;
+  position: relative;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#state {
-  width: 50%;
+  position: relative;
+  top: 8px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#favoriteGenre {
-  width: 50%;
+  position: relative;
+  top: 16px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#message {
-  width: 50%;
+  position: relative;
+  top: 24px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
+}
+
+.inputFields{
+  position: relative;
+  top: 20px;
+}
+
+div.userIcon{
+  position: relative;
+  top: 5px;
+  font-size: 50px;
+  color: rgb(45, 45, 124);
+}
+
+button.btn.btn-primary{
+  position: relative;
+  top: 55px;
 }
 
 article,
@@ -38,9 +58,10 @@ a,
 h2,
 input,
 div,
-button {
+button,
+#user-info {
   background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
-  -webkit-background-clip: text;
+  -webkit-background-clip:text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -75,4 +96,22 @@ p {
 html {
   block-size: 100%;
   inline-size: 100%;
+}
+
+.container {
+  display: inline-block;
+  border-radius: 10px;
+  box-sizing: content-box;
+  block-size: fit-content;
+  width: fit-content;
+}
+
+.button-class {
+  margin-bottom: 10px;
+}
+
+#user-info {
+  position: relative;
+  right: 100px;
+  border: white;
 }
