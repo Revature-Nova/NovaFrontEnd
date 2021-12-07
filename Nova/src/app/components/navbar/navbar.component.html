@@ -2,7 +2,6 @@
   <a routerLink="/products" routerLinkActive="active" class="navbar-brand"
     ><article><h4>NOVA</h4></article></a
   >
-
   <ul class="navbar-nav ml-auto">
     <li>
       <div
@@ -12,8 +11,7 @@
       >
         <div class="navbar-nav" routerLinkActive="active current">
           <a class="nav-link mr-5" routerLink="../cart">Cart</a>
-          <a
-            class="nav-link mr-5"
+          <a class="nav-link mr-5"
             data-bs-toggle="modal"
             data-bs-target="modal"
             routerLink="../userProfile"
@@ -47,7 +45,7 @@
           (click)="toggleSearchOn()"
           (keyup)="toggleSearchOn()"
           (blur)="toggleSearchOff()"
-        />
+        >
 
         <button
           class="btn btn-outline-primary my-2 my-sm-0"

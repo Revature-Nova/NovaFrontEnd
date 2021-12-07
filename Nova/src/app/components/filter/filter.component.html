@@ -1,28 +1,30 @@
 <div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
 <app-navbar></app-navbar>
 <div *ngIf='test(message +"")' ></div>
+
 <div id="game-list" class="d-flex justify-content-center py-5">
+
     <label class="font-weight-bold font" for="filter"><h5>Filter:</h5></label>
-    <select name="filter" class="mx-3" id="" [(ngModel)]="filter">
+    <select name="filter" class="mx-3" id="filter" [(ngModel)]="filter">
         <option value="genre">Genre</option>
         <option value="platform">Platform</option>
         <option value="rating">Rating</option>
     </select>
 
     <!-- Added Dynmaic Insertion of Filter Values -->
-    <select *ngIf="filter == 'genre'" name="value" id="" [(ngModel)]="value">
+    <select *ngIf="filter == 'genre'" name="value" id="genre" [(ngModel)]="value">
         <option *ngFor="let genre of genres" [value]="genre">
             {{genre}}
         </option>
     </select>
 
-    <select *ngIf="filter == 'platform'" name="value" id="" [(ngModel)]="value">
+    <select *ngIf="filter == 'platform'" name="value" id="platform" [(ngModel)]="value">
         <option *ngFor="let platform of platforms" [value]="platform">
             {{platform}}
         </option>
     </select>
 
-    <select *ngIf="filter == 'rating'" name="value" id="" [(ngModel)]="value">
+    <select *ngIf="filter == 'rating'" name="value" id="rating" [(ngModel)]="value">
         <option *ngFor="let rating of ratings" [value]="rating">
             {{rating}}
         </option>
@@ -34,14 +36,16 @@
 <br><br>
 
 <!--  Tentative Set-Up for Multiple Filters-->
+
 <div id="all-games"class="row">
     <div class="col-2"></div>
 </div>
 
+
     <!-- Displays All Products Saved Within Our Database -->
 
 
-    <!-- <div *ngIf='products.length == 0'>No available Products with that name (searches are case sensitive)</div> 
+    <!-- <div *ngIf='products.length == 0'>No available Products with that name (searches are case sensitive)</div>
     Above Code is basic logic for showing something if there no products to display. If used, be sure to format -->
 
     <div class="container" *ngIf="!btnFilter">

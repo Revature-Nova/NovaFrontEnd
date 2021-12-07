@@ -5,11 +5,12 @@ import { catchError, Observable, retry, throwError } from "rxjs";
 import { Product } from '../interfaces/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private client: HttpClient) {}
 
-  constructor(private client:HttpClient) {}
+  // private url = 'http://18.212.102.32:8082/user-service/Nova/';
 
   private url = 'http://18.212.102.32:8082/user-service/Nova/';
 
@@ -32,6 +33,7 @@ export class AuthService {
     return this.client
       .post<returningUser>(this.url + 'login', returningUser, {observe: 'response'})
       .pipe(retry(1), catchError(this.handleError));
+      
   }
 
   logout(): Observable<HttpResponse<any>>{

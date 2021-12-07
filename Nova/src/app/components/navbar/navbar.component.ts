@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/interfaces/product';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
 import {CurrentUser} from "../../classes/user";
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   sent!: String;
   subscription!: Subscription;
   navbarOpen = false;
+
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
@@ -60,11 +61,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   //Check If the value of the form group exists or not
   toggleSearchOn() {
-    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
-      this.showDropDown = false;
-    } else {
-      this.showDropDown = true;
-    }
+    this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
   constructor( private fb: FormBuilder,

@@ -19,9 +19,14 @@
 }
 
 button.btn.delete {
-  background-color: #fcb414;
-  color: #ffffff;
+    background-color: #FCB414;
+    color:#FFFFFF;
 }
+
+button.btn.btn-warning{
+    border: none;
+}
+
 
 nav {
   background-color: #0a1d2f;
@@ -52,7 +57,6 @@ h4 {
 
 body {
   background: hsl(204 100% 5%);
-
   min-block-size: 100%;
   min-inline-size: 100%;
   box-sizing: border-box;

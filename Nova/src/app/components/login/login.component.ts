@@ -1,28 +1,25 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import {CurrentUser} from "../../classes/user";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+ 
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private auth: AuthService,
-    private router: Router
-  ) {}
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: '',
-      password: '',
+      password: ''
     });
   }
 
@@ -38,14 +35,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
         .subscribe(resp => {
-          if (resp.headers.get("Authorization") != null) {
+          if (resp.status == HttpStatusCode.Accepted) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
-
+    
             CurrentUser.username = resp.body?.username;
             CurrentUser.message = resp.body?.message;
             CurrentUser.email = resp.body?.email;
             CurrentUser.state = resp.body?.state;
-
+          
             this.router.navigate(['products']);
            
           } else {
