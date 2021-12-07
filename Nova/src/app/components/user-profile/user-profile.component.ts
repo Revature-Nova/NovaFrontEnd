@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { HttpClient } from '@angular/common/http';
+import {CurrentUser} from "../../classes/user";
+import {profile} from "../../interfaces/profile";
 
 @Component({
   selector: 'app-user-profile',
@@ -11,6 +13,12 @@ import { HttpClient } from '@angular/common/http';
 export class UserProfileComponent implements OnInit {
 
   form: FormGroup | any;
+  email!: string | undefined;
+  state!: string | undefined;
+  favoriteGenre!: string | undefined;
+  message!: string | undefined;
+
+  icon = "/assets/blue_user_client_person_12581.ico";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,9 +27,17 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    UserProfileComponent.prototype.email = CurrentUser.email;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+    UserProfileComponent.prototype.state = CurrentUser.state;
+
     this.form = this.formBuilder.group({
+<<<<<<< HEAD
       username: sessionStorage.getItem('username'),
 
+=======
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
       email: '',
       state: '',
       favoriteGenre: '',
@@ -32,14 +48,23 @@ export class UserProfileComponent implements OnInit {
   submit(): void {
     console.log(this.profileForm.getRawValue());
     this.http
+<<<<<<< HEAD
 
       .post(
         'http://18.212.102.32:8082/user-service/Nova/user/profile/set',
         this.form.getRawValue()
       )
 
+=======
+      .post<profile>('http://18.212.102.32:8082/user-service/Nova/user/profile/set',
+        this.form.getRawValue(),
+        {observe: 'response'})
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
       .subscribe((res) => {
-        console.log(res);
+        CurrentUser.email = CurrentUser.email = res.body?.email;
+        CurrentUser.state = res.body?.state;
+        CurrentUser.favoriteGenre = res.body?.favoriteGenre;
+        CurrentUser.message = res.body?.message;
       });
   }
 }

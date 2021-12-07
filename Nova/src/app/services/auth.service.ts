@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpEvent, HttpHandler,
-  HttpHeaders,
-  HttpInterceptor,
-  HttpRequest,
-  HttpResponse
-} from "@angular/common/http";
-import {newUser, returningUser} from "../interfaces/user";
-import {catchError, Observable, retry, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
+import { newUser, returningUser } from "../interfaces/user";
+import { catchError, Observable, retry, throwError } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +17,9 @@ export class AuthService {
   }
 
   registerUser( newUser: newUser ): Observable<HttpResponse<newUser>> {
-      return this.client
-        .post<newUser>(this.url + 'register', newUser, {observe: 'response'})
-        .pipe(retry(1), catchError(this.handleError));
+    return this.client
+      .post<newUser>(this.url + 'register', newUser, {observe: 'response'})
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   login( returningUser : returningUser ): Observable<HttpResponse<returningUser>> {
@@ -35,7 +30,8 @@ export class AuthService {
 
   logout(): Observable<HttpResponse<any>>{
     return this.client
-      .put<any>(this.url + 'logout', null,{observe: 'response'})
+      // .put<any>(this.url + 'logout', null,{observe: 'response'})
+      .get(this.url + 'logout',{observe: 'response'})
       .pipe(catchError(this.handleError))
   }
 }

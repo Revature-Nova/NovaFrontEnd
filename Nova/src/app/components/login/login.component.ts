@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
+=======
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import {CurrentUser} from "../../classes/user";
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
 
 @Component({
   selector: 'app-login',
@@ -33,7 +41,18 @@ export class LoginComponent implements OnInit {
         .subscribe(resp => {
           if (resp.headers.get("Authorization") != null) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
+<<<<<<< HEAD
             alert("Login Successful!")
+=======
+
+            CurrentUser.username = resp.body?.username;
+            CurrentUser.message = resp.body?.message;
+            CurrentUser.email = resp.body?.email;
+            CurrentUser.state = resp.body?.state;
+
+            this.router.navigate(['products']);
+           
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
           } else {
             alert("Login Failed!")
           }

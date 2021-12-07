@@ -8,6 +8,10 @@ import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
+<<<<<<< HEAD
+=======
+import {CurrentUser} from "../../classes/user";
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
 
 
 @Component({
@@ -22,12 +26,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
+<<<<<<< HEAD
   // TODO: Change to persisted username
   username: String | null = sessionStorage.getItem("username");
   message!: String;
   sent!: String;
   subscription!: Subscription;
   test: String = '#Words, :)! ##More Words! ###.MD?';
+=======
+  username: String | undefined = CurrentUser.username;
+  message!: String;
+  sent!: String;
+  subscription!: Subscription;
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
   navbarOpen = false;
 
 
@@ -65,13 +76,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
   constructor( private fb: FormBuilder,
                private _productsService: ProductsService,
                private data: DataService,
                private router: Router,
+<<<<<<< HEAD
                private auth: AuthService) {
 
+=======
+               private auth: AuthService){
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
     this.initForm()
     this.productsService = _productsService;
   }
@@ -122,11 +140,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(){
     this.auth.logout()
       .subscribe(resp => {
+<<<<<<< HEAD
         if (resp.body == 'Successful Logout')
         {
           sessionStorage.clear();
           console.log("logged out")
           // this.router.navigate(['/'])
+=======
+        console.log(resp);
+        if (resp.body == 'Successful Logout')
+        {
+          sessionStorage.clear();
+          this.router.navigate(['/']);
+>>>>>>> 30f0efedd78b6e5ba50acd146caa1a40ae835da4
         }
       })
   }
