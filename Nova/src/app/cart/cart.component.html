@@ -12,11 +12,12 @@
     <div class='container'>
       
       <div class='card' *ngIf ='productList.length'>
+        <h1 id='cartHead'>Cart</h1>
       <table >
-        <tr><th class='tab'>Cart</th></tr>
+        
         <tr *ngFor='let product of productList'>
           <td class ='tabl'>{{product.title}}</td>
-          <td><img src="{{product.imageUrl}}" height='100'width='100'></td>
+          <td><img class='tImg'src="{{product.imageUrl}}" height='100'width='100'></td>
           <td class ='tabR'>{{product.price}}</td>
           <td><button class="btn-med btn-primary btn" (click)='removeCart(product)'>X</button></td>
           <td class="divider"><hr /></td>
