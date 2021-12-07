@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       username: CurrentUser.username,
-      email: '',
+      email: CurrentUser.email,
       state: '',
       favoriteGenre: '',
       message: '',
