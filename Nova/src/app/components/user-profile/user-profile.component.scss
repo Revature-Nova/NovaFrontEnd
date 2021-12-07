@@ -1,31 +1,56 @@
-
+input#username{
+  position: relative;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
 
 input#email {
-  width: 50%;
+  position: relative;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#state {
-  width: 50%;
+  position: relative;
+  top: 8px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#favoriteGenre {
-  width: 50%;
+  position: relative;
+  top: 16px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
 input#message {
-  width: 50%;
+  position: relative;
+  top: 24px;
   max-width: 330px;
   padding: 15px;
   margin: auto;
+}
+
+.inputFields{
+  position: relative;
+  top: 20px;
+}
+
+div.userIcon{
+  position: relative;
+  top: 5px;
+  font-size: 50px;
+  color: rgb(45, 45, 124);
+}
+
+button.btn.btn-primary{
+  position: relative;
+  top: 55px;
 }
 
 article,

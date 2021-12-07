@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -34,15 +35,15 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
         .subscribe(resp => {
-          if (resp.headers.get("Authorization") != null) {
+          if (resp.status == HttpStatusCode.Accepted) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
-
+    
             CurrentUser.username = resp.body?.username;
             CurrentUser.message = resp.body?.message;
             CurrentUser.email = resp.body?.email;
             CurrentUser.state = resp.body?.state;
-
-            this.router.navigate(['navbar']);
+          
+            this.router.navigate(['products']);
             alert("Login Successful!")
           } else {
             alert("Login Failed!")

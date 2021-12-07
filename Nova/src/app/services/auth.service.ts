@@ -40,5 +40,4 @@ export class AuthService {
       .put<any>(this.url + 'logout', null,{observe: 'response'})
       .pipe(catchError(this.handleError))
   }
-
 }
