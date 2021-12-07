@@ -3,6 +3,7 @@ input#firstName {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+
 }
 
 input#lastName {
@@ -33,11 +34,17 @@ input#password {
   margin: auto;
 }
 
+div.entireField{
+  position: relative;
+  top: 50px;
+}
+
 #back-button {
   position: absolute;
-  top: 0%;
-  left: 0;
+  top: 10px;
+  left: 5px;
   width: 120px;
+  font-weight: 600;
 }
 
 article,
@@ -59,7 +66,6 @@ h4 {
 
 body {
   background: hsl(204 100% 5%);
-
   min-block-size: 100%;
   min-inline-size: 100%;
   box-sizing: border-box;
@@ -83,3 +89,4 @@ html {
   block-size: 100%;
   inline-size: 100%;
 }
+

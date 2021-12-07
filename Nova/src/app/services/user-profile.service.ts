@@ -8,7 +8,9 @@ import { profile } from '../interfaces/profile';
 })
 export class UserProfileService {
 
-  private apiUrl = "http://localhost:8089/Nova/"
+
+  private apiUrl = "http://18.212.102.32:8089/Nova/"
+
 
 
   private httpOptions = {
@@ -18,14 +20,14 @@ export class UserProfileService {
 
   /**
    * @author Erika Johnson
-   * @param profile 
-   * @returns 
+   * @param profile
+   * @returns
    *Logged in users are able to create their own User Profile
    */
 
   userProfile(profile: profile) :Observable<profile> {
     return this.http.post<profile>(
-      this.apiUrl + 'user/userProfile', 
+      this.apiUrl + 'user/userProfile',
       JSON.stringify(profile),
       this.httpOptions
     )
@@ -36,4 +38,15 @@ export class UserProfileService {
     console.log(error)
     return throwError(() => error)
   }
+
+
+  displayProfiles():Observable<any>{
+    return this.http.get<any>(
+      this.apiUrl + '/user/profile/all',
+      this.httpOptions
+    )
+    .pipe(retry(1), catchError(this.handleError))
+  }
+
+
 }

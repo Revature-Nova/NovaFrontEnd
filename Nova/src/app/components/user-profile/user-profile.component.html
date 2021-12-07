@@ -2,50 +2,92 @@
   <app-navbar></app-navbar>
   <div class="text-center mt-5">
     <form [formGroup]="form" (submit)="submit()">
-      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
-      <br />
-      <br />
 
-      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
-    [placeholder]="'Username'" required><br>-->
+    <div class="container">
 
-      <input
-        [type]="'text'"
-        [formControlName]="'email'"
-        [class]="'form-control'"
-        [id]="'email'"
-        [placeholder]="'Email'"
-        required
-      /><br />
+      <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
 
-      <input
-        [type]="'text'"
-        [formControlName]="'state'"
-        [class]="'form-control'"
-        [id]="'state'"
-        [placeholder]="'State'"
-        required
-      /><br />
 
-      <input
-        [type]="'text'"
-        [formControlName]="'favoriteGenre'"
-        [class]="'form-control'"
-        [id]="'favoriteGenre'"
-        [placeholder]="'FavoriteGenre'"
-        required
-      /><br />
+      <div class="row mt-3">
 
-      <input
-        [type]="'text'"
-        [formControlName]="'message'"
-        [class]="'form-control'"
-        [id]="'message'"
-        [placeholder]="'Message'"
-        required
-      /><br />
+        <div id= "my-profile" class="col-md mt-5 text-center">
 
-      <button class="btn btn-primary" type="submit">Submit</button>
+          <h4>My Profile</h4><br><br><br>
+          <p>{{ username }}</p>
+          <p>{{ email }}</p><br>
+          <p>{{ state }}</p><br>
+          <p>{{ favoriteGenre }}</p><br>
+          <p>{{ message }}</p><br><br>
+
+        </div>
+
+        <div class="text-center mt-5">
+          <form [formGroup]="form" (submit)="submit()">
+            <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+
+
+              <!-- <input
+                type='text'
+                formControlName='username'
+                class='form-control'
+                id='username'
+                placeholder='Username'
+                username= "value"
+                [(ngModel)] = "username"
+                required
+              /> -->
+
+                <div class = "inputFields">
+              <input
+                type="text"
+                formControlName="email"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                email="value"
+                [(ngModel)]="email"
+                required
+              />
+
+              <input
+                type="text"
+                formControlName="state"
+                class="form-control"
+                id="state"
+                placeholder="State"
+                state="value"
+                [(ngModel)]="state"
+                required
+              />
+
+              <input
+                type="text"
+                formControlName="favoriteGenre"
+                class="form-control"
+                id="favoriteGenre"
+                placeholder="FavoriteGenre"
+                favoriteGenre="value"
+                [(ngModel)]="favoriteGenre"
+                required
+              />
+
+              <input
+                [type]="'text'"
+                [formControlName]="'message'"
+                [class]="'form-control'"
+                [id]="'message'"
+                [placeholder]="'Message'"
+                required
+              /><br />
+
+          <div class="button-class">
+            <button class="btn btn-primary" type="submit" >Submit</button>
+          </div>
+                </div>
+          </form>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
