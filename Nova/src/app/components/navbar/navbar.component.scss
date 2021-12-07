@@ -4,7 +4,7 @@
   z-index: 1;
   width: 13em;
   height: 8em;
-  background: #f6f6f6;
+  background: black;
   overflow-y: auto;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .searchObj:hover {
-  background: #c2c2c2;
+  cursor: pointer;
 }
 
 button.btn.delete {
@@ -24,7 +24,7 @@ button.btn.delete {
 }
 
 nav {
-  background-color: #c5c6c7;
+  background-color: #0a1d2f;
 }
 
 // h4,
@@ -36,33 +36,43 @@ nav {
 //     0 20px 20px rgba(0, 0, 0, 0.15);
 // }
 
-h4 {
-  font: 100px "PublicGothicCircular";
-  color: #66fcf1;
-  text-shadow: #45a29e 1px 1px 0, #45a29e 2px 2px 0, #45a29e 3px 3px 0,
-    #45a29e 4px 4px 0, #45a29e 5px 5px 0, #45a29e 6px 6px 0, #45a29e 7px 7px 0,
-    #45a29e 8px 8px 0, #45a29e 9px 9px 0, #45a29e 10px 10px 0,
-    #45a29e 11px 11px 0, #45a29e 12px 12px 0, #45a29e 13px 13px 0,
-    #45a29e 14px 14px 0, #45a29e 15px 15px 0, #45a29e 16px 16px 0,
-    #45a29e 17px 17px 0, #45a29e 18px 18px 0, #45a29e 19px 19px 0,
-    #45a29e 20px 20px 0, #45a29e 21px 21px 0, #45a29e 22px 22px 0,
-    #45a29e 23px 23px 0, #45a29e 24px 24px 0, #45a29e 25px 25px 0,
-    #45a29e 26px 26px 0, #45a29e 27px 27px 0, #45a29e 28px 28px 0,
-    #45a29e 29px 29px 0, #45a29e 30px 30px 0, #45a29e 31px 31px 0,
-    #45a29e 32px 32px 0, #45a29e 33px 33px 0, #45a29e 34px 34px 0,
-    #45a29e 35px 35px 0, #45a29e 36px 36px 0, #45a29e 37px 37px 0,
-    #45a29e 38px 38px 0, #45a29e 39px 39px 0, #45a29e 40px 40px 0,
-    #45a29e 41px 41px 0, #45a29e 42px 42px 0, #45a29e 43px 43px 0,
-    #45a29e 44px 44px 0, #45a29e 45px 45px 0, #45a29e 46px 46px 0,
-    #45a29e 47px 47px 0, #45a29e 48px 48px 0, #45a29e 49px 49px 0,
-    #45a29e 50px 50px 0, #45a29e 51px 51px 0, #45a29e 52px 52px 0,
-    #45a29e 53px 53px 0, #45a29e 54px 54px 0;
+article,
+a,
+div {
+  background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
-h4:after {
-  color: rgb(103, 184, 227);
-  left: 100px;
-  top: 100px;
-  text-shadow: none;
-  position: absolute;
+h4 {
+  font-size: 5vmin;
+  line-height: 1.1;
+}
+
+body {
+  background: hsl(204 100% 5%);
+
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  font-family: system-ui;
+  font-size: min(200%, 5vmin);
+}
+
+h1,
+p,
+body {
+  margin: 0;
+}
+
+p {
+  font-family: "Dank Mono", ui-monospace, monospace;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
 }

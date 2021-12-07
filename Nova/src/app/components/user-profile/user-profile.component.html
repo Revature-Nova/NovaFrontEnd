@@ -1,11 +1,76 @@
-<div class="text-center mt-5" >
-  <form [formGroup]="form" (submit)="submit()">
-    <h1>Type in your information</h1>
-    <input formControlName="username" class="form-Control" id="floatingInput" placeholder="Username"><br>
-    <input formControlName="email" class="form-Control" id="floatingInput" placeholder="Email"><br>
-    <input formControlName="state" class="form-Control" id="floatingInput" placeholder="State"><br>
-    <input formControlName="favoriteGenre" class="form-Control" id="floatingInput" placeholder="Favorite Genre"><br>
-    <input formControlName="message" class="form-Control" id="floatingInput" placeholder="Tell us about yourself">
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-</form>
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+  <app-navbar></app-navbar>
+  <div class="container">
+
+    <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
+
+
+    <div class="row mt-3">
+
+      <div id= "my-profile" class="col-md mt-5 text-center">
+
+        <h4>My Profile</h4><br><br><br>
+        <p>{{ email }}</p><br>
+        <p>{{ state }}</p><br>
+        <p>{{ favoriteGenre }}</p><br>
+        <p>{{ message }}</p><br><br>
+
+      </div>
+
+  <div class="text-center mt-5 col-md">
+    <form [formGroup]="form" (submit)="submit()">
+      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
+      <br />
+      <br />
+
+      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
+    [placeholder]="'Username'" required><br>-->
+
+      <input
+        [type]="'text'"
+        [formControlName]="'email'"
+        [class]="'form-control'"
+        [id]="'email'"
+        [placeholder]="'Email'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'state'"
+        [class]="'form-control'"
+        [id]="'state'"
+        [placeholder]="'State'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'favoriteGenre'"
+        [class]="'form-control'"
+        [id]="'favoriteGenre'"
+        [placeholder]="'FavoriteGenre'"
+        required
+      /><br />
+
+      <input
+        [type]="'text'"
+        [formControlName]="'message'"
+        [class]="'form-control'"
+        [id]="'message'"
+        [placeholder]="'Message'"
+        required
+      /><br />
+
+      <div class="button-class">
+      <button class="btn btn-primary" type="submit" >Submit</button>
+      </div>
+
+    </form>
+  </div>
+
+
 </div>
+</div>
+</div>
+
