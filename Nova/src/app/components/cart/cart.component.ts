@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Product} from '../interfaces/product';
-import {ProductsService} from '../services/products.service';
+import {Product} from '../../interfaces/product';
+import {ProductsService} from '../../services/products.service';
 
 @Component({
   selector: 'app-cart',
