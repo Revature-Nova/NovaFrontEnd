@@ -3,6 +3,7 @@ import {UserProfileService} from 'src/app/services/user-profile.service';
 import {CurrentUser} from '../../classes/user';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
+import * as ts from "typescript/lib/tsserverlibrary";
 
 
 @Component({

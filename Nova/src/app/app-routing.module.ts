@@ -5,7 +5,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {CurrentProfileComponent} from './components/current-profile/current-profile.component';
 import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from "./components/login/login.component";
-import {CartComponent} from './components/cart/cart.component';
+import {CartComponent} from './cart/cart.component';
 import {AllUsersDisplayComponent} from "./components/all-users-display/all-users-display.component";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 

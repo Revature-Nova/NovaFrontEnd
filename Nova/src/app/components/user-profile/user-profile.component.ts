@@ -7,9 +7,8 @@ import {profileInfo} from "../../classes/user";
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss'],
+  styleUrls: ['./user-profile.component.scss']
 })
-
 export class UserProfileComponent {
   username!: string;
   email!: string;
@@ -21,6 +20,7 @@ export class UserProfileComponent {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   populateProfile(profile: Observable<HttpResponse<profileInfo>>){

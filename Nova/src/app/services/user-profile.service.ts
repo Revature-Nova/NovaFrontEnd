@@ -9,7 +9,10 @@ import {FormGroup} from "@angular/forms";
   providedIn: 'root'
 })
 export class UserProfileService {
+
+
   private apiUrl = "http://18.212.102.32:8082/user-service/Nova/user"
+
 
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json;charset=utf-8'})

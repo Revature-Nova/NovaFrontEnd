@@ -1,0 +1,47 @@
+<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+  <app-navbar></app-navbar>
+  <div class='row'>
+    <div
+      class='cartRow mt-3 col-6'
+      style='width: 30%;'
+    >
+      <div *ngIf='!productList.length' class='card' style="width: 80%; height: 300px; margin-left: 200px;">
+        <h1 class='card-header d-flex justify-content-center'>Cart is Empty</h1>
+        <h6 class='card-body d-flex justify-content-center'>Click the Nova Icon to Continue Browsing</h6>
+      </div>
+      <div *ngIf='productList.length' class='container card border border-primary'>
+
+        <div class='card' *ngIf ='productList.length'>
+          <h1 id='cartHead'>Cart</h1>
+          <table >
+
+            <tr *ngFor='let product of productList'>
+              <td class ='tabl'>{{product.title}}</td>
+              <td><img class='tImg'src="{{product.imageUrl}}" height='100'width='100'></td>
+              <td class ='tabR'>{{product.price}}</td>
+              <td><button class="btn-med btn-primary btn" (click)='removeCart(product)'>X</button></td>
+              <td class="divider"><hr /></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf='productList.length' class='newClass col-4' style='position: -webkit-sticky;'>
+
+      <div *ngIf='checkFunc()' class='card border border-primary' style='width: 80%; height: 250px'>
+        <h4  class='card-header'>Order Summary</h4>
+        <div class='card-body' style="display: inline;">
+          <h5 class='mb-3'>Items in Cart: {{quant}}</h5>
+          <h5 class='my-3'>Subtotal: ${{st.toFixed(2)}}</h5>
+          <h5 class='my-3'>Tax: ${{tax.toFixed(2)}}</h5>
+          <h4 class=' my-4'>Total: ${{total.toFixed(2)}}</h4>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
