@@ -57,8 +57,10 @@ export class RegisterComponent implements OnInit {
         .subscribe(res => {
           if (res.body?.status === "Successfully Registered!") {
             alert(res.body?.status)
+            this.router.navigate(['login']);
           } else {
             alert("Register Failed!")
+            this.router.navigate(['register']);
           }
         });
     }
