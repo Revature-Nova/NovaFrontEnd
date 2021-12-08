@@ -10,7 +10,7 @@ import {identifiers, profileInfo} from "../classes/user";
 export class UserProfileService {
 
 
-  private apiUrl = "http://localhost:8082/user-service/Nova/user"
+  private apiUrl = "http://18.212.102.32:8082/user-service/Nova/user"
 
 
   private httpOptions = {
