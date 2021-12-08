@@ -32,8 +32,6 @@ export class CurrentProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getMyProfile();
-
     this.form = this.formBuilder.group({
       email: '',
       state: '',
@@ -41,34 +39,35 @@ export class CurrentProfileComponent implements OnInit {
       message: '',
     });
 
-    CurrentProfileComponent.prototype.email = CurrentUser.email;
-    CurrentProfileComponent.prototype.state = CurrentUser.state;
-    CurrentProfileComponent.prototype.favoriteGenre = CurrentUser.favoriteGenre;
-    CurrentProfileComponent.prototype.message = CurrentUser.message;
+    this.getMyProfile();
+    this.setPrototypes();
   }
 
   submit() {
-    console.log(this.form.getRawValue());
-    this.http
-      .post<profile>(this.url + '/profile/set',
-        this.form.getRawValue(),
-        { observe: 'response' }
-      )
+    return this.profile.updateProfile(this.form)
       .subscribe((res) => {
-        CurrentUser.email = res.body?.email;
-        CurrentUser.state = res.body?.state;
-        CurrentUser.favoriteGenre = res.body?.favoriteGenre;
-        CurrentUser.message = res.body?.message;
+        this.setDataFromResponse(res);
       });
   }
 
   getMyProfile(){
     return this.profile.currentProfile()
       .subscribe(res => {
-        CurrentUser.email = res.body?.email;
-        CurrentUser.state = res.body?.state;
-        CurrentUser.favoriteGenre = res.body?.favoriteGenre;
-        CurrentUser.message = res.body?.message;
+        this.setDataFromResponse(res);
     })
+  }
+
+  setDataFromResponse(res: any){
+    CurrentProfileComponent.prototype.email = CurrentUser.email = res.body?.email;
+    CurrentProfileComponent.prototype.state = CurrentUser.state = res.body?.state;
+    CurrentProfileComponent.prototype.favoriteGenre = CurrentUser.favoriteGenre = res.body?.favoriteGenre;
+    CurrentProfileComponent.prototype.message = CurrentUser.message = res.body?.message;
+  }
+
+  setPrototypes(){
+    CurrentProfileComponent.prototype.email = CurrentUser.email;
+    CurrentProfileComponent.prototype.state = CurrentUser.state;
+    CurrentProfileComponent.prototype.favoriteGenre = CurrentUser.favoriteGenre;
+    CurrentProfileComponent.prototype.message = CurrentUser.message;
   }
 }

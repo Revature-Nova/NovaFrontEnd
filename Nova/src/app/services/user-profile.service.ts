@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {catchError, Observable, retry, throwError} from 'rxjs';
 import {profile} from '../interfaces/profile';
 import {identifiers, profileInfo} from "../classes/user";
+import {FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,13 @@ export class UserProfileService {
     return this.http
       .get<profileInfo>(this.apiUrl + '/profile/' + username, {observe: 'response'})
       .pipe(retry(1), catchError(this.handleError))
+  }
+
+  updateProfile(form: FormGroup){
+    return this.http
+      .post<profile>(this.apiUrl + '/profile/set',
+        form.getRawValue(),
+        { observe: 'response' }
+      );
   }
 }
