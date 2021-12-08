@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { RawgService } from './rawg.service';
+import {RawgService} from './rawg.service';
 
 describe('RawgService', () => {
   let service: RawgService;

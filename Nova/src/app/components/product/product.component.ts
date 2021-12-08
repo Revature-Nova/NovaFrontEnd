@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { RawgService } from 'src/app/services/rawg.service';
-import { Product } from 'src/app/interfaces/product';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {RawgService} from 'src/app/services/rawg.service';
+import {Product} from 'src/app/interfaces/product';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
