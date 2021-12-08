@@ -1,51 +1,18 @@
-<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+<div id="profile-page" style="height: 100vh; top: 0px; position: fixed; width: 100%">
   <app-navbar></app-navbar>
-  <div class="text-center mt-5">
-    <form [formGroup]="form" (submit)="submit()">
-      <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
-      <br />
-      <br />
+  <div class="container">
 
-      <!--<input [type] = "'text'" [formControlName] = "'username'" [class]="'form-control'" [id]="'username'"
-    [placeholder]="'Username'" required><br>-->
-
-      <input
-        [type]="'text'"
-        [formControlName]="'email'"
-        [class]="'form-control'"
-        [id]="'email'"
-        [placeholder]="'Email'"
-        required
-      /><br />
-
-      <input
-        [type]="'text'"
-        [formControlName]="'state'"
-        [class]="'form-control'"
-        [id]="'state'"
-        [placeholder]="'State'"
-        required
-      /><br />
-
-      <input
-        [type]="'text'"
-        [formControlName]="'favoriteGenre'"
-        [class]="'form-control'"
-        [id]="'favoriteGenre'"
-        [placeholder]="'FavoriteGenre'"
-        required
-      /><br />
-
-      <input
-        [type]="'text'"
-        [formControlName]="'message'"
-        [class]="'form-control'"
-        [id]="'message'"
-        [placeholder]="'Message'"
-        required
-      /><br />
-
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
+    <div class="row mt-3">
+      <div id="user-info" class="col-md mt-5 text-center">
+        <h4>My Profile</h4>
+        <div class="userIcon"><fa-icon [icon]="userIcon"></fa-icon></div>
+        <br/>
+        <p>Username: {{ username }}</p>
+        <p>Email: {{ email }}</p>
+        <p>State: {{ state }}</p>
+        <p>Favorite Genre: {{ favoriteGenre }}</p>
+        <p>Message: {{ message }}</p>
+      </div>
+    </div>
   </div>
 </div>

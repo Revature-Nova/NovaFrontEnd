@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Product } from '../interfaces/product';
-import { catchError, Observable, throwError } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Product} from '../interfaces/product';
+import {catchError, Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-
-  // baseUrl = 'http://localhost:8090/Nova';
-  baseUrl = 'http://localhost:8082/product-service/Nova'
+  baseUrl = 'http://18.212.102.32:8082/product-service/Nova'
 
   constructor(private client: HttpClient) { }
 

@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/interfaces/product';
-import { DataService } from 'src/app/services/data.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {faSearch, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import {ProductsService} from 'src/app/services/products.service';
+import {Product} from 'src/app/interfaces/product';
+import {DataService} from 'src/app/services/data.service';
+import {Subscription} from 'rxjs';
 import {AuthService} from "../../services/auth.service";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {HttpStatusCode} from "@angular/common/http";
+import {CurrentUser} from "../../classes/user";
 
 
 @Component({
@@ -22,15 +23,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-
-  username: String | null = sessionStorage.getItem("username");
-
+  username: String | undefined = CurrentUser.username;
   message!: String;
   sent!: String;
   subscription!: Subscription;
-//   search: String = '';
   navbarOpen = false;
 
+  constructor( private fb: FormBuilder,
+               private _productsService: ProductsService,
+               private data: DataService,
+               private router: Router,
+               private auth: AuthService) {
+    this.initForm()
+    this.productsService = _productsService;
+  }
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(data => {
@@ -54,24 +60,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.showDropDown = false;
     }, 100)
-    //console.log('...timeout passed.');
-
   }
 
-  //Check If the value of the form group exists or not
   toggleSearchOn() {
     this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
-  }
-
-
-  constructor( private fb: FormBuilder,
-               private _productsService: ProductsService,
-               private data: DataService,
-               private router: Router,
-               private auth: AuthService) {
-
-    this.initForm()
-    this.productsService = _productsService;
   }
 
   initForm(): FormGroup {
@@ -91,7 +83,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-
   }
 
   selectValue(value: any) {
@@ -120,11 +111,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout(){
     this.auth.logout()
       .subscribe(resp => {
-        if (resp.body == 'Successful Logout')
+        if (resp.status == HttpStatusCode.Ok)
         {
           sessionStorage.clear();
-          console.log("logged out")
-          // this.router.navigate(['/'])
+          this.router.navigate(['/'])
         }
       })
   }

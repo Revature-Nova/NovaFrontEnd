@@ -15,16 +15,19 @@
           <a class="nav-link mr-5"
             data-bs-toggle="modal"
             data-bs-target="modal"
-            routerLink="../userProfile"
-            >{{ username }}</a
-          >
+            routerLink="../user/profile"
+            >{{ username }}</a>
+          <a class="nav-link mr-5"
+             data-bs-toggle="modal"
+             data-bs-target="modal"
+             routerLink="../profile/all"
+          >Find a User</a>
           <a
             class="nav-link mr-5"
             role="button"
             (click)="logout()"
             routerLink="/"
-            >Sign Out</a
-          >
+            >Sign Out</a>
         </div>
       </div>
     </li>
