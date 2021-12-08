@@ -10,7 +10,7 @@ export class RawgService {
 
   constructor(private client: HttpClient) { }
 
-  baseUrl = 'http://18.212.102.32:8090/Nova';
+  baseUrl = 'http://localhost:8090/Nova';
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -3,6 +3,9 @@ input#password {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  position: relative;
+  top: 20px;
+  font-weight: 600;
 }
 
 input#username {
@@ -10,15 +13,72 @@ input#username {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  position: relative;
+  top: 10px;
+  font-weight: 640;
 }
 
-.title{
-  color:#FFFFFF;
+#signbtn{
   position: relative;
-  top: 55px;
+  top: 32px;
+  font-weight: 600;
 }
 
-div.container{
+#registerbtn{
   position: relative;
-  top:60px;
+  top: 42px;
+  font-weight: 600;
+}
+
+div.entireField{
+  position: relative;
+  top: 30px;
+}
+
+article,
+a,
+h2,
+input,
+div,
+button {
+  background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+h4 {
+  font-size: 5vmin;
+  line-height: 1.1;
+}
+
+body {
+  background: hsl(204 100% 5%);
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  font-family: system-ui;
+  font-size: min(200%, 5vmin);
+}
+
+h1,
+p,
+body {
+  margin: 0;
+}
+
+p {
+  font-family: "Dank Mono", ui-monospace, monospace;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.linkContainer {
+  position: relative;
+  top:6px;
 }

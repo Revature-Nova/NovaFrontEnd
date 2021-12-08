@@ -23,7 +23,7 @@ export class CurrentProfileComponent implements OnInit {
 
   username = CurrentUser.username;
 
-  private url = 'http://18.212.102.32:8082/user-service/Nova/user';
+  private url = 'http://localhost:8082/user-service/Nova/user';
 
   constructor(
     private formBuilder: FormBuilder,
