@@ -1,0 +1,25 @@
+<div
+  id="user-display"
+  style="height: 100vh; top: 0px; position: fixed; width: 100%"
+>
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="row mt-3">
+      <div id="title" class="col-md mt-5 text-center">
+        <h1>All Users</h1>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <span *ngFor="let i of username">
+        <div id="username" class="mat-action-row">
+          <button class="btn btn-success" (click)="fetchProfile(i)" routerLink="/user/profile/{{ i }}">
+            {{ i }}
+          </button>
+        </div>
+        <br/>
+      </span>
+  </div>
+  </div>
+</div>

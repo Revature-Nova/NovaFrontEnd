@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
-import { newUser, returningUser } from "../interfaces/user";
-import { catchError, Observable, retry, throwError } from "rxjs";
+import {newUser, returningUser} from "../interfaces/user";
+import {catchError, Observable, retry, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private client: HttpClient) {}
+  
+  private url = 'http://18.212.102.32:8082/user-service/Nova/';
 
-  // private url = 'http://18.212.102.32:8082/user-service/Nova/';
-
-  private url = 'http://localhost:8082/user-service/Nova/';
+  private httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -32,12 +34,16 @@ export class AuthService {
     return this.client
       .post<returningUser>(this.url + 'login', returningUser, {observe: 'response'})
       .pipe(retry(1), catchError(this.handleError));
-      
   }
 
   logout(): Observable<HttpResponse<any>>{
     return this.client
-      .put<any>(this.url + 'logout', null,{observe: 'response'})
-      .pipe(catchError(this.handleError))
+      .get(this.url + 'logout', {observe: 'response'})
+      .pipe(catchError(this.handleError));
+
+    //const cart:Product[] = JSON.parse(sessionStorage.getItem('cart') + '');
+      // return this.client
+      // .put(this.url + 'logout', cart, {observe: 'response'})
+      // .pipe(catchError(this.handleError))
   }
 }

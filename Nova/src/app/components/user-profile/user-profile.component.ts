@@ -1,65 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { UserProfileService } from 'src/app/services/user-profile.service';
-import { HttpClient } from '@angular/common/http';
-
-import { CurrentUser } from '../../classes/user';
-import { profile } from '../../interfaces/profile';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import {Component} from '@angular/core';
+import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {Observable} from "rxjs";
+import {HttpResponse} from "@angular/common/http";
+import {profileInfo} from "../../classes/user";
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit {
 
-  form: FormGroup | any;
-
-  username = CurrentUser.username;
-  email!: '';
-  state!: '';
-  favoriteGenre!: '';
-  message!: '';
+export class UserProfileComponent {
+  username!: string;
+  email!: string;
+  state!: string;
+  favoriteGenre!: string;
+  message!: string;
   userIcon = faUser;
 
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private profile: UserProfileService,
-    private http: HttpClient
-  ) {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
 
-      username: CurrentUser.username,
-      email: CurrentUser.email,
-
-      state: '',
-      favoriteGenre: '',
-      message: '',
-    });
   }
 
-  submit() {
-    console.log(this.form.getRawValue());
-    this.http
-
-      .post<profile>(
-        'http://localhost:8082/user-service/Nova/user/profile/set',
-        this.form.getRawValue(),
-        { observe: 'response' }
-      )
-
-      .subscribe((res) => {
-        console.log(res);
-        CurrentUser.email = res.body?.email;
-        CurrentUser.state = res.body?.state;
-        CurrentUser.favoriteGenre = res.body?.favoriteGenre;
-        CurrentUser.message = res.body?.message;
-      });
+  populateProfile(profile: Observable<HttpResponse<profileInfo>>){
+    profile.subscribe(res => {
+      UserProfileComponent.prototype.username = Object.values(res.body?.Username).join("");
+      UserProfileComponent.prototype.message = Object.values(res.body?.Message).join("");
+      UserProfileComponent.prototype.state = Object.values(res.body?.State).join("");
+      UserProfileComponent.prototype.email = Object.values(res.body?.Email).join("");
+      UserProfileComponent.prototype.favoriteGenre = Object.values(res.body?.FavoriteGenre).join("");
+    });
   }
 
   displayProfiles() {

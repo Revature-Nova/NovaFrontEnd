@@ -1,8 +1,8 @@
-import { HttpStatusCode } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import {HttpStatusCode} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 import {CurrentUser} from "../../classes/user";
 
 @Component({
@@ -35,18 +35,19 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(loginValues)
         .subscribe(resp => {
-          if (resp.status == HttpStatusCode.Accepted) {
+          if (resp.status === HttpStatusCode.Ok) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
-    
-            CurrentUser.username = resp.body?.username;
-            CurrentUser.message = resp.body?.message;
-            CurrentUser.email = resp.body?.email;
-            CurrentUser.state = resp.body?.state;
-          
-            this.router.navigate(['products']);
+            sessionStorage.setItem("Username", <string>resp.body?.username);
             alert("Login Successful!")
+
+            CurrentUser.Username = resp.body?.username;
+            CurrentUser.Message = resp.body?.message;
+            CurrentUser.Email = resp.body?.email;
+            CurrentUser.State = resp.body?.state;
+
+            this.router.navigate(['products']);
           } else {
-            alert("Login Failed!")
+            alert("Login Failed!");
           }
         });
     }
