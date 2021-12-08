@@ -2,15 +2,16 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {newUser, returningUser} from "../interfaces/user";
 import {catchError, Observable, retry, throwError} from "rxjs";
+import {Product} from "../interfaces/product";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private client: HttpClient) {}
-  
+
   private url = 'http://18.212.102.32:8082/user-service/Nova/';
-  
+
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

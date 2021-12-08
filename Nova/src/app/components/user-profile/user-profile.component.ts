@@ -32,10 +32,4 @@ export class UserProfileComponent {
       UserProfileComponent.prototype.favoriteGenre = Object.values(res.body?.FavoriteGenre).join("");
     });
   }
-
-  displayProfiles() {
-    this.profile.displayProfiles().subscribe((res) => {
-      console.log(res);
-    });
-  }
 }
