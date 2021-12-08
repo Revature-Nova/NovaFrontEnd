@@ -1,9 +1,9 @@
 export class CurrentUser {
-  public static username: string | undefined | '';
-  public static email: string | undefined | '';
-  public static favoriteGenre: string | undefined | '';
-  public static state: string | undefined | '';
-  public static message: string | undefined | '';
+  public static Username: string | '' | any;
+  public static Email: string | '' | any;
+  public static FavoriteGenre: string | '' | any;
+  public static State: string | '' | any;
+  public static Message: string | '' | any;
 }
 
 export class identifiers {

@@ -17,7 +17,6 @@ export class UserProfileComponent {
   message!: string;
   userIcon = faUser;
 
-
   constructor() { }
 
   ngOnInit(): void {

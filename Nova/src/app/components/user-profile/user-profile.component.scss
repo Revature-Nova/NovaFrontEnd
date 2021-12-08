@@ -1,3 +1,5 @@
+// TODO: Centered card styling
+
 div.userIcon{
   position: relative;
   top: 5px;
@@ -11,10 +13,11 @@ h2,
 input,
 div,
 button,
-#user-info {
+#user-page {
   background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
   -webkit-background-clip:text;
   -webkit-text-fill-color: transparent;
+  -webkit-text-decoration-color: #FFFFFF;
   text-align: center;
 }
 
@@ -60,4 +63,19 @@ html {
   box-sizing: content-box;
   block-size: fit-content;
   width: fit-content;
+}
+
+.inputFields{
+  position: relative;
+  top: 20px;
+}
+
+.card{
+  text-align: left;
+  margin: 15px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 150px;
+  background: rgba(161, 187, 183, 0.85);
+  -webkit-text-fill-color: #11304f;
 }

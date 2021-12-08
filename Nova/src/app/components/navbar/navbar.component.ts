@@ -8,7 +8,6 @@ import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpStatusCode} from "@angular/common/http";
-import {CurrentUser} from "../../classes/user";
 
 
 @Component({
@@ -23,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-  username: String | undefined = CurrentUser.username;
+  username!: String | null;
   message!: String;
   sent!: String;
   subscription!: Subscription;
@@ -39,6 +38,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // To avoid nulls
+    const username = sessionStorage.getItem("Username");
+
+    this.username = username;
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
       for(const item of data) {
@@ -92,6 +95,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.searchFor({'search': value})
   }
 
+  getCookie(name: string) {
+    let username: string | undefined;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      username = parts.pop()?.split(';').shift();
+    }
+
+    return username;
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

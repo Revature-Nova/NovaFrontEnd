@@ -139,7 +139,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.btnBool = true;
     this.cart.push(prod);
     sessionStorage.setItem('cart', JSON.stringify(this.cart))
-
+    document.getElementById("add-to-cart")!.innerHTML = "Added";
   }
 
   /* Function for filtering movies on the Front End

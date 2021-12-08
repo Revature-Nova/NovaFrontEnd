@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
         .subscribe(resp => {
           if (resp.status === HttpStatusCode.Ok) {
             sessionStorage.setItem("JWT", <string>resp.headers.get("Authorization"));
-
+            sessionStorage.setItem("Username", <string>resp.body?.username);
             alert("Login Successful!")
 
-            CurrentUser.username = resp.body?.username;
-            CurrentUser.message = resp.body?.message;
-            CurrentUser.email = resp.body?.email;
-            CurrentUser.state = resp.body?.state;
+            CurrentUser.Username = resp.body?.username;
+            CurrentUser.Message = resp.body?.message;
+            CurrentUser.Email = resp.body?.email;
+            CurrentUser.State = resp.body?.state;
 
             this.router.navigate(['products']);
           } else {

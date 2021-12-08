@@ -3,6 +3,7 @@ import {UserProfileService} from 'src/app/services/user-profile.service';
 import {CurrentUser} from '../../classes/user';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
+import * as ts from "typescript/lib/tsserverlibrary";
 
 
 @Component({
@@ -13,15 +14,13 @@ import {faUser} from '@fortawesome/free-solid-svg-icons';
 export class CurrentProfileComponent implements OnInit {
 
   form: FormGroup | any;
-  email!: string | "" | undefined;
-  state!: string | "" | undefined;
-  favoriteGenre!: string | "" | undefined;
-  message!: string | "" | undefined;
+  email!: string | any;
+  state!: string | any;
+  favoriteGenre!: string | any;
+  message!: string | any;
   userIcon = faUser;
 
-  username = CurrentUser.username;
-
-  private url = 'http://18.212.102.32:8082/user-service/Nova/user';
+  username = sessionStorage.getItem("Username");
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,7 +36,6 @@ export class CurrentProfileComponent implements OnInit {
     });
 
     this.getMyProfile();
-    this.setPrototypes();
   }
 
   submit() {
@@ -55,16 +53,16 @@ export class CurrentProfileComponent implements OnInit {
   }
 
   setDataFromResponse(res: any){
-    CurrentProfileComponent.prototype.email = CurrentUser.email = res.body?.email;
-    CurrentProfileComponent.prototype.state = CurrentUser.state = res.body?.state;
-    CurrentProfileComponent.prototype.favoriteGenre = CurrentUser.favoriteGenre = res.body?.favoriteGenre;
-    CurrentProfileComponent.prototype.message = CurrentUser.message = res.body?.message;
-  }
+    CurrentUser.Email = res.body?.Email;
+    this.email = Object.values(CurrentUser.Email).pop();
 
-  setPrototypes(){
-    CurrentProfileComponent.prototype.email = CurrentUser.email;
-    CurrentProfileComponent.prototype.state = CurrentUser.state;
-    CurrentProfileComponent.prototype.favoriteGenre = CurrentUser.favoriteGenre;
-    CurrentProfileComponent.prototype.message = CurrentUser.message;
+    CurrentUser.Message = res.body?.Message;
+    this.message = Object.values(CurrentUser.Message).pop();
+
+    CurrentUser.FavoriteGenre = res.body?.FavoriteGenre;
+    this.favoriteGenre = Object.values(CurrentUser.FavoriteGenre).pop();
+
+    CurrentUser.State = res.body?.State;
+    this.state = Object.values(CurrentUser.State).pop();
   }
 }

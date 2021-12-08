@@ -31,10 +31,10 @@ export class RawgService {
     let message = "";
     if(error.error instanceof ErrorEvent) {
         //Get client-side error
-        message = error.error.message;
+        message = error.error.Message;
     } else {
         //Get server-side error
-        message = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        message = `Error Code: ${error.status}\nMessage: ${error.Message}`;
     }
     console.log(message);
     return throwError(() => new Error(message));
