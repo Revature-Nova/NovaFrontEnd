@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserProfileService} from 'src/app/services/user-profile.service';
-import {HttpClient} from '@angular/common/http';
 import {CurrentUser} from '../../classes/user';
-import {profile} from '../../interfaces/profile';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 
@@ -28,7 +26,6 @@ export class CurrentProfileComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private profile: UserProfileService,
-    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
