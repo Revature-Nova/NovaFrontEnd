@@ -1,17 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Test } from 'src/app/interfaces/test';
-import { MockProduct } from 'src/app/mock-product';
-import { Products } from 'src/app/mock-products';
-import { Product } from 'src/app/interfaces/product';
-import { ProductsService } from 'src/app/services/products.service';
-import { Router } from '@angular/router';
-import { EventEmitter } from '@angular/core';
-import { Output, Input } from '@angular/core';
-import { RawgService } from 'src/app/services/rawg.service';
-import { ProductComponent } from '../product/product.component';
-import { Subscription } from 'rxjs';
-import { DataService } from 'src/app/services/data.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Product} from 'src/app/interfaces/product';
+import {ProductsService} from 'src/app/services/products.service';
+import {Router} from '@angular/router';
+import {RawgService} from 'src/app/services/rawg.service';
+import {ProductComponent} from '../product/product.component';
+import {Subscription} from 'rxjs';
+import {DataService} from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-filter',
@@ -31,10 +25,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   btnFilter: boolean = false;
   productsService: ProductsService;
   testArrCreate: String[] = [];
-
   cart: Product[] = [];
-
-
   rawg!: RawgService;
   router!: Router;
   selectedProduct!: Product;
@@ -48,7 +39,6 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
     this.productsService.getProducts().subscribe((data) => {
       for (const item of data) {
         let {
@@ -80,12 +70,8 @@ export class FilterComponent implements OnInit, OnDestroy {
     })
 
     if (sessionStorage.getItem('cart')) { this.cart = JSON.parse(sessionStorage.getItem('cart') + ''); }
-  
-
     this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
-    // console.log(this.message);
-    // console.log(this.sent);
   }
 
   onClick(product: Product) {
@@ -145,7 +131,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.btnBool = true;
     this.cart.push(prod);
     sessionStorage.setItem('cart', JSON.stringify(this.cart))
-
+    document.getElementById("add-to-cart")!.innerHTML = "Added";
   }
 
   /* Function for filtering movies on the Front End

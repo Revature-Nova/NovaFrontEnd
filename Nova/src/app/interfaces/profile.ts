@@ -1,5 +1,6 @@
 export interface profile {
-    email: string, 
+    username: string,
+    email: string,
     state: string,
     favoriteGenre: string,
     message: string

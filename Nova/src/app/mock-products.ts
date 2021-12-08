@@ -1,4 +1,5 @@
-import { MockProduct } from "./mock-product"
+import {MockProduct} from "./mock-product"
+
 export const Products: MockProduct[] = [
     {
         productId: 1,

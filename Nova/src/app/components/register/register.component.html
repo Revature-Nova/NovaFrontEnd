@@ -4,33 +4,42 @@
   <button id="back-button"class="btn btn-primary" routerLink="../login">Back</button>
   <div class = "entireField">
     <h1 class="text-light">Welcome to Nova</h1>
-  <div class="text-center mt-5">
-    <form [formGroup]="registerForm" (submit)="submit()">
-      <h3 class="h3 mb-3 fw-normal">Please Register</h3>
 
-      <div class='mb-3'>
-        <input type = 'text' formControlName = 'firstName' class='form-control' id='firstName'
-              [placeholder]="'First Name'" required>
+    <div class="text-center mt-5">
+      <form [formGroup]="registerForm" (submit)="submit()">
+        <h3 class="h3 mb-3 fw-normal">Please Register</h3>
 
-        <div *ngIf ="firstName!.dirty || (firstName!.invalid && firstName!.touched)"
-            [class]= "'text-danger'" >
+        <div class='mb-3'>
+          <input type = 'text' formControlName = 'firstName' class='form-control' id='firstName'
+                 [placeholder]="'First Name'" required>
 
-          <small *ngIf="firstName!.errors?.['required']">First Name is required.</small>
+          <div *ngIf ="firstName!.dirty || (firstName!.invalid && firstName!.touched)"
+               [class]= "'text-danger'" >
 
+            <small *ngIf="firstName!.errors?.['required']">First Name is required.</small>
+
+          </div>
         </div>
-      </div>
-      <div class='mb-3'>
-        <input type='text' formControlName = 'lastName' class='form-control' id='lastName'
-              placeholder='Last Name' required>
+        <div class='mb-3'>
+          <input type='text' formControlName = 'lastName' class='form-control' id='lastName'
+                 placeholder='Last Name' required>
 
-        <div *ngIf ="lastName!.dirty || (lastName!.invalid && lastName!.touched)"
-            class= 'text-danger'>
+          <div *ngIf ="lastName!.dirty || (lastName!.invalid && lastName!.touched)"
+               class= 'text-danger'>
 
-          <small *ngIf="lastName!.errors?.['required']">Last Name is required.</small>
-
+            <small *ngIf="lastName!.errors?.['required']">Last Name is required.</small>
+          </div>
         </div>
-      </div>
 
+        <div class='mb-3' id='username'>
+          <input type='text' formControlName = 'username' class='form-control' id='username'
+                 placeholder='Username' required>
+
+          <div *ngIf ="username!.dirty || (username!.invalid && username!.touched)"
+               class= 'text-danger'>
+
+            <small *ngIf="username!.errors?.['required']">Username is required.</small>
+            <small *ngIf="username!.errors?.['pattern']" class= 'text-danger'>Your username must be 8-20 characters long and can conatin numbers and letters.</small>
       <div class='mb-3' id='username'>
         <input type='text' formControlName = 'username' class='form-control' id='username'
               placeholder='Username' required>
@@ -40,38 +49,36 @@
 
           <small *ngIf="username!.errors?.['required']">Username is required.</small>
           <small *ngIf="username!.errors?.['pattern']" class= 'text-danger'>Your username must be 8-20 characters long and can conatin numbers and letters.</small>
-
+          </div>
         </div>
-      </div>
 
-      <div class='mb-3' id='password'>
-        <input type='password' formControlName='password' class='form-control' id='password'
-              placeholder='Password' required>
+        <div class='mb-3' id='password'>
+          <input type='password' formControlName='password' class='form-control' id='password'
+                 placeholder='Password' required>
 
-        <div *ngIf ="password!.dirty || (password!.invalid && password!.touched)"
-            class= 'text-danger' >
+          <div *ngIf ="password!.dirty || (password!.invalid && password!.touched)"
+               class= 'text-danger' >
 
-          <small *ngIf="password!.errors?.['required']">Password is required.</small>
-          <small *ngIf="password!.errors?.['pattern']" class= 'text-danger'>Your password must be 8-25 characters long, contain a capital letter, a number, and a special character. Must not contain spaces or emoji.</small>
-
+            <small *ngIf="password!.errors?.['required']">Password is required.</small>
+            <small *ngIf="password!.errors?.['pattern']" class= 'text-danger'>Your password must be 8-25 characters long, contain a capital letter, a number, and a special character. Must not contain spaces or emoji.</small>
+          </div>
         </div>
-      </div>
 
-      <div class='mb-3' id='email'>
-        <input type='email' formControlName='email' class='form-control' id='email'
-              placeholder='Email' required>
+        <div class='mb-3' id='email'>
+          <input type='email' formControlName='email' class='form-control' id='email'
+                 placeholder='Email' required>
 
-        <div *ngIf ="email!.dirty || (email!.invalid && email!.touched)"
-            class= 'text-danger' >
+          <div *ngIf ="email!.dirty || (email!.invalid && email!.touched)"
+               class= 'text-danger' >
 
-          <small *ngIf="email!.errors?.['required']">Email is required.</small>
-          <small *ngIf="email!.errors?.['pattern']" class= 'text-danger'>Please provide a valid email address.</small>
+            <small *ngIf="email!.errors?.['required']">Email is required.</small>
+            <small *ngIf="email!.errors?.['pattern']" class= 'text-danger'>Please provide a valid email address.</small>
 
+          </div>
         </div>
-      </div>
 
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
   </div>
 </div>
-</div>  

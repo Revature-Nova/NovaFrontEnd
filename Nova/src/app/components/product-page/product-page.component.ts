@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RawgService } from 'src/app/services/rawg.service';
-import { Product } from 'src/app/interfaces/product';
+import {Component, OnInit} from '@angular/core';
+import {RawgService} from 'src/app/services/rawg.service';
+import {Product} from 'src/app/interfaces/product';
 
 @Component({
   selector: 'app-product-page',
@@ -11,7 +11,7 @@ export class ProductPageComponent implements OnInit {
   rawg: RawgService;
   description!: string;
   product!: Product;
-  
+
   constructor(_rawg:RawgService) {
     this.rawg = _rawg;
    }

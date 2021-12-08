@@ -1,92 +1,17 @@
-<div id= "login-page" style="height:100vh; top:0px; position:fixed; width: 100%;">
+<div id="profile-page" style="height: 100vh; top: 0px; position: fixed; width: 100%">
   <app-navbar></app-navbar>
-  <div class="text-center mt-5">
-    <form [formGroup]="form" (submit)="submit()">
+  <div class="container">
 
-    <div class="container">
-
-      <div class="img-div"><img [src]="icon" alt="user-profile-image"></div>
-
-
-      <div class="row mt-3">
-
-        <div id= "my-profile" class="col-md mt-5 text-center">
-
-          <h4>My Profile</h4><br><br><br>
-          <p>{{ username }}</p>
-          <p>{{ email }}</p><br>
-          <p>{{ state }}</p><br>
-          <p>{{ favoriteGenre }}</p><br>
-          <p>{{ message }}</p><br><br>
-
-        </div>
-
-        <div class="text-center mt-5">
-          <form [formGroup]="form" (submit)="submit()">
-            <h1 class="h3 mb-3 fw-normal text-light">Type in your information</h1>
-
-
-              <!-- <input
-                type='text'
-                formControlName='username'
-                class='form-control'
-                id='username'
-                placeholder='Username'
-                username= "value"
-                [(ngModel)] = "username"
-                required
-              /> -->
-
-                <div class = "inputFields">
-              <input
-                type="text"
-                formControlName="email"
-                class="form-control"
-                id="email"
-                placeholder="Email"
-                email="value"
-                [(ngModel)]="email"
-                required
-              />
-
-              <input
-                type="text"
-                formControlName="state"
-                class="form-control"
-                id="state"
-                placeholder="State"
-                state="value"
-                [(ngModel)]="state"
-                required
-              />
-
-              <input
-                type="text"
-                formControlName="favoriteGenre"
-                class="form-control"
-                id="favoriteGenre"
-                placeholder="FavoriteGenre"
-                favoriteGenre="value"
-                [(ngModel)]="favoriteGenre"
-                required
-              />
-
-              <input
-                [type]="'text'"
-                [formControlName]="'message'"
-                [class]="'form-control'"
-                [id]="'message'"
-                [placeholder]="'Message'"
-                required
-              /><br />
-
-          <div class="button-class">
-            <button class="btn btn-primary" type="submit" >Submit</button>
-          </div>
-                </div>
-          </form>
-          </div>
-        </div>
+    <div class="row mt-3">
+      <div id="user-info" class="col-md mt-5 text-center">
+        <h4>My Profile</h4>
+        <div class="userIcon"><fa-icon [icon]="userIcon"></fa-icon></div>
+        <br/>
+        <p class="card">Username: {{ username }}</p>
+        <p class="card">Email: {{ email }}</p>
+        <p class="card">State: {{ state }}</p>
+        <p class="card">Favorite Genre: {{ favoriteGenre }}</p>
+        <p class="card">Message: {{ message }}</p>
       </div>
     </form>
   </div>

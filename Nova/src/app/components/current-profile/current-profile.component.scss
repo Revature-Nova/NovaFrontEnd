@@ -1,4 +1,38 @@
-// TODO: Centered card styling
+input#email {
+  position: relative;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+input#state {
+  position: relative;
+  top: 8px;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+input#favoriteGenre {
+  position: relative;
+  top: 16px;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+input#message {
+  position: relative;
+  top: 24px;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.inputFields{
+  position: relative;
+  top: 20px;
+}
 
 div.userIcon{
   position: relative;
@@ -7,17 +41,21 @@ div.userIcon{
   color: rgb(45, 45, 124);
 }
 
+button.btn.btn-primary{
+  position: relative;
+  top: 55px;
+}
+
 article,
 a,
 h2,
 input,
 div,
 button,
-#user-page {
+#user-info {
   background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
-  -webkit-background-clip:text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-decoration-color: #FFFFFF;
   text-align: center;
 }
 
@@ -45,11 +83,8 @@ body {
 }
 
 p {
+  font-size: 25px;
   font-family: "Dank Mono", ui-monospace, monospace;
-  font-size: 20px;
-  text-align: left;
-  padding-right: 215px;
-  padding-top: 15px;
 }
 
 html {
@@ -65,17 +100,25 @@ html {
   width: fit-content;
 }
 
-.inputFields{
-  position: relative;
-  top: 20px;
+.button-class {
+  margin-bottom: 10px;
 }
 
-.card{
-  text-align: left;
-  margin: 15px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 150px;
+#user-info {
+  position: relative;
+  bottom: 22px;
+  right: 100px;
+  border: white;
+}
+
+#update-info{
+  position: relative;
+  top: 150px;
+}
+
+.form-control {
   background: rgba(209, 246, 238, 0.85);
-  -webkit-text-fill-color: #11304f;
+  text-align: center;
+  color: black;
+  -webkit-text-fill-color: #0b2033;
 }
