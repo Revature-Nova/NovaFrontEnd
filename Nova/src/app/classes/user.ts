@@ -20,3 +20,4 @@ export class profileInfo {
   public Message: string | any;
   public FavoriteGenre: string | any;
   public Email: string | any;
+}

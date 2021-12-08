@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class InterceptorComponent implements HttpInterceptor {
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = sessionStorage.getItem("JWT");
 

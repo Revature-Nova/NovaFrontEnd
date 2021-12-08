@@ -1,4 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+
 import {InterceptorComponent} from './interceptor.component';
 
 describe('InterceptorComponent', () => {
