@@ -21,7 +21,6 @@ export class UserProfileComponent {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   populateProfile(profile: Observable<HttpResponse<profileInfo>>){

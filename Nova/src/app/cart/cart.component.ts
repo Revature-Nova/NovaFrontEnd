@@ -18,12 +18,10 @@ export class CartComponent implements OnInit {
 
     let token: string | null= sessionStorage.getItem("JWT")
     console.log(token)
-
       console.log(this.productList)
       if (sessionStorage.getItem('cart')) {this.productList = JSON.parse(sessionStorage.getItem('cart') +'')}
 
   }
-
   productList: Product[] = [];
   productService: ProductsService;
   subscription!: Subscription;
@@ -49,7 +47,6 @@ export class CartComponent implements OnInit {
     console.log(index);
     this.productList.splice(index, 1);
     sessionStorage.setItem('cart', JSON.stringify(this.productList))
-
     alert("Item removed!");
   }
 }
