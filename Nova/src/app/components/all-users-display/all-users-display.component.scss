@@ -1,0 +1,28 @@
+h1{
+  font-size: 75px;
+  background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+#username{
+  color: #a6bcd2;
+}
+
+button.btn-success{
+  width: 50%;
+  max-width: 330px;
+  margin: auto;
+  background: #090a0f;
+  position: relative;
+  top: 10px;
+  padding: 20px 300px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#user-display{
+  overflow-y: scroll;
+}

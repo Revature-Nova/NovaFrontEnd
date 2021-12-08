@@ -1,49 +1,81 @@
-.pc-text-light {
-    color: #fff;
-  }
-  .pc-text-dark {
-    color: #474c55;
-  }
-  .pc-text-orange {
-    color: #f26925;
-  }
-  .pc-bg-light {
-    background-color: #fff;
-  }
-  .pc-bg-dark {
-    background-color: #474c55;
-  }
-  .pc-bg-orange {
-    background-color: #f26925;
-  }
-  
-  .sc-text-yellow {
-    color: #fcb414;
-  }
-  .sc-text-blue {
-    color: #72a4c2;
-  }
-  .sc-text-light-gray {
-    color: #b9b9ba;
-  }
-  
-  .sc-bg-yellow {
-    background-color: #fcb414;
-  }
-  .sc-bg-blue {
-    background-color: #72a4c2;
-  }
-  .sc-bg-light-gray {
-    background-color: #b9b9ba;
-  }
-  html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #1f2833;
+// TODO: Centered card styling
+
+div.userIcon{
+  position: relative;
+  top: 5px;
+  font-size: 100px;
+  color: rgb(45, 45, 124);
 }
 
-  
+article,
+a,
+h2,
+input,
+div,
+button,
+#user-page {
+  background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-decoration-color: #FFFFFF;
+  text-align: center;
+}
+
+h4 {
+  font-size: 5vmin;
+  line-height: 1.1;
+}
+
+body {
+  background: hsl(204 100% 5%);
+
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  font-family: system-ui;
+  font-size: min(200%, 5vmin);
+}
+
+h1,
+p,
+body {
+  margin: 0;
+}
+
+p {
+  font-family: "Dank Mono", ui-monospace, monospace;
+  font-size: 20px;
+  text-align: left;
+  padding-right: 215px;
+  padding-top: 15px;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.container {
+  display: inline-block;
+  border-radius: 10px;
+  box-sizing: content-box;
+  block-size: fit-content;
+  width: fit-content;
+}
+
+.inputFields{
+  position: relative;
+  top: 20px;
+}
+
+.card{
+  text-align: left;
+  margin: 15px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 150px;
+  background: rgba(209, 246, 238, 0.85);
+  -webkit-text-fill-color: #11304f;
+}

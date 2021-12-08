@@ -1,11 +1,18 @@
-<div class="text-center mt-5" >
-  <form [formGroup]="form" (submit)="submit()">
-    <h1>Type in your information</h1>
-    <input formControlName="username" class="form-Control" id="floatingInput" placeholder="Username"><br>
-    <input formControlName="email" class="form-Control" id="floatingInput" placeholder="Email"><br>
-    <input formControlName="state" class="form-Control" id="floatingInput" placeholder="State"><br>
-    <input formControlName="favoriteGenre" class="form-Control" id="floatingInput" placeholder="Favorite Genre"><br>
-    <input formControlName="message" class="form-Control" id="floatingInput" placeholder="Tell us about yourself">
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-</form>
+<div id="profile-page" style="height: 100vh; top: 0px; position: fixed; width: 100%">
+  <app-navbar></app-navbar>
+  <div class="container">
+
+    <div class="row mt-3">
+      <div id="user-info" class="col-md mt-5 text-center">
+        <h4>My Profile</h4>
+        <div class="userIcon"><fa-icon [icon]="userIcon"></fa-icon></div>
+        <br/>
+        <p class="card">Username: {{ username }}</p>
+        <p class="card">Email: {{ email }}</p>
+        <p class="card">State: {{ state }}</p>
+        <p class="card">Favorite Genre: {{ favoriteGenre }}</p>
+        <p class="card">Message: {{ message }}</p>
+      </div>
+    </form>
+  </div>
 </div>

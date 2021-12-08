@@ -25,6 +25,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "bootstrap": "^3.4.1",
     "bootstrap-scss": "^4.6.1",
+    "compass-mixins": "^0.12.10",
+    "moment": "^2.29.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

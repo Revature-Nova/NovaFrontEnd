@@ -1,3 +1,5 @@
+import {AbstractControl} from "@angular/forms";
+
 export interface newUser {
   firstName: string,
   lastName: string,
@@ -8,7 +10,15 @@ export interface newUser {
 }
 
 export interface returningUser {
-  token: string,
   username: string,
-  password: string
+  email: string,
+  state: string,
+  favoriteGenre: string,
+  message: string,
+  firstName: string,
+  lastName: string
+}
+
+export class CurrentUser {
+  public static username: AbstractControl | null;
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AuthService } from "../../services/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,8 @@ import { AuthService } from "../../services/auth.service";
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth:AuthService) {}
+
+  constructor(private formBuilder: FormBuilder, private auth:AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl('',[
         Validators.required,
         Validators.pattern("^[a-zA-Z0-9]*$"),
-        Validators.minLength(8),
+        Validators.minLength(5),
         Validators.maxLength(20)]),
 
       email: new FormControl('',[
@@ -54,10 +56,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.auth.registerUser(registerValues)
         .subscribe(res => {
-          if (res.status === "Successfully Registered!") {
-            alert(res.status)
+          if (res.body?.status === "Successfully Registered!") {
+            alert(res.body?.status)
+            this.router.navigate(['login']);
           } else {
             alert("Register Failed!")
+            this.router.navigate(['register']);
           }
         });
     }

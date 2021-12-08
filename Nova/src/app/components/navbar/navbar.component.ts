@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/interfaces/product';
-import { DataService } from 'src/app/services/data.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
-
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {faSearch, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import {ProductsService} from 'src/app/services/products.service';
+import {Product} from 'src/app/interfaces/product';
+import {DataService} from 'src/app/services/data.service';
+import {Subscription} from 'rxjs';
+import {AuthService} from "../../services/auth.service";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {HttpStatusCode} from "@angular/common/http";
 
 @Component({
   selector: 'app-navbar',
@@ -21,14 +21,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   productNames: String[] = [];
   productsService: ProductsService;
   searchForm!: FormGroup;
-
+  username!: String | null;
   message!: String;
   sent!: String;
   subscription!: Subscription;
-//   search: String = '';
   navbarOpen = false;
 
+  constructor( private fb: FormBuilder,
+               private _productsService: ProductsService,
+               private data: DataService,
+               private router: Router,
+               private auth: AuthService) {
+    this.initForm()
+    this.productsService = _productsService;
+  }
+
   ngOnInit(): void {
+    // To avoid nulls
+    const username = sessionStorage.getItem("Username");
+
+    this.username = username;
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
       for(const item of data) {
@@ -50,22 +62,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.showDropDown = false;
     }, 100)
-    //console.log('...timeout passed.');
-    
   }
 
-  //Check If the value of the form group exists or not
   toggleSearchOn() {
-    if (this.searchForm.value.search === null || this.searchForm.value.search === '') {
-      this.showDropDown = false;
-    } else {
-      this.showDropDown = true;
-    }
-  }
-
-  constructor( private fb: FormBuilder, _productsService: ProductsService, private data: DataService, private router: Router) {
-    this.initForm()
-    this.productsService = _productsService;
+    this.showDropDown = !(this.searchForm.value.search === null || this.searchForm.value.search === '');
   }
 
   initForm(): FormGroup {
@@ -85,16 +85,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let a = this.searchForm.value.search;
     this.data.changeMessage(a);
     this.data.changeSent('true');
-    
   }
 
   selectValue(value: any) {
-    
+
     this.searchForm.patchValue({"search": value});
     this.showDropDown = false;
     this.searchFor({'search': value})
   }
 
+  getCookie(name: string) {
+    let username: string | undefined;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      username = parts.pop()?.split(';').shift();
+    }
+
+    return username;
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -109,15 +118,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
     console.log("clicked")
-  }  
+  }
 
   logout(){
-    sessionStorage.clear();
-    // alert("You are now logged out")
-    console.log("logged out")
-    // this.router.navigate(['/'])
+    this.auth.logout()
+      .subscribe(resp => {
+        if (resp.status == HttpStatusCode.Ok)
+        {
+          sessionStorage.clear();
+          this.router.navigate(['/'])
+        }
+      })
   }
 }
-
-
-
