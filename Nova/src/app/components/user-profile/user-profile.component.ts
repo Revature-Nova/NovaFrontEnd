@@ -7,8 +7,9 @@ import {profileInfo} from "../../classes/user";
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
 })
+
 export class UserProfileComponent {
   username!: string;
   email!: string;
@@ -30,6 +31,12 @@ export class UserProfileComponent {
       UserProfileComponent.prototype.state = Object.values(res.body?.State).join("");
       UserProfileComponent.prototype.email = Object.values(res.body?.Email).join("");
       UserProfileComponent.prototype.favoriteGenre = Object.values(res.body?.FavoriteGenre).join("");
+    });
+  }
+
+  displayProfiles() {
+    this.profile.displayProfiles().subscribe((res) => {
+      console.log(res);
     });
   }
 }

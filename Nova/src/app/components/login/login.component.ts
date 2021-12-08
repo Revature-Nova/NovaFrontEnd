@@ -12,6 +12,7 @@ import {CurrentUser} from "../../classes/user";
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+ 
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {}
 

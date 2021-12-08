@@ -9,7 +9,6 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpStatusCode} from "@angular/common/http";
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -54,6 +53,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
       this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
+      // console.log('Before: ', this.test);
+      // this.test = this.test.replace(/#/g, '');
+      // console.log('After: ', this.test);
     })
   }
 

@@ -4,6 +4,7 @@
   <button id="back-button"class="btn btn-primary" routerLink="../login">Back</button>
   <div class = "entireField">
     <h1 class="text-light">Welcome to Nova</h1>
+
     <div class="text-center mt-5">
       <form [formGroup]="registerForm" (submit)="submit()">
         <h3 class="h3 mb-3 fw-normal">Please Register</h3>
@@ -27,7 +28,6 @@
                class= 'text-danger'>
 
             <small *ngIf="lastName!.errors?.['required']">Last Name is required.</small>
-
           </div>
         </div>
 
@@ -40,7 +40,15 @@
 
             <small *ngIf="username!.errors?.['required']">Username is required.</small>
             <small *ngIf="username!.errors?.['pattern']" class= 'text-danger'>Your username must be 8-20 characters long and can conatin numbers and letters.</small>
+      <div class='mb-3' id='username'>
+        <input type='text' formControlName = 'username' class='form-control' id='username'
+              placeholder='Username' required>
 
+        <div *ngIf ="username!.dirty || (username!.invalid && username!.touched)"
+            class= 'text-danger'>
+
+          <small *ngIf="username!.errors?.['required']">Username is required.</small>
+          <small *ngIf="username!.errors?.['pattern']" class= 'text-danger'>Your username must be 8-20 characters long and can conatin numbers and letters.</small>
           </div>
         </div>
 
@@ -53,7 +61,6 @@
 
             <small *ngIf="password!.errors?.['required']">Password is required.</small>
             <small *ngIf="password!.errors?.['pattern']" class= 'text-danger'>Your password must be 8-25 characters long, contain a capital letter, a number, and a special character. Must not contain spaces or emoji.</small>
-
           </div>
         </div>
 

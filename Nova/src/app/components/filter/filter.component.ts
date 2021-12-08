@@ -25,10 +25,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   btnFilter: boolean = false;
   productsService: ProductsService;
   testArrCreate: String[] = [];
-
   cart: Product[] = [];
-
-
   rawg!: RawgService;
   router!: Router;
   selectedProduct!: Product;
@@ -74,8 +71,6 @@ export class FilterComponent implements OnInit, OnDestroy {
     })
 
     if (sessionStorage.getItem('cart')) { this.cart = JSON.parse(sessionStorage.getItem('cart') + ''); }
-
-
     this.subscription = this.data.sentStatus.subscribe(sent => this.sent = sent)
     this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
     // console.log(this.message);
