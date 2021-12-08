@@ -11,7 +11,6 @@ import {AuthService} from "../../services/auth.service";
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-
   constructor(private formBuilder: FormBuilder, private auth:AuthService, private router: Router) {}
 
   ngOnInit(): void {

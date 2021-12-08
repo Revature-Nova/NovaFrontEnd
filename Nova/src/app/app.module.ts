@@ -16,7 +16,7 @@ import {UserProfileService} from './services/user-profile.service';
 import {LoginComponent} from './components/login/login.component';
 import {CommonModule} from '@angular/common';
 import {ProductComponent} from './components/product/product.component';
-import {CartComponent} from './components/cart/cart.component';
+import {CartComponent} from "./components/cart/cart.component";
 import {InterceptorComponent} from "./components/interceptor/interceptor.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AllUsersDisplayComponent} from './components/all-users-display/all-users-display.component';
