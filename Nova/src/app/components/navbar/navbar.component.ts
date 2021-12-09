@@ -45,8 +45,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.productsService.getProducts().subscribe(data => {
       let setGames: Set<String> = new Set;
       for(const item of data) {
-        let {productId, title, genre, price, rating, endpoint, platform, imageUrl, cart} = item;
-        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl, cart});
+        let {productId, title, genre, price, rating, endpoint, platform, imageUrl} = item;
+        this.products.push({productId, title, genre, price, rating, endpoint, platform, imageUrl});
         setGames = new Set(this.products.map(p => p.title));
       }
       for (const title of setGames) {
@@ -118,7 +118,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
-    console.log("clicked")
   }
 
   logout(){
@@ -132,6 +131,3 @@ export class NavbarComponent implements OnInit, OnDestroy {
       })
   }
 }
-
-
-

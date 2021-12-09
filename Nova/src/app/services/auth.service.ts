@@ -16,8 +16,12 @@ export class AuthService {
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log(error);
-    return throwError(() => error);
+    if (error.status == 500 && error.url === "http://18.212.102.32:8082/user-service/Nova/login"){
+      alert("Login Failed!");
+      return throwError(() => error);
+    } else {
+      return throwError(() => error);
+    }
   }
 
   registerUser( newUser: newUser ): Observable<HttpResponse<newUser>> {
@@ -29,7 +33,7 @@ export class AuthService {
   login( returningUser : returningUser ): Observable<HttpResponse<returningUser>> {
     return this.client
       .post<returningUser>(this.url + 'login', returningUser, {observe: 'response'})
-      .pipe(retry(1), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
 
   }
 

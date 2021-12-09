@@ -20,7 +20,6 @@ export class UserProfileService {
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
-    console.log(error)
     return throwError(() => error)
   }
 

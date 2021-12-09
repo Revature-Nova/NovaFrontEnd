@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
             CurrentUser.State = resp.body?.state;
 
             this.router.navigate(['products']);
-          } else {
+          } else if (resp.status === 500) {
             alert("Login Failed!");
           }
         });

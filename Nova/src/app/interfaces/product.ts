@@ -1,5 +1,3 @@
-import {Cart} from "./cart";
-
 export interface Product {
     productId: number;
     title: string;
@@ -9,5 +7,4 @@ export interface Product {
     endpoint: string;
     platform: string;
     imageUrl: string;
-    cart: Cart;
 }
