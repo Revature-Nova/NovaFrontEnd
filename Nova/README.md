@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
+##Getting Started
+
+#### Clone the repo
+```https://github.com/Revature-Nova/NovaFrontEnd.git```
+
+#### Enviroment Set up Steps
+  1. Run ```npm install``` inside the Nova Front End folder to add all the node modules needed to the Angular page
+  2. Open the project in an IDE suitable for Angular development i.e Visual Studio Code
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
